@@ -1,0 +1,143 @@
+import requests
+import time
+import pandas as pd
+from typing import Dict, List, Any
+
+# Constantes
+API_BASE_URL = "https://www.sofascore.com/api/v1"
+REQUEST_INTERVAL = 5  # segundos
+
+# Variável global para armazenar o timestamp da última requisição
+last_request_time = 0
+
+def make_api_request(url: str) -> Dict[str, Any]:
+    """
+    Faz uma requisição à API com controle de intervalo entre chamadas.
+    
+    Args:
+        url (str): URL da API para fazer a requisição
+    
+    Returns:
+        Dict[str, Any]: Resposta da API em formato JSON
+    """
+    global last_request_time
+    
+    current_time = time.time()
+    if current_time - last_request_time < REQUEST_INTERVAL:
+        time.sleep(REQUEST_INTERVAL - (current_time - last_request_time))
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    
+    last_request_time = time.time()
+    return response.json()
+
+def get_team_stats(team_id: int, tournament_id: int, season_id: int) -> Dict[str, Any]:
+    """
+    Busca estatísticas de um time específico da API.
+    
+    Args:
+        team_id (int): ID do time
+        tournament_id (int): ID do torneio
+        season_id (int): ID da temporada
+    
+    Returns:
+        Dict[str, Any]: Estatísticas do time
+    """
+    url = f"{API_BASE_URL}/team/{team_id}/unique-tournament/{tournament_id}/season/{season_id}/statistics/overall"
+    return make_api_request(url)['statistics']
+
+def get_player_stats(league_id: int, season_id: int, quantidade: int, team_filter: str, game_type: str, position_filter: str, order_by: str, fields: str) -> Dict[str, Any]:
+    """
+    Busca estatísticas de jogadores da API.
+    
+    Args:
+        league_id (int): ID da liga
+        season_id (int): ID da temporada
+        quantidade (int): Número de jogadores para retornar
+        team_filter (str): Filtro de time
+        game_type (str): Tipo de jogo (Casa, Fora, Ambos)
+        position_filter (str): Filtro de posição
+        order_by (str): Campo para ordenação
+        fields (str): Campos a serem retornados
+    
+    Returns:
+        Dict[str, Any]: Estatísticas dos jogadores
+    """
+    type_filter = ""
+    if game_type == "Casa":
+        type_filter = "type.EQ.home%2C"
+    elif game_type == "Fora":
+        type_filter = "type.EQ.away%2C"
+
+    url = f"{API_BASE_URL}/unique-tournament/{league_id}/season/{season_id}/statistics?limit={quantidade}&order={order_by}&accumulation=total&fields={fields}&filters={type_filter}{position_filter}{team_filter}"
+    return make_api_request(url)
+
+def process_finalizacoes_data(data: Dict[str, Any]) -> pd.DataFrame:
+    all_data = []
+    for player in data['results']:
+        all_data.append({
+            'Jogador': player['player']['name'],
+            'Time': player['team']['name'],
+            'Total de chutes': player['totalShots'],
+            'Chutes no alvo': player['shotsOnTarget'],
+            'Partidas jogadas': player['appearances'],
+            'Titular': player['matchesStarted'],
+            'Min/Jogados': player['minutesPlayed']
+        })
+    
+    df = pd.DataFrame(all_data)
+    df['Min/Chute Alvo'] = (df['Min/Jogados'] / df['Chutes no alvo']).round(2)
+    df['Min/Chute'] = (df['Min/Jogados'] / df['Total de chutes']).round(2)
+    df['Min/P'] = (df['Min/Jogados'] / df['Partidas jogadas']).round(2)
+    df['Chutes/P'] = (df['Total de chutes'] / df['Partidas jogadas']).round(2)
+    df['Chutes Alvo/P'] = (df['Chutes no alvo'] / df['Partidas jogadas']).round(2)
+    df['Eficiência'] = df.apply(lambda row: f"{(row['Chutes no alvo'] / row['Total de chutes'] * 100):.2f}%" if row['Total de chutes'] > 0 else "0.00%", axis=1)
+    return df
+
+def process_defesa_data(data: Dict[str, Any]) -> pd.DataFrame:
+    """
+    Processa os dados de defesa dos goleiros.
+    
+    Args:
+        data (Dict[str, Any]): Dados brutos da API
+    
+    Returns:
+        pd.DataFrame: DataFrame processado com as estatísticas de defesa
+    """
+    all_data = []
+    for player in data['results']:
+        all_data.append({
+            'Jogador': player['player']['name'],
+            'Time': player['team']['name'],
+            'Defesas': player['saves'],
+            'Partidas jogadas': player['appearances'],
+            'Titular': player['matchesStarted'],
+            'Min/Jogados': player['minutesPlayed'],
+            'Gols sofridos (área)': player['goalsConcededInsideTheBox'],
+            'Gols sofridos (fora da área)': player['goalsConcededOutsideTheBox']
+        })
+    
+    df = pd.DataFrame(all_data)
+    df['Total Gols/s'] = df['Gols sofridos (área)'] + df['Gols sofridos (fora da área)']
+    df['Defesas /P'] = (df['Defesas'] / df['Partidas jogadas']).round(2)
+    df['Min/Defesa'] = (df['Min/Jogados'] / df['Defesas']).round(2)
+    return df
+
+def get_teams_stats(league_id: int, season_id: int) -> Dict[str, Any]:
+    """
+    Busca estatísticas de todos os times de uma liga específica.
+    
+    Args:
+        league_id (int): ID da liga
+        season_id (int): ID da temporada
+    
+    Returns:
+        Dict[str, Any]: Estatísticas dos times
+    """
+    url = f"{API_BASE_URL}/unique-tournament/{league_id}/season/{season_id}/standings/total"
+    return make_api_request(url)
