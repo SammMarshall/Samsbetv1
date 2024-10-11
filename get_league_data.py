@@ -54,18 +54,11 @@ def save_data(data):
     with open('all_leagues_info.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-def add_new_league(all_leagues_data):
-    print("\nAdicionar nova liga:")
-    league_id = input("ID da liga: ")
-    season_id = input("ID da temporada: ")
-    
+def add_new_league(all_leagues_data, league_id, season_id):
     country, league_name, league_data = get_league_data(league_id, season_id)
     
     if league_name in all_leagues_data:
-        overwrite = input(f"A liga {league_name} já existe. Deseja sobrescrever? (s/n): ").lower()
-        if overwrite != 's':
-            print("Operação cancelada.")
-            return
+        print(f"A liga {league_name} já existe. Sobrescrevendo...")
     
     all_leagues_data[league_name] = {
         "league_id": league_id,
@@ -76,6 +69,7 @@ def add_new_league(all_leagues_data):
     print(f"Dados coletados para {league_name} ({country})")
     save_data(all_leagues_data)
     print(f"Liga {league_name} adicionada com sucesso!")
+    return all_leagues_data
 
 def overwrite_all_data():
     leagues = [
@@ -117,23 +111,21 @@ def overwrite_all_data():
     save_data(new_data)
     print("\nTodos os dados foram sobrescritos e salvos em 'all_leagues_info.json'")
 
-def update_last_events(all_leagues_data):
-    print("\nAtualizando os últimos eventos para todas as equipes...")
-    for league_name, league_info in all_leagues_data.items():
-        print(f"\nAtualizando {league_name}...")
-        with ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_team = {executor.submit(get_last_event_id, team['id']): team for team in league_info['teams']}
-            for future in as_completed(future_to_team):
-                team = future_to_team[future]
-                last_event = future.result()
-                if last_event:
-                    team['lastEvent'] = last_event
-                    print(f"  Atualizado: {team['nome']}")
-                else:
-                    print(f"  Falha ao atualizar: {team['nome']}")
+def update_last_events(selected_leagues_data, progress_callback=None):
+    total_teams = sum(len(league_info['teams']) for league_info in selected_leagues_data.values())
+    current_team = 0
     
-    save_data(all_leagues_data)
-    print("\nTodos os últimos eventos foram atualizados e salvos em 'all_leagues_info.json'")
+    for league_name, league_info in selected_leagues_data.items():
+        for team in league_info['teams']:
+            last_event = get_last_event_with_delay(team['id'])
+            if last_event:
+                team['lastEvent'] = last_event
+            
+            current_team += 1
+            if progress_callback:
+                progress_callback(current_team, total_teams, f"Atualizando {league_name}")
+    
+    # Não é necessário salvar aqui, pois salvamos no main.py após a atualização
 
 def remove_league(all_leagues_data):
     print("\nLigas existentes:")
@@ -199,6 +191,10 @@ def main():
             break
         else:
             print("Opção inválida. Tente novamente.")
+
+def get_last_event_with_delay(team_id):
+    time.sleep(1)  # Espera 1 segundo antes de cada chamada
+    return get_last_event_id(team_id)
 
 if __name__ == "__main__":
     main()

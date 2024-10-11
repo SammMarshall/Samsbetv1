@@ -3260,5 +3260,192 @@
                 }
             }
         ]
+    },
+    "Brasileirão Série B": {
+        "league_id": "390",
+        "season_id": "59015",
+        "country": "Brazil",
+        "teams": [
+            {
+                "id": 336664,
+                "nome": "Amazonas FC",
+                "lastEvent": {
+                    "id": 12146485,
+                    "startDate": "04/10/2024 21:30",
+                    "slug": "amazonas-fc-novorizontino"
+                }
+            },
+            {
+                "id": 1959,
+                "nome": "Sport Recife",
+                "lastEvent": {
+                    "id": 12921681,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "ceara-sport-recife"
+                }
+            },
+            {
+                "id": 1968,
+                "nome": "Santos",
+                "lastEvent": {
+                    "id": 12146477,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "santos-goias"
+                }
+            },
+            {
+                "id": 2001,
+                "nome": "Ceará",
+                "lastEvent": {
+                    "id": 12921681,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "ceara-sport-recife"
+                }
+            },
+            {
+                "id": 21982,
+                "nome": "Mirassol",
+                "lastEvent": {
+                    "id": 12146479,
+                    "startDate": "05/10/2024 18:00",
+                    "slug": "mirassol-vila-nova-fc"
+                }
+            },
+            {
+                "id": 1973,
+                "nome": "América Mineiro",
+                "lastEvent": {
+                    "id": 12146481,
+                    "startDate": "04/10/2024 19:00",
+                    "slug": "coritiba-america-mineiro"
+                }
+            },
+            {
+                "id": 135514,
+                "nome": "Novorizontino",
+                "lastEvent": {
+                    "id": 12146485,
+                    "startDate": "04/10/2024 21:30",
+                    "slug": "amazonas-fc-novorizontino"
+                }
+            },
+            {
+                "id": 7315,
+                "nome": "Avaí",
+                "lastEvent": {
+                    "id": 12146482,
+                    "startDate": "04/10/2024 21:30",
+                    "slug": "brusque-avai"
+                }
+            },
+            {
+                "id": 39634,
+                "nome": "Operário-PR",
+                "lastEvent": {
+                    "id": 12146484,
+                    "startDate": "03/10/2024 21:30",
+                    "slug": "operario-pr-chapecoense"
+                }
+            },
+            {
+                "id": 2021,
+                "nome": "Vila Nova FC",
+                "lastEvent": {
+                    "id": 12146479,
+                    "startDate": "05/10/2024 18:00",
+                    "slug": "mirassol-vila-nova-fc"
+                }
+            },
+            {
+                "id": 1960,
+                "nome": "Goiás",
+                "lastEvent": {
+                    "id": 12146477,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "santos-goias"
+                }
+            },
+            {
+                "id": 1969,
+                "nome": "Ponte Preta",
+                "lastEvent": {
+                    "id": 12146478,
+                    "startDate": "05/10/2024 17:00",
+                    "slug": "botafogo-sp-ponte-preta"
+                }
+            },
+            {
+                "id": 1972,
+                "nome": "Guarani",
+                "lastEvent": {
+                    "id": 12873917,
+                    "startDate": "09/10/2024 20:00",
+                    "slug": "botafogo-sp-guarani"
+                }
+            },
+            {
+                "id": 2025,
+                "nome": "Ituano",
+                "lastEvent": {
+                    "id": 12146480,
+                    "startDate": "05/10/2024 17:00",
+                    "slug": "ituano-guarani"
+                }
+            },
+            {
+                "id": 1979,
+                "nome": "Botafogo-SP",
+                "lastEvent": {
+                    "id": 12873917,
+                    "startDate": "09/10/2024 20:00",
+                    "slug": "botafogo-sp-guarani"
+                }
+            },
+            {
+                "id": 21884,
+                "nome": "Brusque",
+                "lastEvent": {
+                    "id": 12146482,
+                    "startDate": "04/10/2024 21:30",
+                    "slug": "brusque-avai"
+                }
+            },
+            {
+                "id": 21845,
+                "nome": "Chapecoense",
+                "lastEvent": {
+                    "id": 12146495,
+                    "startDate": "09/10/2024 21:00",
+                    "slug": "chapecoense-paysandu-sc"
+                }
+            },
+            {
+                "id": 22032,
+                "nome": "CRB",
+                "lastEvent": {
+                    "id": 12146483,
+                    "startDate": "04/10/2024 20:00",
+                    "slug": "crb-paysandu-sc"
+                }
+            },
+            {
+                "id": 1997,
+                "nome": "Paysandu SC",
+                "lastEvent": {
+                    "id": 12146495,
+                    "startDate": "09/10/2024 21:00",
+                    "slug": "chapecoense-paysandu-sc"
+                }
+            },
+            {
+                "id": 1982,
+                "nome": "Coritiba",
+                "lastEvent": {
+                    "id": 12146481,
+                    "startDate": "04/10/2024 19:00",
+                    "slug": "coritiba-america-mineiro"
+                }
+            }
+        ]
     }
 }
