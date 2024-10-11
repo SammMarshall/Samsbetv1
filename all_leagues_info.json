@@ -8,180 +8,180 @@
                 "id": 44,
                 "nome": "Liverpool",
                 "lastEvent": {
-                    "id": 12437002,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "liverpool-wolverhampton"
+                    "id": 12437015,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "liverpool-crystal-palace"
                 }
             },
             {
                 "id": 17,
                 "nome": "Manchester City",
                 "lastEvent": {
-                    "id": 12436999,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "newcastle-united-manchester-city"
+                    "id": 12437022,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "fulham-manchester-city"
                 }
             },
             {
                 "id": 42,
                 "nome": "Arsenal",
                 "lastEvent": {
-                    "id": 12436985,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "arsenal-leicester-city"
+                    "id": 12437004,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "southampton-arsenal"
                 }
             },
             {
                 "id": 38,
                 "nome": "Chelsea",
                 "lastEvent": {
-                    "id": 12436989,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "chelsea-brighton-and-hove-albion"
+                    "id": 12437013,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "chelsea-nottingham-forest"
                 }
             },
             {
                 "id": 40,
                 "nome": "Aston Villa",
                 "lastEvent": {
-                    "id": 12436993,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "aston-villa-ipswich-town"
+                    "id": 12437006,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "aston-villa-manchester-united"
                 }
             },
             {
                 "id": 43,
                 "nome": "Fulham",
                 "lastEvent": {
-                    "id": 12437001,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "fulham-nottingham-forest"
+                    "id": 12437022,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "fulham-manchester-city"
                 }
             },
             {
                 "id": 39,
                 "nome": "Newcastle United",
                 "lastEvent": {
-                    "id": 12436999,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "newcastle-united-manchester-city"
+                    "id": 12437018,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "everton-newcastle-united"
                 }
             },
             {
                 "id": 33,
                 "nome": "Tottenham Hotspur",
                 "lastEvent": {
-                    "id": 12436995,
-                    "startDate": "29/09/2024 12:30",
-                    "slug": "manchester-united-tottenham-hotspur"
+                    "id": 12437011,
+                    "startDate": "06/10/2024 12:30",
+                    "slug": "tottenham-hotspur-brighton-and-hove-albion"
                 }
             },
             {
                 "id": 30,
                 "nome": "Brighton & Hove Albion",
                 "lastEvent": {
-                    "id": 12436989,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "chelsea-brighton-and-hove-albion"
+                    "id": 12437011,
+                    "startDate": "06/10/2024 12:30",
+                    "slug": "tottenham-hotspur-brighton-and-hove-albion"
                 }
             },
             {
                 "id": 14,
                 "nome": "Nottingham Forest",
                 "lastEvent": {
-                    "id": 12437001,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "fulham-nottingham-forest"
+                    "id": 12437013,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "chelsea-nottingham-forest"
                 }
             },
             {
                 "id": 50,
                 "nome": "Brentford",
                 "lastEvent": {
-                    "id": 12436987,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "brentford-west-ham-united"
+                    "id": 12437008,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "brentford-wolverhampton"
                 }
             },
             {
                 "id": 35,
                 "nome": "Manchester United",
                 "lastEvent": {
-                    "id": 12436995,
-                    "startDate": "29/09/2024 12:30",
-                    "slug": "manchester-united-tottenham-hotspur"
+                    "id": 12437006,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "aston-villa-manchester-united"
                 }
             },
             {
                 "id": 60,
                 "nome": "Bournemouth",
                 "lastEvent": {
-                    "id": 12436969,
-                    "startDate": "21/09/2024 11:00",
-                    "slug": "bournemouth-liverpool"
+                    "id": 12437020,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "bournemouth-leicester-city"
                 }
             },
             {
                 "id": 37,
                 "nome": "West Ham United",
                 "lastEvent": {
-                    "id": 12436987,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "brentford-west-ham-united"
+                    "id": 12437024,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "west-ham-united-ipswich-town"
                 }
             },
             {
                 "id": 32,
                 "nome": "Ipswich Town",
                 "lastEvent": {
-                    "id": 12436993,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "aston-villa-ipswich-town"
+                    "id": 12437024,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "west-ham-united-ipswich-town"
                 }
             },
             {
                 "id": 48,
                 "nome": "Everton",
                 "lastEvent": {
-                    "id": 12436992,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "everton-crystal-palace"
+                    "id": 12437018,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "everton-newcastle-united"
                 }
             },
             {
                 "id": 31,
                 "nome": "Leicester City",
                 "lastEvent": {
-                    "id": 12436985,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "arsenal-leicester-city"
+                    "id": 12437020,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "bournemouth-leicester-city"
                 }
             },
             {
                 "id": 7,
                 "nome": "Crystal Palace",
                 "lastEvent": {
-                    "id": 12436992,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "everton-crystal-palace"
+                    "id": 12437015,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "liverpool-crystal-palace"
                 }
             },
             {
                 "id": 45,
                 "nome": "Southampton",
                 "lastEvent": {
-                    "id": 12436973,
-                    "startDate": "21/09/2024 11:00",
-                    "slug": "southampton-ipswich-town"
+                    "id": 12437004,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "southampton-arsenal"
                 }
             },
             {
                 "id": 3,
                 "nome": "Wolverhampton",
                 "lastEvent": {
-                    "id": 12437002,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "liverpool-wolverhampton"
+                    "id": 12437008,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "brentford-wolverhampton"
                 }
             }
         ]
@@ -195,180 +195,180 @@
                 "id": 2817,
                 "nome": "Barcelona",
                 "lastEvent": {
-                    "id": 12437795,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "osasuna-barcelona"
+                    "id": 12437815,
+                    "startDate": "06/10/2024 11:15",
+                    "slug": "deportivo-alaves-barcelona"
                 }
             },
             {
                 "id": 2829,
                 "nome": "Real Madrid",
                 "lastEvent": {
-                    "id": 12437787,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-madrid-real-madrid"
+                    "id": 12437813,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "real-madrid-villarreal"
                 }
             },
             {
                 "id": 2836,
                 "nome": "Atlético Madrid",
                 "lastEvent": {
-                    "id": 12437787,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-madrid-real-madrid"
+                    "id": 12437826,
+                    "startDate": "06/10/2024 16:00",
+                    "slug": "atletico-madrid-real-sociedad"
                 }
             },
             {
                 "id": 2825,
                 "nome": "Athletic Club",
                 "lastEvent": {
-                    "id": 12437784,
-                    "startDate": "29/09/2024 11:15",
-                    "slug": "sevilla-athletic-club"
+                    "id": 12437824,
+                    "startDate": "06/10/2024 09:00",
+                    "slug": "girona-fc-athletic-club"
                 }
             },
             {
                 "id": 2826,
                 "nome": "Mallorca",
                 "lastEvent": {
-                    "id": 12437798,
-                    "startDate": "27/09/2024 16:00",
-                    "slug": "real-valladolid-mallorca"
+                    "id": 12437820,
+                    "startDate": "05/10/2024 09:00",
+                    "slug": "mallorca-espanyol"
                 }
             },
             {
                 "id": 2819,
                 "nome": "Villarreal",
                 "lastEvent": {
-                    "id": 12437768,
-                    "startDate": "26/09/2024 14:00",
-                    "slug": "villarreal-espanyol"
+                    "id": 12437813,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "real-madrid-villarreal"
                 }
             },
             {
                 "id": 2820,
                 "nome": "Osasuna",
                 "lastEvent": {
-                    "id": 12437795,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "osasuna-barcelona"
+                    "id": 12437810,
+                    "startDate": "05/10/2024 11:15",
+                    "slug": "getafe-osasuna"
                 }
             },
             {
                 "id": 2816,
                 "nome": "Real Betis",
                 "lastEvent": {
-                    "id": 12437808,
-                    "startDate": "29/09/2024 13:30",
-                    "slug": "real-betis-espanyol"
+                    "id": 12437828,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "sevilla-real-betis"
                 }
             },
             {
                 "id": 2818,
                 "nome": "Rayo Vallecano",
                 "lastEvent": {
-                    "id": 12437805,
-                    "startDate": "28/09/2024 11:15",
-                    "slug": "leganes-rayo-vallecano"
+                    "id": 12437833,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "real-valladolid-rayo-vallecano"
                 }
             },
             {
                 "id": 2821,
                 "nome": "Celta Vigo",
                 "lastEvent": {
-                    "id": 12437789,
-                    "startDate": "29/09/2024 09:00",
-                    "slug": "girona-fc-celta-vigo"
+                    "id": 12437832,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "las-palmas-celta-vigo"
                 }
             },
             {
                 "id": 2885,
                 "nome": "Deportivo Alavés",
                 "lastEvent": {
-                    "id": 12437803,
-                    "startDate": "28/09/2024 09:00",
-                    "slug": "deportivo-alaves-getafe"
+                    "id": 12437815,
+                    "startDate": "06/10/2024 11:15",
+                    "slug": "deportivo-alaves-barcelona"
                 }
             },
             {
                 "id": 24264,
                 "nome": "Girona FC",
                 "lastEvent": {
-                    "id": 12437789,
-                    "startDate": "29/09/2024 09:00",
-                    "slug": "girona-fc-celta-vigo"
+                    "id": 12437824,
+                    "startDate": "06/10/2024 09:00",
+                    "slug": "girona-fc-athletic-club"
                 }
             },
             {
                 "id": 2833,
                 "nome": "Sevilla",
                 "lastEvent": {
-                    "id": 12437784,
-                    "startDate": "29/09/2024 11:15",
-                    "slug": "sevilla-athletic-club"
+                    "id": 12437828,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "sevilla-real-betis"
                 }
             },
             {
                 "id": 2824,
                 "nome": "Real Sociedad",
                 "lastEvent": {
-                    "id": 12437792,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "valencia-real-sociedad"
+                    "id": 12437826,
+                    "startDate": "06/10/2024 16:00",
+                    "slug": "atletico-madrid-real-sociedad"
                 }
             },
             {
                 "id": 2859,
                 "nome": "Getafe",
                 "lastEvent": {
-                    "id": 12437803,
-                    "startDate": "28/09/2024 09:00",
-                    "slug": "deportivo-alaves-getafe"
+                    "id": 12437810,
+                    "startDate": "05/10/2024 11:15",
+                    "slug": "getafe-osasuna"
                 }
             },
             {
                 "id": 2845,
                 "nome": "Leganés",
                 "lastEvent": {
-                    "id": 12437805,
-                    "startDate": "28/09/2024 11:15",
-                    "slug": "leganes-rayo-vallecano"
+                    "id": 12965110,
+                    "startDate": "10/10/2024 15:30",
+                    "slug": "leganes-real-valladolid"
                 }
             },
             {
                 "id": 2814,
                 "nome": "Espanyol",
                 "lastEvent": {
-                    "id": 12437808,
-                    "startDate": "29/09/2024 13:30",
-                    "slug": "real-betis-espanyol"
+                    "id": 12437820,
+                    "startDate": "05/10/2024 09:00",
+                    "slug": "mallorca-espanyol"
                 }
             },
             {
                 "id": 2828,
                 "nome": "Valencia",
                 "lastEvent": {
-                    "id": 12437792,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "valencia-real-sociedad"
+                    "id": 12437818,
+                    "startDate": "04/10/2024 16:00",
+                    "slug": "leganes-valencia"
                 }
             },
             {
                 "id": 2831,
                 "nome": "Real Valladolid",
                 "lastEvent": {
-                    "id": 12437798,
-                    "startDate": "27/09/2024 16:00",
-                    "slug": "real-valladolid-mallorca"
+                    "id": 12965110,
+                    "startDate": "10/10/2024 15:30",
+                    "slug": "leganes-real-valladolid"
                 }
             },
             {
                 "id": 6577,
                 "nome": "Las Palmas",
                 "lastEvent": {
-                    "id": 12437777,
-                    "startDate": "26/09/2024 14:00",
-                    "slug": "las-palmas-real-betis"
+                    "id": 12437832,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "las-palmas-celta-vigo"
                 }
             }
         ]
@@ -382,180 +382,180 @@
                 "id": 1958,
                 "nome": "Botafogo",
                 "lastEvent": {
-                    "id": 12117248,
-                    "startDate": "28/09/2024 21:00",
-                    "slug": "gremio-botafogo"
+                    "id": 12117261,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "athletico-botafogo"
                 }
             },
             {
                 "id": 1963,
                 "nome": "Palmeiras",
                 "lastEvent": {
-                    "id": 12117249,
-                    "startDate": "28/09/2024 18:30",
-                    "slug": "atletico-mineiro-palmeiras"
+                    "id": 12117260,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "red-bull-bragantino-palmeiras"
                 }
             },
             {
                 "id": 2020,
                 "nome": "Fortaleza",
                 "lastEvent": {
-                    "id": 12117251,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "cuiaba-fortaleza"
+                    "id": 12117254,
+                    "startDate": "04/10/2024 21:30",
+                    "slug": "gremio-fortaleza"
                 }
             },
             {
                 "id": 5981,
                 "nome": "Flamengo",
                 "lastEvent": {
-                    "id": 12117247,
-                    "startDate": "29/09/2024 20:00",
-                    "slug": "flamengo-athletico"
+                    "id": 12117256,
+                    "startDate": "05/10/2024 19:00",
+                    "slug": "flamengo-bahia"
                 }
             },
             {
                 "id": 1981,
                 "nome": "São Paulo",
                 "lastEvent": {
-                    "id": 12117250,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "sao-paulo-corinthians"
+                    "id": 12117262,
+                    "startDate": "05/10/2024 19:00",
+                    "slug": "cuiaba-sao-paulo"
                 }
             },
             {
                 "id": 1955,
                 "nome": "Bahia",
                 "lastEvent": {
-                    "id": 12117246,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "criciuma-bahia"
+                    "id": 12117256,
+                    "startDate": "05/10/2024 19:00",
+                    "slug": "flamengo-bahia"
                 }
             },
             {
                 "id": 1966,
                 "nome": "Internacional",
                 "lastEvent": {
-                    "id": 12117244,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "internacional-vitoria"
+                    "id": 12731641,
+                    "startDate": "09/10/2024 19:00",
+                    "slug": "ypiranga-internacional"
                 }
             },
             {
                 "id": 1954,
                 "nome": "Cruzeiro",
                 "lastEvent": {
-                    "id": 12117245,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "vasco-cruzeiro"
+                    "id": 12117257,
+                    "startDate": "03/10/2024 21:30",
+                    "slug": "fluminense-cruzeiro"
                 }
             },
             {
                 "id": 1974,
                 "nome": "Vasco",
                 "lastEvent": {
-                    "id": 12117245,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "vasco-cruzeiro"
+                    "id": 12117258,
+                    "startDate": "05/10/2024 21:00",
+                    "slug": "juventude-vasco"
                 }
             },
             {
                 "id": 1977,
                 "nome": "Atlético Mineiro",
                 "lastEvent": {
-                    "id": 12117249,
-                    "startDate": "28/09/2024 18:30",
-                    "slug": "atletico-mineiro-palmeiras"
+                    "id": 12943807,
+                    "startDate": "09/10/2024 19:30",
+                    "slug": "gremio-atletico-mineiro"
                 }
             },
             {
                 "id": 1999,
                 "nome": "Red Bull Bragantino",
                 "lastEvent": {
-                    "id": 12117253,
-                    "startDate": "29/09/2024 11:00",
-                    "slug": "red-bull-bragantino-juventude"
+                    "id": 12117260,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "red-bull-bragantino-palmeiras"
                 }
             },
             {
                 "id": 1980,
                 "nome": "Juventude",
                 "lastEvent": {
-                    "id": 12117253,
-                    "startDate": "29/09/2024 11:00",
-                    "slug": "red-bull-bragantino-juventude"
+                    "id": 12117258,
+                    "startDate": "05/10/2024 21:00",
+                    "slug": "juventude-vasco"
                 }
             },
             {
                 "id": 5926,
                 "nome": "Grêmio",
                 "lastEvent": {
-                    "id": 12117248,
-                    "startDate": "28/09/2024 21:00",
-                    "slug": "gremio-botafogo"
+                    "id": 12943807,
+                    "startDate": "09/10/2024 19:30",
+                    "slug": "gremio-atletico-mineiro"
                 }
             },
             {
                 "id": 1984,
                 "nome": "Criciúma",
                 "lastEvent": {
-                    "id": 12117246,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "criciuma-bahia"
+                    "id": 12117263,
+                    "startDate": "03/10/2024 19:00",
+                    "slug": "atletico-goianiense-criciuma"
                 }
             },
             {
                 "id": 1967,
                 "nome": "Athletico",
                 "lastEvent": {
-                    "id": 12117247,
-                    "startDate": "29/09/2024 20:00",
-                    "slug": "flamengo-athletico"
+                    "id": 12117261,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "athletico-botafogo"
                 }
             },
             {
                 "id": 1962,
                 "nome": "Vitória",
                 "lastEvent": {
-                    "id": 12117244,
-                    "startDate": "29/09/2024 18:30",
-                    "slug": "internacional-vitoria"
+                    "id": 12117255,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "atletico-mineiro-vitoria"
                 }
             },
             {
                 "id": 1957,
                 "nome": "Corinthians",
                 "lastEvent": {
-                    "id": 12117250,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "sao-paulo-corinthians"
+                    "id": 12117259,
+                    "startDate": "05/10/2024 19:00",
+                    "slug": "internacional-corinthians"
                 }
             },
             {
                 "id": 1961,
                 "nome": "Fluminense",
                 "lastEvent": {
-                    "id": 12117252,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-goianiense-fluminense"
+                    "id": 12117257,
+                    "startDate": "03/10/2024 21:30",
+                    "slug": "fluminense-cruzeiro"
                 }
             },
             {
                 "id": 49202,
                 "nome": "Cuiabá",
                 "lastEvent": {
-                    "id": 12770047,
-                    "startDate": "29/09/2024 18:00",
-                    "slug": "primavera-ac-cuiaba"
+                    "id": 12770050,
+                    "startDate": "07/10/2024 20:00",
+                    "slug": "cuiaba-mixto"
                 }
             },
             {
                 "id": 7314,
                 "nome": "Atlético Goianiense",
                 "lastEvent": {
-                    "id": 12117252,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-goianiense-fluminense"
+                    "id": 12117263,
+                    "startDate": "03/10/2024 19:00",
+                    "slug": "atletico-goianiense-criciuma"
                 }
             }
         ]
@@ -569,180 +569,180 @@
                 "id": 2714,
                 "nome": "Napoli",
                 "lastEvent": {
-                    "id": 12499310,
-                    "startDate": "29/09/2024 15:45",
-                    "slug": "monza-napoli"
+                    "id": 12499323,
+                    "startDate": "04/10/2024 13:30",
+                    "slug": "napoli-como"
                 }
             },
             {
                 "id": 2687,
                 "nome": "Juventus",
                 "lastEvent": {
-                    "id": 12499308,
-                    "startDate": "28/09/2024 13:00",
-                    "slug": "genoa-juventus"
+                    "id": 12499320,
+                    "startDate": "06/10/2024 07:30",
+                    "slug": "cagliari-juventus"
                 }
             },
             {
                 "id": 2692,
                 "nome": "Milan",
                 "lastEvent": {
-                    "id": 12499309,
-                    "startDate": "27/09/2024 15:45",
-                    "slug": "milan-lecce"
+                    "id": 12499317,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "fiorentina-milan"
                 }
             },
             {
                 "id": 2697,
                 "nome": "Inter",
                 "lastEvent": {
-                    "id": 12499314,
-                    "startDate": "28/09/2024 10:00",
-                    "slug": "inter-udinese"
+                    "id": 12499319,
+                    "startDate": "05/10/2024 15:45",
+                    "slug": "inter-torino"
                 }
             },
             {
                 "id": 2696,
                 "nome": "Torino",
                 "lastEvent": {
-                    "id": 12499313,
-                    "startDate": "29/09/2024 07:30",
-                    "slug": "lazio-torino"
+                    "id": 12499319,
+                    "startDate": "05/10/2024 15:45",
+                    "slug": "inter-torino"
                 }
             },
             {
                 "id": 2705,
                 "nome": "Empoli",
                 "lastEvent": {
-                    "id": 12499307,
-                    "startDate": "29/09/2024 13:00",
-                    "slug": "empoli-fiorentina"
+                    "id": 12499321,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "empoli-lazio"
                 }
             },
             {
                 "id": 2699,
                 "nome": "Lazio",
                 "lastEvent": {
-                    "id": 12499313,
-                    "startDate": "29/09/2024 07:30",
-                    "slug": "lazio-torino"
+                    "id": 12499321,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "empoli-lazio"
                 }
             },
             {
                 "id": 2695,
                 "nome": "Udinese",
                 "lastEvent": {
-                    "id": 12499314,
-                    "startDate": "28/09/2024 10:00",
-                    "slug": "inter-udinese"
+                    "id": 12499324,
+                    "startDate": "05/10/2024 10:00",
+                    "slug": "udinese-lecce"
                 }
             },
             {
                 "id": 2702,
                 "nome": "Roma",
                 "lastEvent": {
-                    "id": 12499312,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "roma-venezia"
+                    "id": 12499322,
+                    "startDate": "06/10/2024 13:00",
+                    "slug": "monza-roma"
                 }
             },
             {
                 "id": 2704,
                 "nome": "Como",
                 "lastEvent": {
-                    "id": 12499306,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "como-hellas-verona"
+                    "id": 12499323,
+                    "startDate": "04/10/2024 13:30",
+                    "slug": "napoli-como"
                 }
             },
             {
                 "id": 2693,
                 "nome": "Fiorentina",
                 "lastEvent": {
-                    "id": 12499307,
-                    "startDate": "29/09/2024 13:00",
-                    "slug": "empoli-fiorentina"
+                    "id": 12499317,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "fiorentina-milan"
                 }
             },
             {
                 "id": 2686,
                 "nome": "Atalanta",
                 "lastEvent": {
-                    "id": 12499305,
-                    "startDate": "28/09/2024 15:45",
-                    "slug": "atalanta-bologna"
+                    "id": 12499315,
+                    "startDate": "05/10/2024 13:00",
+                    "slug": "genoa-atalanta"
                 }
             },
             {
                 "id": 2685,
                 "nome": "Bologna",
                 "lastEvent": {
-                    "id": 12499305,
-                    "startDate": "28/09/2024 15:45",
-                    "slug": "atalanta-bologna"
+                    "id": 12499316,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "parma-bologna"
                 }
             },
             {
                 "id": 2701,
                 "nome": "Hellas Verona",
                 "lastEvent": {
-                    "id": 12499306,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "como-hellas-verona"
+                    "id": 12499318,
+                    "startDate": "04/10/2024 15:45",
+                    "slug": "hellas-verona-venezia"
                 }
             },
             {
                 "id": 2690,
                 "nome": "Parma",
                 "lastEvent": {
-                    "id": 12499301,
-                    "startDate": "21/09/2024 15:45",
-                    "slug": "parma-lecce"
+                    "id": 12499316,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "parma-bologna"
                 }
             },
             {
                 "id": 2713,
                 "nome": "Genoa",
                 "lastEvent": {
-                    "id": 12499308,
-                    "startDate": "28/09/2024 13:00",
-                    "slug": "genoa-juventus"
+                    "id": 12499315,
+                    "startDate": "05/10/2024 13:00",
+                    "slug": "genoa-atalanta"
                 }
             },
             {
                 "id": 2689,
                 "nome": "Lecce",
                 "lastEvent": {
-                    "id": 12499309,
-                    "startDate": "27/09/2024 15:45",
-                    "slug": "milan-lecce"
+                    "id": 12499324,
+                    "startDate": "05/10/2024 10:00",
+                    "slug": "udinese-lecce"
                 }
             },
             {
                 "id": 2688,
                 "nome": "Venezia",
                 "lastEvent": {
-                    "id": 12499312,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "roma-venezia"
+                    "id": 12499318,
+                    "startDate": "04/10/2024 15:45",
+                    "slug": "hellas-verona-venezia"
                 }
             },
             {
                 "id": 2729,
                 "nome": "Monza",
                 "lastEvent": {
-                    "id": 12499310,
-                    "startDate": "29/09/2024 15:45",
-                    "slug": "monza-napoli"
+                    "id": 12499322,
+                    "startDate": "06/10/2024 13:00",
+                    "slug": "monza-roma"
                 }
             },
             {
                 "id": 2719,
                 "nome": "Cagliari",
                 "lastEvent": {
-                    "id": 12726865,
-                    "startDate": "24/09/2024 13:30",
-                    "slug": "cremonese-cagliari"
+                    "id": 12499320,
+                    "startDate": "06/10/2024 07:30",
+                    "slug": "cagliari-juventus"
                 }
             }
         ]
@@ -756,216 +756,216 @@
                 "id": 8,
                 "nome": "West Bromwich Albion",
                 "lastEvent": {
-                    "id": 12468984,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "sheffield-wednesday-west-bromwich-albion"
+                    "id": 12468957,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "millwall-west-bromwich-albion"
                 }
             },
             {
                 "id": 41,
                 "nome": "Sunderland",
                 "lastEvent": {
-                    "id": 12468983,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "sunderland-watford"
+                    "id": 12468964,
+                    "startDate": "04/10/2024 16:00",
+                    "slug": "sunderland-leeds-united"
                 }
             },
             {
                 "id": 46,
                 "nome": "Blackburn Rovers",
                 "lastEvent": {
-                    "id": 12468992,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "blackburn-rovers-queens-park-rangers"
+                    "id": 12468962,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "plymouth-argyle-blackburn-rovers"
                 }
             },
             {
                 "id": 6,
                 "nome": "Burnley",
                 "lastEvent": {
-                    "id": 12468987,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "oxford-united-burnley"
+                    "id": 12468967,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "preston-north-end-burnley"
                 }
             },
             {
                 "id": 34,
                 "nome": "Leeds United",
                 "lastEvent": {
-                    "id": 12468991,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "leeds-united-coventry-city"
+                    "id": 12468964,
+                    "startDate": "04/10/2024 16:00",
+                    "slug": "sunderland-leeds-united"
                 }
             },
             {
                 "id": 15,
                 "nome": "Sheffield United",
                 "lastEvent": {
-                    "id": 12468986,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "sheffield-united-portsmouth"
+                    "id": 12468961,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "luton-town-sheffield-united"
                 }
             },
             {
                 "id": 24,
                 "nome": "Watford",
                 "lastEvent": {
-                    "id": 12468983,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "sunderland-watford"
+                    "id": 12468955,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "middlesbrough-watford"
                 }
             },
             {
                 "id": 36,
                 "nome": "Middlesbrough",
                 "lastEvent": {
-                    "id": 12468990,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "middlesbrough-stoke-city"
+                    "id": 12468955,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "middlesbrough-watford"
                 }
             },
             {
                 "id": 74,
                 "nome": "Swansea City",
                 "lastEvent": {
-                    "id": 12468982,
-                    "startDate": "29/09/2024 11:00",
-                    "slug": "swansea-city-bristol-city"
+                    "id": 12468960,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "swansea-city-stoke-city"
                 }
             },
             {
                 "id": 263,
                 "nome": "Norwich City",
                 "lastEvent": {
-                    "id": 12468989,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "norwich-city-derby-county"
+                    "id": 12468965,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "norwich-city-hull-city"
                 }
             },
             {
                 "id": 95,
                 "nome": "Oxford United",
                 "lastEvent": {
-                    "id": 12468987,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "oxford-united-burnley"
+                    "id": 12468963,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "oxford-united-portsmouth"
                 }
             },
             {
                 "id": 96,
                 "nome": "Hull City",
                 "lastEvent": {
-                    "id": 12468993,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "hull-city-cardiff-city"
+                    "id": 12966044,
+                    "startDate": "11/10/2024 11:00",
+                    "slug": "alanyaspor-hull-city"
                 }
             },
             {
                 "id": 27,
                 "nome": "Derby County",
                 "lastEvent": {
-                    "id": 12468989,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "norwich-city-derby-county"
+                    "id": 12468968,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "derby-county-queens-park-rangers"
                 }
             },
             {
                 "id": 58,
                 "nome": "Bristol City",
                 "lastEvent": {
-                    "id": 12468982,
-                    "startDate": "29/09/2024 11:00",
-                    "slug": "swansea-city-bristol-city"
+                    "id": 12468969,
+                    "startDate": "06/10/2024 11:00",
+                    "slug": "cardiff-city-bristol-city"
                 }
             },
             {
                 "id": 25,
                 "nome": "Millwall",
                 "lastEvent": {
-                    "id": 12468988,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "millwall-preston-north-end"
+                    "id": 12468957,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "millwall-west-bromwich-albion"
                 }
             },
             {
                 "id": 71,
                 "nome": "Plymouth Argyle",
                 "lastEvent": {
-                    "id": 12468985,
-                    "startDate": "27/09/2024 16:00",
-                    "slug": "luton-town-plymouth-argyle"
+                    "id": 12468962,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "plymouth-argyle-blackburn-rovers"
                 }
             },
             {
                 "id": 1,
                 "nome": "Queens Park Rangers",
                 "lastEvent": {
-                    "id": 12468992,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "blackburn-rovers-queens-park-rangers"
+                    "id": 12468968,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "derby-county-queens-park-rangers"
                 }
             },
             {
                 "id": 12,
                 "nome": "Sheffield Wednesday",
                 "lastEvent": {
-                    "id": 12468984,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "sheffield-wednesday-west-bromwich-albion"
+                    "id": 12468966,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "sheffield-wednesday-coventry-city"
                 }
             },
             {
                 "id": 72,
                 "nome": "Luton Town",
                 "lastEvent": {
-                    "id": 12468985,
-                    "startDate": "27/09/2024 16:00",
-                    "slug": "luton-town-plymouth-argyle"
+                    "id": 12468961,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "luton-town-sheffield-united"
                 }
             },
             {
                 "id": 29,
                 "nome": "Stoke City",
                 "lastEvent": {
-                    "id": 12468990,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "middlesbrough-stoke-city"
+                    "id": 12468960,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "swansea-city-stoke-city"
                 }
             },
             {
                 "id": 11,
                 "nome": "Coventry City",
                 "lastEvent": {
-                    "id": 12468991,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "leeds-united-coventry-city"
+                    "id": 12468966,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "sheffield-wednesday-coventry-city"
                 }
             },
             {
                 "id": 21,
                 "nome": "Preston North End",
                 "lastEvent": {
-                    "id": 12468988,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "millwall-preston-north-end"
+                    "id": 12468967,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "preston-north-end-burnley"
                 }
             },
             {
                 "id": 2,
                 "nome": "Portsmouth",
                 "lastEvent": {
-                    "id": 12468986,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "sheffield-united-portsmouth"
+                    "id": 12468963,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "oxford-united-portsmouth"
                 }
             },
             {
                 "id": 61,
                 "nome": "Cardiff City",
                 "lastEvent": {
-                    "id": 12468993,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "hull-city-cardiff-city"
+                    "id": 12468969,
+                    "startDate": "06/10/2024 11:00",
+                    "slug": "cardiff-city-bristol-city"
                 }
             }
         ]
@@ -979,324 +979,324 @@
                 "id": 2672,
                 "nome": "FC Bayern München",
                 "lastEvent": {
-                    "id": 12499620,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "bayer-04-leverkusen-fc-bayern-munchen"
+                    "id": 12499656,
+                    "startDate": "06/10/2024 12:30",
+                    "slug": "eintracht-frankfurt-fc-bayern-munchen"
                 }
             },
             {
                 "id": 2352,
                 "nome": "Celtic",
                 "lastEvent": {
-                    "id": 12477097,
-                    "startDate": "28/09/2024 13:45",
-                    "slug": "celtic-st-johnstone"
+                    "id": 12960396,
+                    "startDate": "09/10/2024 15:30",
+                    "slug": "sligo-rovers-celtic"
                 }
             },
             {
                 "id": 2681,
                 "nome": "Bayer 04 Leverkusen",
                 "lastEvent": {
-                    "id": 12499620,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "bayer-04-leverkusen-fc-bayern-munchen"
+                    "id": 12499652,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "bayer-04-leverkusen-holstein-kiel"
                 }
             },
             {
                 "id": 40,
                 "nome": "Aston Villa",
                 "lastEvent": {
-                    "id": 12436993,
-                    "startDate": "29/09/2024 10:00",
-                    "slug": "aston-villa-ipswich-town"
+                    "id": 12437006,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "aston-villa-manchester-united"
                 }
             },
             {
                 "id": 2673,
                 "nome": "Borussia Dortmund",
                 "lastEvent": {
-                    "id": 12499627,
-                    "startDate": "27/09/2024 15:30",
-                    "slug": "borussia-dortmund-vfl-bochum-1848"
+                    "id": 12499671,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "borussia-dortmund-1-fc-union-berlin"
                 }
             },
             {
                 "id": 2218,
                 "nome": "Sparta Praha",
                 "lastEvent": {
-                    "id": 12449112,
-                    "startDate": "27/09/2024 14:30",
-                    "slug": "sparta-praha-sk-sigma-olomouc"
+                    "id": 12580671,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "sparta-praha-slavia-praha"
                 }
             },
             {
                 "id": 44,
                 "nome": "Liverpool",
                 "lastEvent": {
-                    "id": 12437002,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "liverpool-wolverhampton"
+                    "id": 12437015,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "liverpool-crystal-palace"
                 }
             },
             {
                 "id": 2687,
                 "nome": "Juventus",
                 "lastEvent": {
-                    "id": 12499308,
-                    "startDate": "28/09/2024 13:00",
-                    "slug": "genoa-juventus"
+                    "id": 12499320,
+                    "startDate": "06/10/2024 07:30",
+                    "slug": "cagliari-juventus"
                 }
             },
             {
                 "id": 2829,
                 "nome": "Real Madrid",
                 "lastEvent": {
-                    "id": 12437787,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-madrid-real-madrid"
+                    "id": 12437813,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "real-madrid-villarreal"
                 }
             },
             {
                 "id": 3001,
                 "nome": "Sporting",
                 "lastEvent": {
-                    "id": 12514034,
-                    "startDate": "27/09/2024 16:15",
-                    "slug": "estoril-praia-sporting"
+                    "id": 12514044,
+                    "startDate": "05/10/2024 16:30",
+                    "slug": "casa-pia-sporting"
                 }
             },
             {
                 "id": 3006,
                 "nome": "Benfica",
                 "lastEvent": {
-                    "id": 12514031,
-                    "startDate": "28/09/2024 16:30",
-                    "slug": "gil-vicente-benfica"
+                    "id": 12514040,
+                    "startDate": "06/10/2024 14:00",
+                    "slug": "cd-nacional-benfica"
                 }
             },
             {
                 "id": 1653,
                 "nome": "AS Monaco",
                 "lastEvent": {
-                    "id": 12451014,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "as-monaco-montpellier"
+                    "id": 12451029,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "stade-rennais-as-monaco"
                 }
             },
             {
                 "id": 2836,
                 "nome": "Atlético Madrid",
                 "lastEvent": {
-                    "id": 12437787,
-                    "startDate": "29/09/2024 16:00",
-                    "slug": "atletico-madrid-real-madrid"
+                    "id": 12437826,
+                    "startDate": "06/10/2024 16:00",
+                    "slug": "atletico-madrid-real-sociedad"
                 }
             },
             {
                 "id": 1715,
                 "nome": "Stade Brestois",
                 "lastEvent": {
-                    "id": 12451004,
-                    "startDate": "27/09/2024 14:00",
-                    "slug": "stade-brestois-auxerre"
+                    "id": 12451025,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "stade-brestois-le-havre"
                 }
             },
             {
                 "id": 1644,
                 "nome": "Paris Saint-Germain",
                 "lastEvent": {
-                    "id": 12451002,
-                    "startDate": "27/09/2024 16:00",
-                    "slug": "stade-rennais-paris-saint-germain"
+                    "id": 12451019,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "nice-paris-saint-germain"
                 }
             },
             {
                 "id": 42,
                 "nome": "Arsenal",
                 "lastEvent": {
-                    "id": 12436985,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "arsenal-leicester-city"
+                    "id": 12437004,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "southampton-arsenal"
                 }
             },
             {
                 "id": 2685,
                 "nome": "Bologna",
                 "lastEvent": {
-                    "id": 12499305,
-                    "startDate": "28/09/2024 15:45",
-                    "slug": "atalanta-bologna"
+                    "id": 12499316,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "parma-bologna"
                 }
             },
             {
                 "id": 3313,
                 "nome": "Shakhtar Donetsk",
                 "lastEvent": {
-                    "id": 12484461,
-                    "startDate": "27/09/2024 12:20",
-                    "slug": "veres-rivne-shakhtar-donetsk"
+                    "id": 12484454,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "lnz-cherkasy-shakhtar-donetsk"
                 }
             },
             {
                 "id": 2697,
                 "nome": "Inter",
                 "lastEvent": {
-                    "id": 12499314,
-                    "startDate": "28/09/2024 10:00",
-                    "slug": "inter-udinese"
+                    "id": 12499319,
+                    "startDate": "05/10/2024 15:45",
+                    "slug": "inter-torino"
                 }
             },
             {
                 "id": 2686,
                 "nome": "Atalanta",
                 "lastEvent": {
-                    "id": 12499305,
-                    "startDate": "28/09/2024 15:45",
-                    "slug": "atalanta-bologna"
+                    "id": 12499315,
+                    "startDate": "05/10/2024 13:00",
+                    "slug": "genoa-atalanta"
                 }
             },
             {
                 "id": 17,
                 "nome": "Manchester City",
                 "lastEvent": {
-                    "id": 12436999,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "newcastle-united-manchester-city"
+                    "id": 12437022,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "fulham-manchester-city"
                 }
             },
             {
                 "id": 2817,
                 "nome": "Barcelona",
                 "lastEvent": {
-                    "id": 12437795,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "osasuna-barcelona"
+                    "id": 12437815,
+                    "startDate": "06/10/2024 11:15",
+                    "slug": "deportivo-alaves-barcelona"
                 }
             },
             {
                 "id": 36360,
                 "nome": "RB Leipzig",
                 "lastEvent": {
-                    "id": 12499624,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "rb-leipzig-fc-augsburg"
+                    "id": 12499660,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "rb-leipzig-1-fc-heidenheim"
                 }
             },
             {
                 "id": 2051,
                 "nome": "SK Sturm Graz",
                 "lastEvent": {
-                    "id": 12481114,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "fc-blau-weiss-linz-sk-sturm-graz"
+                    "id": 12481109,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "sk-sturm-graz-red-bull-salzburg"
                 }
             },
             {
                 "id": 5149,
                 "nome": "FK Crvena zvezda",
                 "lastEvent": {
-                    "id": 12420464,
-                    "startDate": "27/09/2024 14:00",
-                    "slug": "fk-zeleznicar-pancevo-fk-crvena-zvezda"
+                    "id": 12420452,
+                    "startDate": "06/10/2024 14:00",
+                    "slug": "fk-imt-beograd-fk-crvena-zvezda"
                 }
             },
             {
                 "id": 24264,
                 "nome": "Girona FC",
                 "lastEvent": {
-                    "id": 12437789,
-                    "startDate": "29/09/2024 09:00",
-                    "slug": "girona-fc-celta-vigo"
+                    "id": 12437824,
+                    "startDate": "06/10/2024 09:00",
+                    "slug": "girona-fc-athletic-club"
                 }
             },
             {
                 "id": 2952,
                 "nome": "PSV Eindhoven",
                 "lastEvent": {
-                    "id": 12448365,
-                    "startDate": "28/09/2024 11:30",
-                    "slug": "willem-ii-tilburg-psv-eindhoven"
+                    "id": 12448373,
+                    "startDate": "05/10/2024 15:00",
+                    "slug": "sparta-rotterdam-psv-eindhoven"
                 }
             },
             {
                 "id": 2677,
                 "nome": "VfB Stuttgart",
                 "lastEvent": {
-                    "id": 12499638,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "vfb-stuttgart-vfl-wolfsburg"
+                    "id": 12962185,
+                    "startDate": "10/10/2024 09:00",
+                    "slug": "vfb-stuttgart-ssv-ulm-1846"
                 }
             },
             {
                 "id": 2692,
                 "nome": "Milan",
                 "lastEvent": {
-                    "id": 12499309,
-                    "startDate": "27/09/2024 15:45",
-                    "slug": "milan-lecce"
+                    "id": 12499317,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "fiorentina-milan"
                 }
             },
             {
                 "id": 1643,
                 "nome": "Lille",
                 "lastEvent": {
-                    "id": 12451010,
-                    "startDate": "28/09/2024 14:00",
-                    "slug": "le-havre-lille"
+                    "id": 12451021,
+                    "startDate": "05/10/2024 14:00",
+                    "slug": "toulouse-lille"
                 }
             },
             {
                 "id": 2888,
                 "nome": "Club Brugge KV",
                 "lastEvent": {
-                    "id": 12421079,
-                    "startDate": "27/09/2024 15:45",
-                    "slug": "rc-sporting-charleroi-club-brugge-kv"
+                    "id": 12421082,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "royale-union-saint-gilloise-club-brugge-kv"
                 }
             },
             {
                 "id": 2046,
                 "nome": "Red Bull Salzburg",
                 "lastEvent": {
-                    "id": 12481117,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "austria-wien-red-bull-salzburg"
+                    "id": 12481109,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "sk-sturm-graz-red-bull-salzburg"
                 }
             },
             {
                 "id": 2445,
                 "nome": "Young Boys",
                 "lastEvent": {
-                    "id": 12441009,
-                    "startDate": "28/09/2024 15:30",
-                    "slug": "grasshopper-club-zurich-young-boys"
+                    "id": 12439856,
+                    "startDate": "06/10/2024 11:30",
+                    "slug": "basel-young-boys"
                 }
             },
             {
                 "id": 2404,
                 "nome": "ŠK Slovan Bratislava",
                 "lastEvent": {
-                    "id": 12449114,
-                    "startDate": "27/09/2024 15:00",
-                    "slug": "mfk-zemplin-michalovce-sk-slovan-bratislava"
+                    "id": 12449204,
+                    "startDate": "05/10/2024 15:30",
+                    "slug": "sk-slovan-bratislava-as-trencin"
                 }
             },
             {
                 "id": 2959,
                 "nome": "Feyenoord",
                 "lastEvent": {
-                    "id": 12448363,
-                    "startDate": "28/09/2024 13:45",
-                    "slug": "nec-nijmegen-feyenoord"
+                    "id": 12448375,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "feyenoord-fc-twente"
                 }
             },
             {
                 "id": 2032,
                 "nome": "GNK Dinamo Zagreb",
                 "lastEvent": {
-                    "id": 12404848,
-                    "startDate": "28/09/2024 15:00",
-                    "slug": "nk-lokomotiva-zagreb-gnk-dinamo-zagreb"
+                    "id": 12965689,
+                    "startDate": "10/10/2024 10:00",
+                    "slug": "nk-polet-sv-martin-na-muri-gnk-dinamo-zagreb"
                 }
             }
         ]
@@ -1310,162 +1310,162 @@
                 "id": 2672,
                 "nome": "FC Bayern München",
                 "lastEvent": {
-                    "id": 12499620,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "bayer-04-leverkusen-fc-bayern-munchen"
+                    "id": 12499656,
+                    "startDate": "06/10/2024 12:30",
+                    "slug": "eintracht-frankfurt-fc-bayern-munchen"
                 }
             },
             {
                 "id": 2674,
                 "nome": "Eintracht Frankfurt",
                 "lastEvent": {
-                    "id": 12499648,
-                    "startDate": "29/09/2024 10:30",
-                    "slug": "eintracht-frankfurt-holstein-kiel"
+                    "id": 12499656,
+                    "startDate": "06/10/2024 12:30",
+                    "slug": "eintracht-frankfurt-fc-bayern-munchen"
                 }
             },
             {
                 "id": 36360,
                 "nome": "RB Leipzig",
                 "lastEvent": {
-                    "id": 12499624,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "rb-leipzig-fc-augsburg"
+                    "id": 12499660,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "rb-leipzig-1-fc-heidenheim"
                 }
             },
             {
                 "id": 2681,
                 "nome": "Bayer 04 Leverkusen",
                 "lastEvent": {
-                    "id": 12499620,
-                    "startDate": "28/09/2024 13:30",
-                    "slug": "bayer-04-leverkusen-fc-bayern-munchen"
+                    "id": 12499652,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "bayer-04-leverkusen-holstein-kiel"
                 }
             },
             {
                 "id": 2673,
                 "nome": "Borussia Dortmund",
                 "lastEvent": {
-                    "id": 12499627,
-                    "startDate": "27/09/2024 15:30",
-                    "slug": "borussia-dortmund-vfl-bochum-1848"
+                    "id": 12499671,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "borussia-dortmund-1-fc-union-berlin"
                 }
             },
             {
                 "id": 5885,
                 "nome": "1. FC Heidenheim",
                 "lastEvent": {
-                    "id": 12499642,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "1-fc-heidenheim-1-fsv-mainz-05"
+                    "id": 12499660,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "rb-leipzig-1-fc-heidenheim"
                 }
             },
             {
                 "id": 2538,
                 "nome": "SC Freiburg",
                 "lastEvent": {
-                    "id": 12499633,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "sc-freiburg-fc-st-pauli"
+                    "id": 12970127,
+                    "startDate": "11/10/2024 09:00",
+                    "slug": "1-fc-kaiserslautern-sc-freiburg"
                 }
             },
             {
                 "id": 2677,
                 "nome": "VfB Stuttgart",
                 "lastEvent": {
-                    "id": 12499638,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "vfb-stuttgart-vfl-wolfsburg"
+                    "id": 12962185,
+                    "startDate": "10/10/2024 09:00",
+                    "slug": "vfb-stuttgart-ssv-ulm-1846"
                 }
             },
             {
                 "id": 2547,
                 "nome": "1. FC Union Berlin",
                 "lastEvent": {
-                    "id": 12499644,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "1-fc-union-berlin-borussia-mgladbach"
+                    "id": 12499671,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "borussia-dortmund-1-fc-union-berlin"
                 }
             },
             {
                 "id": 2534,
                 "nome": "SV Werder Bremen",
                 "lastEvent": {
-                    "id": 12499631,
-                    "startDate": "29/09/2024 12:30",
-                    "slug": "tsg-hoffenheim-sv-werder-bremen"
+                    "id": 12499664,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "sc-freiburg-sv-werder-bremen"
                 }
             },
             {
                 "id": 2527,
                 "nome": "Borussia M'gladbach",
                 "lastEvent": {
-                    "id": 12499644,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "1-fc-union-berlin-borussia-mgladbach"
+                    "id": 12960608,
+                    "startDate": "10/10/2024 13:00",
+                    "slug": "sc-verl-borussia-mgladbach"
                 }
             },
             {
                 "id": 2556,
                 "nome": "1. FSV Mainz 05",
                 "lastEvent": {
-                    "id": 12499642,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "1-fc-heidenheim-1-fsv-mainz-05"
+                    "id": 12499677,
+                    "startDate": "05/10/2024 13:30",
+                    "slug": "1-fsv-mainz-05-fc-st-pauli"
                 }
             },
             {
                 "id": 2524,
                 "nome": "VfL Wolfsburg",
                 "lastEvent": {
-                    "id": 12499638,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "vfb-stuttgart-vfl-wolfsburg"
+                    "id": 12499674,
+                    "startDate": "05/10/2024 10:30",
+                    "slug": "vfl-bochum-1848-vfl-wolfsburg"
                 }
             },
             {
                 "id": 2526,
                 "nome": "FC St. Pauli",
                 "lastEvent": {
-                    "id": 12499633,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "sc-freiburg-fc-st-pauli"
+                    "id": 12962878,
+                    "startDate": "10/10/2024 07:00",
+                    "slug": "hannover-96-fc-st-pauli"
                 }
             },
             {
                 "id": 2600,
                 "nome": "FC Augsburg",
                 "lastEvent": {
-                    "id": 12499624,
-                    "startDate": "28/09/2024 10:30",
-                    "slug": "rb-leipzig-fc-augsburg"
+                    "id": 12965046,
+                    "startDate": "10/10/2024 09:00",
+                    "slug": "fc-augsburg-ssv-jahn-regensburg"
                 }
             },
             {
                 "id": 2569,
                 "nome": "TSG Hoffenheim",
                 "lastEvent": {
-                    "id": 12499631,
-                    "startDate": "29/09/2024 12:30",
-                    "slug": "tsg-hoffenheim-sv-werder-bremen"
+                    "id": 12499654,
+                    "startDate": "06/10/2024 14:30",
+                    "slug": "vfb-stuttgart-tsg-hoffenheim"
                 }
             },
             {
                 "id": 2542,
                 "nome": "VfL Bochum 1848",
                 "lastEvent": {
-                    "id": 12499627,
-                    "startDate": "27/09/2024 15:30",
-                    "slug": "borussia-dortmund-vfl-bochum-1848"
+                    "id": 12965003,
+                    "startDate": "10/10/2024 08:00",
+                    "slug": "1-fc-koln-vfl-bochum-1848"
                 }
             },
             {
                 "id": 2573,
                 "nome": "Holstein Kiel",
                 "lastEvent": {
-                    "id": 12499648,
-                    "startDate": "29/09/2024 10:30",
-                    "slug": "eintracht-frankfurt-holstein-kiel"
+                    "id": 12965572,
+                    "startDate": "10/10/2024 08:00",
+                    "slug": "holstein-kiel-silkeborg-if"
                 }
             }
         ]
@@ -1479,108 +1479,108 @@
                 "id": 2051,
                 "nome": "SK Sturm Graz",
                 "lastEvent": {
-                    "id": 12481114,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "fc-blau-weiss-linz-sk-sturm-graz"
+                    "id": 12481109,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "sk-sturm-graz-red-bull-salzburg"
                 }
             },
             {
                 "id": 2055,
                 "nome": "SK Rapid Wien",
                 "lastEvent": {
-                    "id": 12481120,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "lask-sk-rapid-wien"
+                    "id": 12965004,
+                    "startDate": "10/10/2024 08:00",
+                    "slug": "sv-horn-sk-rapid-wien"
                 }
             },
             {
                 "id": 2046,
                 "nome": "Red Bull Salzburg",
                 "lastEvent": {
-                    "id": 12481117,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "austria-wien-red-bull-salzburg"
+                    "id": 12481109,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "sk-sturm-graz-red-bull-salzburg"
                 }
             },
             {
                 "id": 2076,
                 "nome": "Wolfsberger AC",
                 "lastEvent": {
-                    "id": 12481118,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "wsg-tirol-wolfsberger-ac"
+                    "id": 12481115,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "wolfsberger-ac-tsv-hartberg"
                 }
             },
             {
                 "id": 2113,
                 "nome": "FC Blau Weiss Linz",
                 "lastEvent": {
-                    "id": 12481114,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "fc-blau-weiss-linz-sk-sturm-graz"
+                    "id": 12481108,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "wsg-tirol-fc-blau-weiss-linz"
                 }
             },
             {
                 "id": 43254,
                 "nome": "Austria Klagenfurt",
                 "lastEvent": {
-                    "id": 12481113,
-                    "startDate": "29/09/2024 12:00",
-                    "slug": "austria-klagenfurt-grazer-ak-1902"
+                    "id": 12481112,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "austria-klagenfurt-lask"
                 }
             },
             {
                 "id": 2075,
                 "nome": "TSV Hartberg",
                 "lastEvent": {
-                    "id": 12481121,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "sc-rheindorf-altach-tsv-hartberg"
+                    "id": 12481115,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "wolfsberger-ac-tsv-hartberg"
                 }
             },
             {
                 "id": 2203,
                 "nome": "Austria Wien",
                 "lastEvent": {
-                    "id": 12481117,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "austria-wien-red-bull-salzburg"
+                    "id": 12962541,
+                    "startDate": "11/10/2024 10:00",
+                    "slug": "austria-wien-admira-wacker"
                 }
             },
             {
                 "id": 5405,
                 "nome": "WSG Tirol",
                 "lastEvent": {
-                    "id": 12481118,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "wsg-tirol-wolfsberger-ac"
+                    "id": 12962186,
+                    "startDate": "10/10/2024 09:30",
+                    "slug": "wsg-tirol-sc-austria-lustenau"
                 }
             },
             {
                 "id": 4856,
                 "nome": "SC Rheindorf Altach",
                 "lastEvent": {
-                    "id": 12481121,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "sc-rheindorf-altach-tsv-hartberg"
+                    "id": 12481107,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "sc-rheindorf-altach-sk-rapid-wien"
                 }
             },
             {
                 "id": 2058,
                 "nome": "LASK",
                 "lastEvent": {
-                    "id": 12481120,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "lask-sk-rapid-wien"
+                    "id": 12481112,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "austria-klagenfurt-lask"
                 }
             },
             {
                 "id": 2052,
                 "nome": "Grazer AK 1902",
                 "lastEvent": {
-                    "id": 12481113,
-                    "startDate": "29/09/2024 12:00",
-                    "slug": "austria-klagenfurt-grazer-ak-1902"
+                    "id": 12962543,
+                    "startDate": "11/10/2024 10:30",
+                    "slug": "ask-voitsberg-grazer-ak-1902"
                 }
             }
         ]
@@ -1594,144 +1594,144 @@
                 "id": 2216,
                 "nome": "Slavia Praha",
                 "lastEvent": {
-                    "id": 12449110,
-                    "startDate": "29/09/2024 13:30",
-                    "slug": "bohemians-praha-1905-slavia-praha"
+                    "id": 12580671,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "sparta-praha-slavia-praha"
                 }
             },
             {
                 "id": 2218,
                 "nome": "Sparta Praha",
                 "lastEvent": {
-                    "id": 12449112,
-                    "startDate": "27/09/2024 14:30",
-                    "slug": "sparta-praha-sk-sigma-olomouc"
+                    "id": 12580671,
+                    "startDate": "06/10/2024 13:30",
+                    "slug": "sparta-praha-slavia-praha"
                 }
             },
             {
                 "id": 4502,
                 "nome": "Viktoria Plzeň",
                 "lastEvent": {
-                    "id": 12449107,
-                    "startDate": "29/09/2024 10:30",
-                    "slug": "viktoria-plzen-mlada-boleslav"
+                    "id": 12580677,
+                    "startDate": "06/10/2024 08:00",
+                    "slug": "viktoria-plzen-fk-pardubice"
                 }
             },
             {
                 "id": 2204,
                 "nome": "Baník Ostrava",
                 "lastEvent": {
-                    "id": 12449108,
-                    "startDate": "29/09/2024 08:00",
-                    "slug": "sk-dynamo-ceske-budejovice-banik-ostrava"
+                    "id": 12580675,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "mlada-boleslav-banik-ostrava"
                 }
             },
             {
                 "id": 2207,
                 "nome": "SK Sigma Olomouc",
                 "lastEvent": {
-                    "id": 12449112,
-                    "startDate": "27/09/2024 14:30",
-                    "slug": "sparta-praha-sk-sigma-olomouc"
+                    "id": 12580668,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "bohemians-praha-1905-sk-sigma-olomouc"
                 }
             },
             {
                 "id": 2205,
                 "nome": "FK Jablonec",
                 "lastEvent": {
-                    "id": 12449113,
-                    "startDate": "28/09/2024 14:00",
-                    "slug": "fc-hradec-kralove-fk-jablonec"
+                    "id": 12580666,
+                    "startDate": "05/10/2024 14:00",
+                    "slug": "fc-slovan-liberec-fk-jablonec"
                 }
             },
             {
                 "id": 4871,
                 "nome": "1. FC Slovácko",
                 "lastEvent": {
-                    "id": 12449089,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "mfk-karvina-1-fc-slovacko"
+                    "id": 12580681,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "1-fc-slovacko-sk-dynamo-ceske-budejovice"
                 }
             },
             {
                 "id": 2219,
                 "nome": "FC Slovan Liberec",
                 "lastEvent": {
-                    "id": 12449109,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "dukla-praha-fc-slovan-liberec"
+                    "id": 12580666,
+                    "startDate": "05/10/2024 14:00",
+                    "slug": "fc-slovan-liberec-fk-jablonec"
                 }
             },
             {
                 "id": 2217,
                 "nome": "FC Hradec Králové",
                 "lastEvent": {
-                    "id": 12449113,
-                    "startDate": "28/09/2024 14:00",
-                    "slug": "fc-hradec-kralove-fk-jablonec"
+                    "id": 12580679,
+                    "startDate": "05/10/2024 08:30",
+                    "slug": "mfk-karvina-fc-hradec-kralove"
                 }
             },
             {
                 "id": 2224,
                 "nome": "Mladá Boleslav",
                 "lastEvent": {
-                    "id": 12449107,
-                    "startDate": "29/09/2024 10:30",
-                    "slug": "viktoria-plzen-mlada-boleslav"
+                    "id": 12580675,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "mlada-boleslav-banik-ostrava"
                 }
             },
             {
                 "id": 23951,
                 "nome": "MFK Karviná",
                 "lastEvent": {
-                    "id": 12449089,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "mfk-karvina-1-fc-slovacko"
+                    "id": 12965601,
+                    "startDate": "11/10/2024 06:00",
+                    "slug": "mfk-karvina-oks-odra-opole"
                 }
             },
             {
                 "id": 6064,
                 "nome": "Bohemians Praha 1905",
                 "lastEvent": {
-                    "id": 12449110,
-                    "startDate": "29/09/2024 13:30",
-                    "slug": "bohemians-praha-1905-slavia-praha"
+                    "id": 12580668,
+                    "startDate": "06/10/2024 10:30",
+                    "slug": "bohemians-praha-1905-sk-sigma-olomouc"
                 }
             },
             {
                 "id": 2230,
                 "nome": "FK Pardubice",
                 "lastEvent": {
-                    "id": 12449106,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "fk-pardubice-fk-teplice"
+                    "id": 12580677,
+                    "startDate": "06/10/2024 08:00",
+                    "slug": "viktoria-plzen-fk-pardubice"
                 }
             },
             {
                 "id": 7739,
                 "nome": "Dukla Praha",
                 "lastEvent": {
-                    "id": 12449109,
-                    "startDate": "28/09/2024 08:30",
-                    "slug": "dukla-praha-fc-slovan-liberec"
+                    "id": 12580673,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "dukla-praha-fk-teplice"
                 }
             },
             {
                 "id": 2208,
                 "nome": "FK Teplice",
                 "lastEvent": {
-                    "id": 12449106,
-                    "startDate": "28/09/2024 11:00",
-                    "slug": "fk-pardubice-fk-teplice"
+                    "id": 12580673,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "dukla-praha-fk-teplice"
                 }
             },
             {
                 "id": 2221,
                 "nome": "SK Dynamo České Budějovice",
                 "lastEvent": {
-                    "id": 12449108,
-                    "startDate": "29/09/2024 08:00",
-                    "slug": "sk-dynamo-ceske-budejovice-banik-ostrava"
+                    "id": 12580681,
+                    "startDate": "05/10/2024 11:00",
+                    "slug": "1-fc-slovacko-sk-dynamo-ceske-budejovice"
                 }
             }
         ]
@@ -1745,252 +1745,252 @@
                 "id": 189723,
                 "nome": "Deportivo Riestra",
                 "lastEvent": {
-                    "id": 11937331,
-                    "startDate": "27/09/2024 15:00",
-                    "slug": "deportivo-riestra-newells-old-boys"
+                    "id": 11937339,
+                    "startDate": "06/10/2024 15:00",
+                    "slug": "deportivo-riestra-independiente"
                 }
             },
             {
                 "id": 3210,
                 "nome": "Talleres",
                 "lastEvent": {
-                    "id": 11937327,
-                    "startDate": "29/09/2024 18:15",
-                    "slug": "river-plate-talleres"
+                    "id": 11937342,
+                    "startDate": "06/10/2024 16:30",
+                    "slug": "talleres-belgrano"
                 }
             },
             {
                 "id": 36833,
                 "nome": "Atlético Tucumán",
                 "lastEvent": {
-                    "id": 11937329,
-                    "startDate": "30/09/2024 19:00",
-                    "slug": "atletico-tucuman-argentinos-juniors"
+                    "id": 11937340,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "atletico-tucuman-tigre"
                 }
             },
             {
                 "id": 3211,
                 "nome": "River Plate",
                 "lastEvent": {
-                    "id": 11937327,
-                    "startDate": "29/09/2024 18:15",
-                    "slug": "river-plate-talleres"
+                    "id": 11937343,
+                    "startDate": "06/10/2024 19:00",
+                    "slug": "platense-river-plate"
                 }
             },
             {
                 "id": 3208,
                 "nome": "Vélez Sarsfield",
                 "lastEvent": {
-                    "id": 11937325,
-                    "startDate": "29/09/2024 17:00",
-                    "slug": "rosario-central-velez-sarsfield"
+                    "id": 11937344,
+                    "startDate": "05/10/2024 15:00",
+                    "slug": "racing-club-velez-sarsfield"
                 }
             },
             {
                 "id": 7629,
                 "nome": "Huracán",
                 "lastEvent": {
-                    "id": 11937333,
-                    "startDate": "28/09/2024 17:30",
-                    "slug": "huracan-godoy-cruz"
+                    "id": 11937336,
+                    "startDate": "04/10/2024 21:00",
+                    "slug": "sarmiento-huracan"
                 }
             },
             {
                 "id": 3215,
                 "nome": "Racing Club",
                 "lastEvent": {
-                    "id": 11937326,
-                    "startDate": "30/09/2024 21:00",
-                    "slug": "platense-racing-club"
+                    "id": 11937344,
+                    "startDate": "05/10/2024 15:00",
+                    "slug": "racing-club-velez-sarsfield"
                 }
             },
             {
                 "id": 3203,
                 "nome": "Belgrano",
                 "lastEvent": {
-                    "id": 11937328,
-                    "startDate": "28/09/2024 20:00",
-                    "slug": "belgrano-boca-juniors"
+                    "id": 11937342,
+                    "startDate": "06/10/2024 16:30",
+                    "slug": "talleres-belgrano"
                 }
             },
             {
                 "id": 4937,
                 "nome": "Instituto De Córdoba",
                 "lastEvent": {
-                    "id": 11937322,
-                    "startDate": "27/09/2024 21:00",
-                    "slug": "independiente-rivadavia-instituto-de-cordoba"
+                    "id": 11937347,
+                    "startDate": "05/10/2024 20:00",
+                    "slug": "instituto-de-cordoba-san-lorenzo"
                 }
             },
             {
                 "id": 3204,
                 "nome": "Club Atlético Unión de Santa Fe",
                 "lastEvent": {
-                    "id": 11937334,
-                    "startDate": "29/09/2024 19:30",
-                    "slug": "sarmiento-club-atletico-union-de-santa-fe"
+                    "id": 11937335,
+                    "startDate": "04/10/2024 19:00",
+                    "slug": "central-cordoba-club-atletico-union-de-santa-fe"
                 }
             },
             {
                 "id": 3218,
                 "nome": "Lanús",
                 "lastEvent": {
-                    "id": 11937332,
-                    "startDate": "30/09/2024 21:15",
-                    "slug": "lanus-gimnasia-y-esgrima"
+                    "id": 11937338,
+                    "startDate": "05/10/2024 17:30",
+                    "slug": "lanus-newells-old-boys"
                 }
             },
             {
                 "id": 3205,
                 "nome": "Gimnasia y Esgrima",
                 "lastEvent": {
-                    "id": 11937332,
-                    "startDate": "30/09/2024 21:15",
-                    "slug": "lanus-gimnasia-y-esgrima"
+                    "id": 11937337,
+                    "startDate": "05/10/2024 17:30",
+                    "slug": "godoy-cruz-gimnasia-y-esgrima"
                 }
             },
             {
                 "id": 3206,
                 "nome": "Estudiantes de La Plata",
                 "lastEvent": {
-                    "id": 11937324,
-                    "startDate": "28/09/2024 17:30",
-                    "slug": "defensa-y-justicia-estudiantes-de-la-plata"
+                    "id": 11937346,
+                    "startDate": "07/10/2024 18:00",
+                    "slug": "banfield-estudiantes-de-la-plata"
                 }
             },
             {
                 "id": 3216,
                 "nome": "Argentinos Juniors",
                 "lastEvent": {
-                    "id": 11937329,
-                    "startDate": "30/09/2024 19:00",
-                    "slug": "atletico-tucuman-argentinos-juniors"
+                    "id": 11937341,
+                    "startDate": "06/10/2024 21:00",
+                    "slug": "argentinos-juniors-boca-juniors"
                 }
             },
             {
                 "id": 3202,
                 "nome": "Boca Juniors",
                 "lastEvent": {
-                    "id": 11937328,
-                    "startDate": "28/09/2024 20:00",
-                    "slug": "belgrano-boca-juniors"
+                    "id": 11937341,
+                    "startDate": "06/10/2024 21:00",
+                    "slug": "argentinos-juniors-boca-juniors"
                 }
             },
             {
                 "id": 3217,
                 "nome": "Rosario Central",
                 "lastEvent": {
-                    "id": 11937325,
-                    "startDate": "29/09/2024 17:00",
-                    "slug": "rosario-central-velez-sarsfield"
+                    "id": 11937345,
+                    "startDate": "07/10/2024 18:45",
+                    "slug": "defensa-y-justicia-rosario-central"
                 }
             },
             {
                 "id": 6074,
                 "nome": "Godoy Cruz",
                 "lastEvent": {
-                    "id": 11937333,
-                    "startDate": "28/09/2024 17:30",
-                    "slug": "huracan-godoy-cruz"
+                    "id": 11937337,
+                    "startDate": "05/10/2024 17:30",
+                    "slug": "godoy-cruz-gimnasia-y-esgrima"
                 }
             },
             {
                 "id": 36842,
                 "nome": "Independiente Rivadavia",
                 "lastEvent": {
-                    "id": 11937322,
-                    "startDate": "27/09/2024 21:00",
-                    "slug": "independiente-rivadavia-instituto-de-cordoba"
+                    "id": 11937348,
+                    "startDate": "07/10/2024 15:00",
+                    "slug": "barracas-central-independiente-rivadavia"
                 }
             },
             {
                 "id": 36837,
                 "nome": "Platense",
                 "lastEvent": {
-                    "id": 11937326,
-                    "startDate": "30/09/2024 21:00",
-                    "slug": "platense-racing-club"
+                    "id": 11937343,
+                    "startDate": "06/10/2024 19:00",
+                    "slug": "platense-river-plate"
                 }
             },
             {
                 "id": 3209,
                 "nome": "Independiente",
                 "lastEvent": {
-                    "id": 11937330,
-                    "startDate": "29/09/2024 17:00",
-                    "slug": "tigre-independiente"
+                    "id": 11937339,
+                    "startDate": "06/10/2024 15:00",
+                    "slug": "deportivo-riestra-independiente"
                 }
             },
             {
                 "id": 3201,
                 "nome": "San Lorenzo",
                 "lastEvent": {
-                    "id": 11937323,
-                    "startDate": "28/09/2024 15:00",
-                    "slug": "banfield-san-lorenzo"
+                    "id": 11937347,
+                    "startDate": "05/10/2024 20:00",
+                    "slug": "instituto-de-cordoba-san-lorenzo"
                 }
             },
             {
                 "id": 3219,
                 "nome": "Banfield",
                 "lastEvent": {
-                    "id": 11937323,
-                    "startDate": "28/09/2024 15:00",
-                    "slug": "banfield-san-lorenzo"
+                    "id": 11937346,
+                    "startDate": "07/10/2024 18:00",
+                    "slug": "banfield-estudiantes-de-la-plata"
                 }
             },
             {
                 "id": 7628,
                 "nome": "Tigre",
                 "lastEvent": {
-                    "id": 11937330,
-                    "startDate": "29/09/2024 17:00",
-                    "slug": "tigre-independiente"
+                    "id": 11937340,
+                    "startDate": "07/10/2024 21:00",
+                    "slug": "atletico-tucuman-tigre"
                 }
             },
             {
                 "id": 3212,
                 "nome": "Newell's Old Boys",
                 "lastEvent": {
-                    "id": 11937331,
-                    "startDate": "27/09/2024 15:00",
-                    "slug": "deportivo-riestra-newells-old-boys"
+                    "id": 11937338,
+                    "startDate": "05/10/2024 17:30",
+                    "slug": "lanus-newells-old-boys"
                 }
             },
             {
                 "id": 65676,
                 "nome": "Central Córdoba",
                 "lastEvent": {
-                    "id": 11937321,
-                    "startDate": "29/09/2024 14:30",
-                    "slug": "central-cordoba-barracas-central"
+                    "id": 11937335,
+                    "startDate": "04/10/2024 19:00",
+                    "slug": "central-cordoba-club-atletico-union-de-santa-fe"
                 }
             },
             {
                 "id": 65668,
                 "nome": "Barracas Central",
                 "lastEvent": {
-                    "id": 11937321,
-                    "startDate": "29/09/2024 14:30",
-                    "slug": "central-cordoba-barracas-central"
+                    "id": 11937348,
+                    "startDate": "07/10/2024 15:00",
+                    "slug": "barracas-central-independiente-rivadavia"
                 }
             },
             {
                 "id": 42338,
                 "nome": "Sarmiento",
                 "lastEvent": {
-                    "id": 11937334,
-                    "startDate": "29/09/2024 19:30",
-                    "slug": "sarmiento-club-atletico-union-de-santa-fe"
+                    "id": 11937336,
+                    "startDate": "04/10/2024 21:00",
+                    "slug": "sarmiento-huracan"
                 }
             },
             {
                 "id": 36839,
                 "nome": "Defensa y Justicia",
                 "lastEvent": {
-                    "id": 11937324,
-                    "startDate": "28/09/2024 17:30",
-                    "slug": "defensa-y-justicia-estudiantes-de-la-plata"
+                    "id": 11937345,
+                    "startDate": "07/10/2024 18:45",
+                    "slug": "defensa-y-justicia-rosario-central"
                 }
             }
         ]
@@ -2004,144 +2004,144 @@
                 "id": 3313,
                 "nome": "Shakhtar Donetsk",
                 "lastEvent": {
-                    "id": 12484461,
-                    "startDate": "27/09/2024 12:20",
-                    "slug": "veres-rivne-shakhtar-donetsk"
+                    "id": 12484454,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "lnz-cherkasy-shakhtar-donetsk"
                 }
             },
             {
                 "id": 3316,
                 "nome": "Karpaty Lviv",
                 "lastEvent": {
-                    "id": 12484459,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "polissya-zhytomyr-karpaty-lviv"
+                    "id": 12484336,
+                    "startDate": "04/10/2024 12:00",
+                    "slug": "inhulets-petrove-karpaty-lviv"
                 }
             },
             {
                 "id": 3305,
                 "nome": "Dynamo Kyiv",
                 "lastEvent": {
-                    "id": 12632674,
-                    "startDate": "29/09/2024 12:00",
-                    "slug": "fc-livyi-bereh-kyiv-dynamo-kyiv"
+                    "id": 12484456,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "fc-kryvbas-kryvyi-rih-dynamo-kyiv"
                 }
             },
             {
                 "id": 258536,
                 "nome": "Polissya Zhytomyr",
                 "lastEvent": {
-                    "id": 12484459,
-                    "startDate": "28/09/2024 12:00",
-                    "slug": "polissya-zhytomyr-karpaty-lviv"
+                    "id": 12484333,
+                    "startDate": "06/10/2024 07:00",
+                    "slug": "polissya-zhytomyr-vorskla-poltava"
                 }
             },
             {
                 "id": 294048,
                 "nome": "FC Kryvbas Kryvyi Rih",
                 "lastEvent": {
-                    "id": 12484460,
-                    "startDate": "28/09/2024 07:00",
-                    "slug": "fc-kryvbas-kryvyi-rih-oleksandria"
+                    "id": 12484456,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "fc-kryvbas-kryvyi-rih-dynamo-kyiv"
                 }
             },
             {
                 "id": 284427,
                 "nome": "LNZ Cherkasy",
                 "lastEvent": {
-                    "id": 12484450,
-                    "startDate": "28/09/2024 09:30",
-                    "slug": "lnz-cherkasy-chornomorets-odesa"
+                    "id": 12484454,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "lnz-cherkasy-shakhtar-donetsk"
                 }
             },
             {
                 "id": 5987,
                 "nome": "Zorya Luhansk",
                 "lastEvent": {
-                    "id": 12484457,
-                    "startDate": "30/09/2024 12:00",
-                    "slug": "zorya-luhansk-vorskla-poltava"
+                    "id": 12484452,
+                    "startDate": "05/10/2024 07:00",
+                    "slug": "veres-rivne-zorya-luhansk"
                 }
             },
             {
                 "id": 229644,
                 "nome": "Rukh Lviv",
                 "lastEvent": {
-                    "id": 12484462,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "rukh-lviv-kolos-kovalivka"
+                    "id": 12484451,
+                    "startDate": "05/10/2024 09:30",
+                    "slug": "rukh-lviv-oleksandria"
                 }
             },
             {
                 "id": 25479,
                 "nome": "Oleksandria",
                 "lastEvent": {
-                    "id": 12484460,
-                    "startDate": "28/09/2024 07:00",
-                    "slug": "fc-kryvbas-kryvyi-rih-oleksandria"
+                    "id": 12484451,
+                    "startDate": "05/10/2024 09:30",
+                    "slug": "rukh-lviv-oleksandria"
                 }
             },
             {
                 "id": 3309,
                 "nome": "Vorskla Poltava",
                 "lastEvent": {
-                    "id": 12484457,
-                    "startDate": "30/09/2024 12:00",
-                    "slug": "zorya-luhansk-vorskla-poltava"
+                    "id": 12484333,
+                    "startDate": "06/10/2024 07:00",
+                    "slug": "polissya-zhytomyr-vorskla-poltava"
                 }
             },
             {
                 "id": 200773,
                 "nome": "Veres Rivne",
                 "lastEvent": {
-                    "id": 12484461,
-                    "startDate": "27/09/2024 12:20",
-                    "slug": "veres-rivne-shakhtar-donetsk"
+                    "id": 12484452,
+                    "startDate": "05/10/2024 07:00",
+                    "slug": "veres-rivne-zorya-luhansk"
                 }
             },
             {
                 "id": 138564,
                 "nome": "Obolon Kyiv",
                 "lastEvent": {
-                    "id": 12484463,
-                    "startDate": "29/09/2024 07:00",
-                    "slug": "inhulets-petrove-obolon-kyiv"
+                    "id": 12484447,
+                    "startDate": "04/10/2024 09:30",
+                    "slug": "obolon-kyiv-chornomorets-odesa"
                 }
             },
             {
                 "id": 3310,
                 "nome": "Chornomorets Odesa",
                 "lastEvent": {
-                    "id": 12484450,
-                    "startDate": "28/09/2024 09:30",
-                    "slug": "lnz-cherkasy-chornomorets-odesa"
+                    "id": 12484447,
+                    "startDate": "04/10/2024 09:30",
+                    "slug": "obolon-kyiv-chornomorets-odesa"
                 }
             },
             {
                 "id": 200123,
                 "nome": "Inhulets Petrove",
                 "lastEvent": {
-                    "id": 12484463,
-                    "startDate": "29/09/2024 07:00",
-                    "slug": "inhulets-petrove-obolon-kyiv"
+                    "id": 12484336,
+                    "startDate": "04/10/2024 12:00",
+                    "slug": "inhulets-petrove-karpaty-lviv"
                 }
             },
             {
                 "id": 200776,
                 "nome": "Kolos Kovalivka",
                 "lastEvent": {
-                    "id": 12484462,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "rukh-lviv-kolos-kovalivka"
+                    "id": 12632675,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "fc-livyi-bereh-kyiv-kolos-kovalivka"
                 }
             },
             {
                 "id": 388209,
                 "nome": "FC Livyi Bereh Kyiv",
                 "lastEvent": {
-                    "id": 12632674,
-                    "startDate": "29/09/2024 12:00",
-                    "slug": "fc-livyi-bereh-kyiv-dynamo-kyiv"
+                    "id": 12632675,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "fc-livyi-bereh-kyiv-kolos-kovalivka"
                 }
             }
         ]
@@ -2155,162 +2155,1108 @@
                 "id": 2955,
                 "nome": "FC Twente",
                 "lastEvent": {
-                    "id": 12448362,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "fc-twente-nac-breda"
+                    "id": 12448375,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "feyenoord-fc-twente"
                 }
             },
             {
                 "id": 2953,
                 "nome": "Ajax",
                 "lastEvent": {
-                    "id": 12448368,
-                    "startDate": "29/09/2024 11:45",
-                    "slug": "rkc-waalwijk-ajax"
+                    "id": 12448376,
+                    "startDate": "06/10/2024 11:45",
+                    "slug": "ajax-fc-groningen"
                 }
             },
             {
                 "id": 2952,
                 "nome": "PSV Eindhoven",
                 "lastEvent": {
-                    "id": 12764410,
-                    "startDate": "01/10/2024 16:00",
-                    "slug": "sporting-psv-eindhoven"
+                    "id": 12448373,
+                    "startDate": "05/10/2024 15:00",
+                    "slug": "sparta-rotterdam-psv-eindhoven"
                 }
             },
             {
                 "id": 2950,
                 "nome": "AZ Alkmaar",
                 "lastEvent": {
-                    "id": 12448369,
-                    "startDate": "29/09/2024 15:00",
-                    "slug": "az-alkmaar-fc-utrecht"
+                    "id": 12448378,
+                    "startDate": "06/10/2024 15:00",
+                    "slug": "fortuna-sittard-az-alkmaar"
                 }
             },
             {
                 "id": 2951,
                 "nome": "FC Groningen",
                 "lastEvent": {
-                    "id": 12448367,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "go-ahead-eagles-fc-groningen"
+                    "id": 12965111,
+                    "startDate": "10/10/2024 14:00",
+                    "slug": "fc-groningen-viking-fk"
                 }
             },
             {
                 "id": 2959,
                 "nome": "Feyenoord",
                 "lastEvent": {
-                    "id": 12448363,
-                    "startDate": "28/09/2024 13:45",
-                    "slug": "nec-nijmegen-feyenoord"
+                    "id": 12448375,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "feyenoord-fc-twente"
                 }
             },
             {
                 "id": 2960,
                 "nome": "Sparta Rotterdam",
                 "lastEvent": {
-                    "id": 12448364,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "sparta-rotterdam-fortuna-sittard"
+                    "id": 12448373,
+                    "startDate": "05/10/2024 15:00",
+                    "slug": "sparta-rotterdam-psv-eindhoven"
                 }
             },
             {
                 "id": 2977,
                 "nome": "Heracles Almelo",
                 "lastEvent": {
-                    "id": 12448361,
-                    "startDate": "27/09/2024 15:00",
-                    "slug": "heracles-almelo-sc-heerenveen"
+                    "id": 12965109,
+                    "startDate": "10/10/2024 08:15",
+                    "slug": "heracles-almelo-fortuna-dusseldorf"
                 }
             },
             {
                 "id": 2979,
                 "nome": "Go Ahead Eagles",
                 "lastEvent": {
-                    "id": 12448367,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "go-ahead-eagles-fc-groningen"
+                    "id": 12448377,
+                    "startDate": "06/10/2024 07:15",
+                    "slug": "go-ahead-eagles-heracles-almelo"
                 }
             },
             {
                 "id": 2948,
                 "nome": "FC Utrecht",
                 "lastEvent": {
-                    "id": 12448369,
-                    "startDate": "29/09/2024 15:00",
-                    "slug": "az-alkmaar-fc-utrecht"
+                    "id": 12448374,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "rkc-waalwijk-fc-utrecht"
                 }
             },
             {
                 "id": 2962,
                 "nome": "NEC Nijmegen",
                 "lastEvent": {
-                    "id": 12448363,
-                    "startDate": "28/09/2024 13:45",
-                    "slug": "nec-nijmegen-feyenoord"
+                    "id": 12448370,
+                    "startDate": "05/10/2024 13:45",
+                    "slug": "nec-nijmegen-nac-breda"
                 }
             },
             {
                 "id": 2957,
                 "nome": "Fortuna Sittard",
                 "lastEvent": {
-                    "id": 12448364,
-                    "startDate": "28/09/2024 16:00",
-                    "slug": "sparta-rotterdam-fortuna-sittard"
+                    "id": 12448378,
+                    "startDate": "06/10/2024 15:00",
+                    "slug": "fortuna-sittard-az-alkmaar"
                 }
             },
             {
                 "id": 2947,
                 "nome": "NAC Breda",
                 "lastEvent": {
-                    "id": 12448362,
-                    "startDate": "29/09/2024 09:30",
-                    "slug": "fc-twente-nac-breda"
+                    "id": 12962880,
+                    "startDate": "10/10/2024 08:00",
+                    "slug": "ado-den-haag-nac-breda"
                 }
             },
             {
                 "id": 2956,
                 "nome": "RKC Waalwijk",
                 "lastEvent": {
-                    "id": 12448368,
-                    "startDate": "29/09/2024 11:45",
-                    "slug": "rkc-waalwijk-ajax"
+                    "id": 12448374,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "rkc-waalwijk-fc-utrecht"
                 }
             },
             {
                 "id": 2961,
                 "nome": "Willem II Tilburg",
                 "lastEvent": {
-                    "id": 12448365,
-                    "startDate": "28/09/2024 11:30",
-                    "slug": "willem-ii-tilburg-psv-eindhoven"
+                    "id": 12448371,
+                    "startDate": "04/10/2024 15:00",
+                    "slug": "almere-city-fc-willem-ii-tilburg"
                 }
             },
             {
                 "id": 2971,
                 "nome": "PEC Zwolle",
                 "lastEvent": {
-                    "id": 12448366,
-                    "startDate": "29/09/2024 07:15",
-                    "slug": "almere-city-fc-pec-zwolle"
+                    "id": 12448372,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "pec-zwolle-sc-heerenveen"
                 }
             },
             {
                 "id": 2964,
                 "nome": "SC Heerenveen",
                 "lastEvent": {
-                    "id": 12448361,
-                    "startDate": "27/09/2024 15:00",
-                    "slug": "heracles-almelo-sc-heerenveen"
+                    "id": 12448372,
+                    "startDate": "06/10/2024 09:30",
+                    "slug": "pec-zwolle-sc-heerenveen"
                 }
             },
             {
                 "id": 2990,
                 "nome": "Almere City FC",
                 "lastEvent": {
-                    "id": 12448366,
-                    "startDate": "29/09/2024 07:15",
-                    "slug": "almere-city-fc-pec-zwolle"
+                    "id": 12448371,
+                    "startDate": "04/10/2024 15:00",
+                    "slug": "almere-city-fc-willem-ii-tilburg"
+                }
+            }
+        ]
+    },
+    "Ligue 1": {
+        "league_id": "34",
+        "season_id": "61736",
+        "country": "France",
+        "teams": [
+            {
+                "id": 1648,
+                "nome": "RC Lens",
+                "lastEvent": {
+                    "id": 12451031,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "rc-strasbourg-rc-lens"
+                }
+            },
+            {
+                "id": 1658,
+                "nome": "Stade Rennais",
+                "lastEvent": {
+                    "id": 12451029,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "stade-rennais-as-monaco"
+                }
+            },
+            {
+                "id": 1644,
+                "nome": "Paris Saint-Germain",
+                "lastEvent": {
+                    "id": 12451019,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "nice-paris-saint-germain"
+                }
+            },
+            {
+                "id": 1641,
+                "nome": "Olympique de Marseille",
+                "lastEvent": {
+                    "id": 12451027,
+                    "startDate": "04/10/2024 15:45",
+                    "slug": "angers-olympique-de-marseille"
+                }
+            },
+            {
+                "id": 1643,
+                "nome": "Lille",
+                "lastEvent": {
+                    "id": 12451021,
+                    "startDate": "05/10/2024 14:00",
+                    "slug": "toulouse-lille"
+                }
+            },
+            {
+                "id": 1661,
+                "nome": "Nice",
+                "lastEvent": {
+                    "id": 12451019,
+                    "startDate": "06/10/2024 15:45",
+                    "slug": "nice-paris-saint-germain"
+                }
+            },
+            {
+                "id": 1647,
+                "nome": "Nantes",
+                "lastEvent": {
+                    "id": 12451017,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "olympique-lyonnais-nantes"
+                }
+            },
+            {
+                "id": 1653,
+                "nome": "AS Monaco",
+                "lastEvent": {
+                    "id": 12451029,
+                    "startDate": "05/10/2024 16:00",
+                    "slug": "stade-rennais-as-monaco"
+                }
+            },
+            {
+                "id": 1682,
+                "nome": "Stade de Reims",
+                "lastEvent": {
+                    "id": 12451033,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "stade-de-reims-montpellier"
+                }
+            },
+            {
+                "id": 1659,
+                "nome": "RC Strasbourg",
+                "lastEvent": {
+                    "id": 12451031,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "rc-strasbourg-rc-lens"
+                }
+            },
+            {
+                "id": 1646,
+                "nome": "Auxerre",
+                "lastEvent": {
+                    "id": 12451023,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "saint-etienne-auxerre"
+                }
+            },
+            {
+                "id": 1715,
+                "nome": "Stade Brestois",
+                "lastEvent": {
+                    "id": 12451025,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "stade-brestois-le-havre"
+                }
+            },
+            {
+                "id": 1649,
+                "nome": "Olympique Lyonnais",
+                "lastEvent": {
+                    "id": 12451017,
+                    "startDate": "06/10/2024 10:00",
+                    "slug": "olympique-lyonnais-nantes"
+                }
+            },
+            {
+                "id": 1681,
+                "nome": "Toulouse",
+                "lastEvent": {
+                    "id": 12451021,
+                    "startDate": "05/10/2024 14:00",
+                    "slug": "toulouse-lille"
+                }
+            },
+            {
+                "id": 1684,
+                "nome": "Angers",
+                "lastEvent": {
+                    "id": 12451027,
+                    "startDate": "04/10/2024 15:45",
+                    "slug": "angers-olympique-de-marseille"
+                }
+            },
+            {
+                "id": 1678,
+                "nome": "Saint-Étienne",
+                "lastEvent": {
+                    "id": 12451023,
+                    "startDate": "05/10/2024 12:00",
+                    "slug": "saint-etienne-auxerre"
+                }
+            },
+            {
+                "id": 1642,
+                "nome": "Montpellier",
+                "lastEvent": {
+                    "id": 12451033,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "stade-de-reims-montpellier"
+                }
+            },
+            {
+                "id": 1662,
+                "nome": "Le Havre",
+                "lastEvent": {
+                    "id": 12451025,
+                    "startDate": "06/10/2024 12:00",
+                    "slug": "stade-brestois-le-havre"
+                }
+            }
+        ]
+    },
+    "Primera A, Clausura": {
+        "league_id": "11536",
+        "season_id": "63819",
+        "country": "Colombia",
+        "teams": [
+            {
+                "id": 6118,
+                "nome": "Once Caldas",
+                "lastEvent": {
+                    "id": 12528670,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "once-caldas-deportivo-pasto"
+                }
+            },
+            {
+                "id": 6102,
+                "nome": "América de Cali",
+                "lastEvent": {
+                    "id": 12528663,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "independiente-medellin-america-de-cali"
+                }
+            },
+            {
+                "id": 48244,
+                "nome": "Rionegro Águilas Doradas",
+                "lastEvent": {
+                    "id": 12528671,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "rionegro-aguilas-doradas-deportivo-cali"
+                }
+            },
+            {
+                "id": 6111,
+                "nome": "Deportes Tolima",
+                "lastEvent": {
+                    "id": 12528667,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "alianza-futbol-club-deportes-tolima"
+                }
+            },
+            {
+                "id": 6117,
+                "nome": "Millonarios",
+                "lastEvent": {
+                    "id": 12528664,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "fortaleza-ceif-millonarios"
+                }
+            },
+            {
+                "id": 6116,
+                "nome": "Independiente Santa Fe",
+                "lastEvent": {
+                    "id": 12945365,
+                    "startDate": "10/10/2024 22:30",
+                    "slug": "independiente-santa-fe-boyaca-chico-fc"
+                }
+            },
+            {
+                "id": 6106,
+                "nome": "Atlético Nacional",
+                "lastEvent": {
+                    "id": 12945366,
+                    "startDate": "09/10/2024 21:30",
+                    "slug": "deportivo-cali-atletico-nacional"
+                }
+            },
+            {
+                "id": 89368,
+                "nome": "Fortaleza CEIF",
+                "lastEvent": {
+                    "id": 12528664,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "fortaleza-ceif-millonarios"
+                }
+            },
+            {
+                "id": 6113,
+                "nome": "Deportivo Pasto",
+                "lastEvent": {
+                    "id": 12945364,
+                    "startDate": "09/10/2024 18:00",
+                    "slug": "envigado-fc-deportivo-pasto"
+                }
+            },
+            {
+                "id": 6105,
+                "nome": "Junior Barranquilla",
+                "lastEvent": {
+                    "id": 12528668,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "deportivo-la-equidad-junior-barranquilla"
+                }
+            },
+            {
+                "id": 61504,
+                "nome": "Patriotas Boyacá",
+                "lastEvent": {
+                    "id": 12528654,
+                    "startDate": "06/10/2024 21:20",
+                    "slug": "patriotas-boyaca-junior-barranquilla"
+                }
+            },
+            {
+                "id": 6103,
+                "nome": "Atlético Bucaramanga",
+                "lastEvent": {
+                    "id": 12528669,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "deportivo-pereira-atletico-bucaramanga"
+                }
+            },
+            {
+                "id": 6109,
+                "nome": "Deportivo Pereira",
+                "lastEvent": {
+                    "id": 12528669,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "deportivo-pereira-atletico-bucaramanga"
+                }
+            },
+            {
+                "id": 6107,
+                "nome": "Boyacá Chicó FC",
+                "lastEvent": {
+                    "id": 12945365,
+                    "startDate": "10/10/2024 22:30",
+                    "slug": "independiente-santa-fe-boyaca-chico-fc"
+                }
+            },
+            {
+                "id": 6115,
+                "nome": "Independiente Medellín",
+                "lastEvent": {
+                    "id": 12945367,
+                    "startDate": "10/10/2024 20:30",
+                    "slug": "alianza-futbol-club-independiente-medellin"
+                }
+            },
+            {
+                "id": 6975,
+                "nome": "Deportivo La Equidad",
+                "lastEvent": {
+                    "id": 12528668,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "deportivo-la-equidad-junior-barranquilla"
+                }
+            },
+            {
+                "id": 6112,
+                "nome": "Deportivo Cali",
+                "lastEvent": {
+                    "id": 12945366,
+                    "startDate": "09/10/2024 21:30",
+                    "slug": "deportivo-cali-atletico-nacional"
+                }
+            },
+            {
+                "id": 89370,
+                "nome": "Jaguares de Córdoba",
+                "lastEvent": {
+                    "id": 12528665,
+                    "startDate": "09/10/2024 17:00",
+                    "slug": "jaguares-de-cordoba-boyaca-chico-fc"
+                }
+            },
+            {
+                "id": 504899,
+                "nome": "Alianza Fútbol Club",
+                "lastEvent": {
+                    "id": 12945367,
+                    "startDate": "10/10/2024 20:30",
+                    "slug": "alianza-futbol-club-independiente-medellin"
+                }
+            },
+            {
+                "id": 6114,
+                "nome": "Envigado FC",
+                "lastEvent": {
+                    "id": 12945364,
+                    "startDate": "09/10/2024 18:00",
+                    "slug": "envigado-fc-deportivo-pasto"
+                }
+            }
+        ]
+    },
+    "World Championship Qual. CONMEBOL": {
+        "league_id": "295",
+        "season_id": "53820",
+        "country": "South America",
+        "teams": [
+            {
+                "id": 4748,
+                "nome": "Brazil",
+                "lastEvent": {
+                    "id": 12851462,
+                    "startDate": "10/10/2024 21:00",
+                    "slug": "chile-brazil"
+                }
+            },
+            {
+                "id": 4757,
+                "nome": "Ecuador",
+                "lastEvent": {
+                    "id": 12851461,
+                    "startDate": "10/10/2024 18:00",
+                    "slug": "paraguay-ecuador"
+                }
+            },
+            {
+                "id": 4820,
+                "nome": "Colombia",
+                "lastEvent": {
+                    "id": 12851466,
+                    "startDate": "10/10/2024 17:00",
+                    "slug": "colombia-bolivia"
+                }
+            },
+            {
+                "id": 4725,
+                "nome": "Uruguay",
+                "lastEvent": {
+                    "id": 12716814,
+                    "startDate": "10/09/2024 19:00",
+                    "slug": "uruguay-venezuela"
+                }
+            },
+            {
+                "id": 4790,
+                "nome": "Peru",
+                "lastEvent": {
+                    "id": 12716818,
+                    "startDate": "10/09/2024 18:00",
+                    "slug": "peru-ecuador"
+                }
+            },
+            {
+                "id": 4722,
+                "nome": "Venezuela",
+                "lastEvent": {
+                    "id": 12851464,
+                    "startDate": "10/10/2024 18:30",
+                    "slug": "argentina-venezuela"
+                }
+            },
+            {
+                "id": 4789,
+                "nome": "Paraguay",
+                "lastEvent": {
+                    "id": 12851461,
+                    "startDate": "10/10/2024 18:00",
+                    "slug": "paraguay-ecuador"
+                }
+            },
+            {
+                "id": 4746,
+                "nome": "Bolivia",
+                "lastEvent": {
+                    "id": 12851466,
+                    "startDate": "10/10/2024 17:00",
+                    "slug": "colombia-bolivia"
+                }
+            },
+            {
+                "id": 4754,
+                "nome": "Chile",
+                "lastEvent": {
+                    "id": 12851462,
+                    "startDate": "10/10/2024 21:00",
+                    "slug": "chile-brazil"
+                }
+            },
+            {
+                "id": 4819,
+                "nome": "Argentina",
+                "lastEvent": {
+                    "id": 12851464,
+                    "startDate": "10/10/2024 18:30",
+                    "slug": "argentina-venezuela"
+                }
+            }
+        ]
+    },
+    "UEFA Nations League": {
+        "league_id": "10783",
+        "season_id": "58337",
+        "country": "Europe",
+        "teams": [
+            {
+                "id": 4717,
+                "nome": "Belgium",
+                "lastEvent": {
+                    "id": 12057905,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "belgium-italy"
+                }
+            },
+            {
+                "id": 4704,
+                "nome": "Portugal",
+                "lastEvent": {
+                    "id": 12057936,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "portugal-scotland"
+                }
+            },
+            {
+                "id": 4711,
+                "nome": "Germany",
+                "lastEvent": {
+                    "id": 12057895,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "germany-bosnia-and-herzegovina"
+                }
+            },
+            {
+                "id": 4707,
+                "nome": "Italy",
+                "lastEvent": {
+                    "id": 12057905,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "belgium-italy"
+                }
+            },
+            {
+                "id": 4705,
+                "nome": "Netherlands",
+                "lastEvent": {
+                    "id": 12057897,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "hungary-netherlands"
+                }
+            },
+            {
+                "id": 4695,
+                "nome": "Scotland",
+                "lastEvent": {
+                    "id": 12057936,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "portugal-scotland"
+                }
+            },
+            {
+                "id": 4715,
+                "nome": "Croatia",
+                "lastEvent": {
+                    "id": 12057924,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "croatia-poland"
+                }
+            },
+            {
+                "id": 4703,
+                "nome": "Poland",
+                "lastEvent": {
+                    "id": 12057924,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "croatia-poland"
+                }
+            },
+            {
+                "id": 4480,
+                "nome": "Israel",
+                "lastEvent": {
+                    "id": 12057914,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "france-israel"
+                }
+            },
+            {
+                "id": 4481,
+                "nome": "France",
+                "lastEvent": {
+                    "id": 12057914,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "france-israel"
+                }
+            },
+            {
+                "id": 4479,
+                "nome": "Bosnia & Herzegovina",
+                "lastEvent": {
+                    "id": 12057895,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "germany-bosnia-and-herzegovina"
+                }
+            },
+            {
+                "id": 4699,
+                "nome": "Switzerland",
+                "lastEvent": {
+                    "id": 12057885,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "switzerland-spain"
+                }
+            },
+            {
+                "id": 6355,
+                "nome": "Serbia",
+                "lastEvent": {
+                    "id": 12057891,
+                    "startDate": "08/09/2024 13:00",
+                    "slug": "serbia-denmark"
+                }
+            },
+            {
+                "id": 4709,
+                "nome": "Hungary",
+                "lastEvent": {
+                    "id": 12057897,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "hungary-netherlands"
+                }
+            },
+            {
+                "id": 4476,
+                "nome": "Denmark",
+                "lastEvent": {
+                    "id": 12057891,
+                    "startDate": "08/09/2024 13:00",
+                    "slug": "serbia-denmark"
+                }
+            },
+            {
+                "id": 4698,
+                "nome": "Spain",
+                "lastEvent": {
+                    "id": 12057885,
+                    "startDate": "08/09/2024 15:45",
+                    "slug": "switzerland-spain"
+                }
+            },
+            {
+                "id": 4763,
+                "nome": "Georgia",
+                "lastEvent": {
+                    "id": 12057874,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "georgia-ukraine"
+                }
+            },
+            {
+                "id": 4690,
+                "nome": "Albania",
+                "lastEvent": {
+                    "id": 12057876,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "czechia-albania"
+                }
+            },
+            {
+                "id": 4714,
+                "nome": "Czechia",
+                "lastEvent": {
+                    "id": 12057876,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "czechia-albania"
+                }
+            },
+            {
+                "id": 4701,
+                "nome": "Ukraine",
+                "lastEvent": {
+                    "id": 12057874,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "georgia-ukraine"
+                }
+            },
+            {
+                "id": 4710,
+                "nome": "Greece",
+                "lastEvent": {
+                    "id": 12057862,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "england-greece"
+                }
+            },
+            {
+                "id": 4713,
+                "nome": "England",
+                "lastEvent": {
+                    "id": 12057862,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "england-greece"
+                }
+            },
+            {
+                "id": 4693,
+                "nome": "Ireland",
+                "lastEvent": {
+                    "id": 12057864,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "finland-ireland"
+                }
+            },
+            {
+                "id": 4484,
+                "nome": "Slovenia",
+                "lastEvent": {
+                    "id": 12057850,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "slovenia-norway"
+                }
+            },
+            {
+                "id": 4712,
+                "nome": "Finland",
+                "lastEvent": {
+                    "id": 12057864,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "finland-ireland"
+                }
+            },
+            {
+                "id": 4702,
+                "nome": "Wales",
+                "lastEvent": {
+                    "id": 12057835,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "iceland-wales"
+                }
+            },
+            {
+                "id": 4700,
+                "nome": "Türkiye",
+                "lastEvent": {
+                    "id": 12057842,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "montenegro-turkiye"
+                }
+            },
+            {
+                "id": 4475,
+                "nome": "Norway",
+                "lastEvent": {
+                    "id": 12057850,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "slovenia-norway"
+                }
+            },
+            {
+                "id": 4772,
+                "nome": "Kazakhstan",
+                "lastEvent": {
+                    "id": 12057853,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "kazakhstan-austria"
+                }
+            },
+            {
+                "id": 4718,
+                "nome": "Austria",
+                "lastEvent": {
+                    "id": 12057853,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "kazakhstan-austria"
+                }
+            },
+            {
+                "id": 4708,
+                "nome": "Iceland",
+                "lastEvent": {
+                    "id": 12057835,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "iceland-wales"
+                }
+            },
+            {
+                "id": 4688,
+                "nome": "Sweden",
+                "lastEvent": {
+                    "id": 12057821,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "slovakia-sweden"
+                }
+            },
+            {
+                "id": 7139,
+                "nome": "Montenegro",
+                "lastEvent": {
+                    "id": 12057842,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "montenegro-turkiye"
+                }
+            },
+            {
+                "id": 4742,
+                "nome": "Azerbaijan",
+                "lastEvent": {
+                    "id": 12057822,
+                    "startDate": "11/10/2024 13:00",
+                    "slug": "estonia-azerbaijan"
+                }
+            },
+            {
+                "id": 4697,
+                "nome": "Slovakia",
+                "lastEvent": {
+                    "id": 12057821,
+                    "startDate": "11/10/2024 15:45",
+                    "slug": "slovakia-sweden"
+                }
+            },
+            {
+                "id": 4482,
+                "nome": "Cyprus",
+                "lastEvent": {
+                    "id": 12057819,
+                    "startDate": "09/09/2024 13:00",
+                    "slug": "kosovo-cyprus"
+                }
+            },
+            {
+                "id": 4759,
+                "nome": "Estonia",
+                "lastEvent": {
+                    "id": 12057822,
+                    "startDate": "11/10/2024 13:00",
+                    "slug": "estonia-azerbaijan"
+                }
+            },
+            {
+                "id": 154426,
+                "nome": "Kosovo",
+                "lastEvent": {
+                    "id": 12057819,
+                    "startDate": "09/09/2024 13:00",
+                    "slug": "kosovo-cyprus"
+                }
+            },
+            {
+                "id": 4776,
+                "nome": "Lithuania",
+                "lastEvent": {
+                    "id": 12057779,
+                    "startDate": "09/09/2024 15:45",
+                    "slug": "lithuania-romania"
+                }
+            },
+            {
+                "id": 4477,
+                "nome": "Romania",
+                "lastEvent": {
+                    "id": 12057779,
+                    "startDate": "09/09/2024 15:45",
+                    "slug": "lithuania-romania"
+                }
+            },
+            {
+                "id": 4478,
+                "nome": "Luxembourg",
+                "lastEvent": {
+                    "id": 12057814,
+                    "startDate": "08/09/2024 10:00",
+                    "slug": "belarus-luxembourg"
+                }
+            },
+            {
+                "id": 4706,
+                "nome": "Latvia",
+                "lastEvent": {
+                    "id": 12057801,
+                    "startDate": "10/10/2024 13:00",
+                    "slug": "north-macedonia-latvia"
+                }
+            },
+            {
+                "id": 4716,
+                "nome": "Bulgaria",
+                "lastEvent": {
+                    "id": 12057815,
+                    "startDate": "08/09/2024 13:00",
+                    "slug": "northern-ireland-bulgaria"
+                }
+            },
+            {
+                "id": 4833,
+                "nome": "San Marino",
+                "lastEvent": {
+                    "id": 12057783,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "gibraltar-san-marino"
+                }
+            },
+            {
+                "id": 4740,
+                "nome": "Armenia",
+                "lastEvent": {
+                    "id": 12057797,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "faroe-islands-armenia"
+                }
+            },
+            {
+                "id": 4777,
+                "nome": "North Macedonia",
+                "lastEvent": {
+                    "id": 12057801,
+                    "startDate": "10/10/2024 13:00",
+                    "slug": "north-macedonia-latvia"
+                }
+            },
+            {
+                "id": 4760,
+                "nome": "Faroe Islands",
+                "lastEvent": {
+                    "id": 12057797,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "faroe-islands-armenia"
+                }
+            },
+            {
+                "id": 4786,
+                "nome": "Northern Ireland",
+                "lastEvent": {
+                    "id": 12057815,
+                    "startDate": "08/09/2024 13:00",
+                    "slug": "northern-ireland-bulgaria"
+                }
+            },
+            {
+                "id": 129264,
+                "nome": "Gibraltar",
+                "lastEvent": {
+                    "id": 12057783,
+                    "startDate": "10/10/2024 15:45",
+                    "slug": "gibraltar-san-marino"
+                }
+            },
+            {
+                "id": 4743,
+                "nome": "Belarus",
+                "lastEvent": {
+                    "id": 12057814,
+                    "startDate": "08/09/2024 10:00",
+                    "slug": "belarus-luxembourg"
+                }
+            },
+            {
+                "id": 4818,
+                "nome": "Andorra",
+                "lastEvent": {
+                    "id": 12057788,
+                    "startDate": "10/10/2024 13:00",
+                    "slug": "andorra-moldova"
+                }
+            },
+            {
+                "id": 4782,
+                "nome": "Moldova",
+                "lastEvent": {
+                    "id": 12057788,
+                    "startDate": "10/10/2024 13:00",
+                    "slug": "andorra-moldova"
+                }
+            },
+            {
+                "id": 4830,
+                "nome": "Liechtenstein",
+                "lastEvent": {
+                    "id": 12962065,
+                    "startDate": "10/10/2024 14:30",
+                    "slug": "liechtenstein-hong-kong"
+                }
+            },
+            {
+                "id": 4483,
+                "nome": "Malta",
+                "lastEvent": {
+                    "id": 12057782,
+                    "startDate": "10/09/2024 15:45",
+                    "slug": "andorra-malta"
                 }
             }
         ]

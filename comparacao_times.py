@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 from utils import load_leagues_data, get_leagues_by_country, select_country_and_league, get_league_info
-from api_utils import get_player_stats, process_finalizacoes_data
+from api_utils import get_player_stats, process_finalizacoes_data, get_event_details, get_shots_data
 
 def comparacao_times():
     st.title('Comparação de Finalizações entre Times de Ligas Diferentes')
@@ -42,6 +42,14 @@ def comparacao_times():
         )
         df2 = process_finalizacoes_data(data2)
 
+        # Obter dados da última partida
+        last_match_data1 = get_last_match_data(leagues_data[league1]['teams'], team1)
+        last_match_data2 = get_last_match_data(leagues_data[league2]['teams'], team2)
+
+        # Adicionar dados da última partida aos DataFrames
+        df1 = add_last_match_info(df1, last_match_data1, team1)
+        df2 = add_last_match_info(df2, last_match_data2, team2)
+
         # Calcular estatísticas do time
         team1_stats = calculate_team_stats(df1)
         team2_stats = calculate_team_stats(df2)
@@ -54,6 +62,36 @@ def comparacao_times():
 
         # Mostrar tabela comparativa
         show_comparison_table(team1, team2, team1_stats, team2_stats)
+
+def get_last_match_data(teams, team_name):
+    team = next(team for team in teams if team['nome'] == team_name)
+    last_event_id = team['lastEvent']['id']
+    home_team, away_team = get_event_details(last_event_id)
+    shots_data = get_shots_data(last_event_id)
+    return {
+        'home_team': home_team,
+        'away_team': away_team,
+        'shots_data': shots_data
+    }
+
+def add_last_match_info(df, last_match_data, team_name):
+    home_team = last_match_data['home_team']
+    away_team = last_match_data['away_team']
+    shots_data = last_match_data['shots_data']
+
+    team_type = 'home' if team_name == home_team else 'away'
+    
+    last_match_shots = {}
+    for player in shots_data[team_type]:
+        last_match_shots[player['name']] = {
+            'shots_on_target': player['shots_on_target'],
+            'total_shots': player['total_shots']
+        }
+
+    df['Chutes alvo (last)'] = df['Jogador'].map(lambda x: last_match_shots.get(x, {}).get('shots_on_target', 0))
+    df['Chutes (last)'] = df['Jogador'].map(lambda x: last_match_shots.get(x, {}).get('total_shots', 0))
+
+    return df
 
 def calculate_team_stats(df):
     total_chutes = df['Total de chutes'].sum()
@@ -123,7 +161,8 @@ def show_detailed_player_table(df1, df2, team1, team2):
     # Selecionar e renomear colunas para exibição
     columns_to_display = [
         'Time', 'Jogador', 'Total de chutes', 'Chutes no alvo', 'Eficiência',
-        'Chutes/P', 'Chutes Alvo/P', 'Partidas jogadas', 'Min/Jogados', 'Min/P'
+        'Chutes/P', 'Chutes Alvo/P', 'Partidas jogadas', 'Min/Jogados', 'Min/P',
+        'Chutes alvo (last)', 'Chutes (last)'
     ]
     
     df_display = df_combined[columns_to_display]

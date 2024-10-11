@@ -2,6 +2,7 @@ import requests
 import time
 import pandas as pd
 from typing import Dict, List, Any
+import streamlit as st
 
 # Constantes
 API_BASE_URL = "https://www.sofascore.com/api/v1"
@@ -10,6 +11,7 @@ REQUEST_INTERVAL = 5  # segundos
 # Variável global para armazenar o timestamp da última requisição
 last_request_time = 0
 
+@st.cache_data(ttl=3600)  # Cache por 1 hora
 def make_api_request(url: str) -> Dict[str, Any]:
     """
     Faz uma requisição à API com controle de intervalo entre chamadas.
@@ -141,3 +143,59 @@ def get_teams_stats(league_id: int, season_id: int) -> Dict[str, Any]:
     """
     url = f"{API_BASE_URL}/unique-tournament/{league_id}/season/{season_id}/standings/total"
     return make_api_request(url)
+
+@st.cache_data(ttl=3600)
+def get_event_details(event_id: int) -> tuple:
+    """
+    Obtém os detalhes de um evento específico.
+    
+    Args:
+        event_id (int): ID do evento
+    
+    Returns:
+        tuple: Nome do time da casa, nome do time visitante
+    """
+    url = f"{API_BASE_URL}/event/{event_id}"
+    data = make_api_request(url)
+    if data:
+        home_team = data['event']['homeTeam']['name']
+        away_team = data['event']['awayTeam']['name']
+        return home_team, away_team
+    else:
+        print(f"Erro ao obter detalhes do evento {event_id}")
+        return 'Time da casa desconhecido', 'Time de fora desconhecido'
+
+@st.cache_data(ttl=3600)
+def get_shots_data(event_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    """
+    Obtém dados de chutes para um evento específico, focando apenas nos jogadores que finalizaram.
+    
+    Args:
+        event_id (int): ID do evento
+    
+    Returns:
+        Dict[str, List[Dict[str, Any]]]: Dados de chutes para times da casa e visitante
+    """
+    time.sleep(1)  # Intervalo de 1 segundo antes da requisição
+    
+    url = f"{API_BASE_URL}/event/{event_id}/lineups"
+    data = make_api_request(url)
+    if data:
+        shots_data = {'home': [], 'away': []}
+        for team_type in ['home', 'away']:
+            if team_type in data:
+                for player in data[team_type]['players']:
+                    stats = player['statistics']
+                    shots_on_target = stats.get('onTargetScoringAttempt', 0)
+                    shots_off_target = stats.get('shotOffTarget', 0)
+                    total_shots = shots_on_target + shots_off_target
+                    if total_shots > 0:
+                        shots_data[team_type].append({
+                            'name': player['player']['name'],
+                            'shots_on_target': shots_on_target,
+                            'total_shots': total_shots
+                        })
+        return shots_data
+    else:
+        print(f"Erro ao obter dados para o evento {event_id}")
+        return {'home': [], 'away': []}

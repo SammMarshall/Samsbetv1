@@ -2,6 +2,7 @@ import json
 import streamlit as st
 import pandas as pd
 
+@st.cache_data(ttl=3600)
 def load_leagues_data():
     with open('all_leagues_info.json', 'r', encoding='utf-8') as f:
         return json.load(f)

@@ -2,9 +2,43 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+import requests
 from utils import *
 from column_config import get_finalizacoes_column_config
-from api_utils import get_player_stats, process_finalizacoes_data, get_team_stats, get_teams_stats
+from api_utils import get_player_stats, process_finalizacoes_data, get_team_stats, get_teams_stats, get_event_details, get_shots_data
+
+@st.cache_data(ttl=3600)
+def add_last_match_info(df, leagues_data, selected_league, selected_teams):
+    league_info = leagues_data[selected_league]
+    teams = league_info.get('teams', [])
+
+    last_match_shots = {}
+    for team in teams:
+        team_name = team['nome']
+        if team_name not in selected_teams:
+            continue  # Pula times não selecionados
+        
+        last_event_id = team['lastEvent']['id']
+        
+        try:
+            home_team, away_team = get_event_details(last_event_id)
+            shots_data = get_shots_data(last_event_id)
+            
+            for team_type in ['home', 'away']:
+                current_team = home_team if team_type == 'home' else away_team
+                for player in shots_data[team_type]:
+                    last_match_shots[(current_team, player['name'])] = {
+                        'shots_on_target': player['shots_on_target'],
+                        'total_shots': player['total_shots']
+                    }
+        except requests.exceptions.HTTPError as e:
+            st.warning(f"Não foi possível obter dados para o time {team_name}. Erro: {e}")
+            continue
+
+    df['Chutes alvo (last)'] = df.apply(lambda row: last_match_shots.get((row['Time'], row['Jogador']), {}).get('shots_on_target', 0), axis=1)
+    df['Chutes (last)'] = df.apply(lambda row: last_match_shots.get((row['Time'], row['Jogador']), {}).get('total_shots', 0), axis=1)
+
+    return df
 
 def analise_finalizacoes():
     st.title('Análise Estatística de Finalizações no Futebol')
@@ -26,6 +60,10 @@ def analise_finalizacoes():
     )
 
     df = process_finalizacoes_data(data)
+
+    if st.button("Carregar informações da última partida"):
+        df = add_last_match_info(df, leagues_data, selected_league, selected_teams)
+
     column_config = get_finalizacoes_column_config()
     st.dataframe(df, column_config=column_config)
     show_column_legend(column_config)
