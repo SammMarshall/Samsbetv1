@@ -8,7 +8,7 @@ import streamlit as st
 
 # Constantes
 API_BASE_URL = "https://www.sofascore.com/api/v1"
-REQUEST_INTERVAL = 5  # segundos
+REQUEST_INTERVAL = 1  # segundos
 
 # Variável global para armazenar o timestamp da última requisição
 last_request_time = 0
@@ -36,12 +36,6 @@ def make_api_request(url: str) -> Dict[str, Any]:
         }
         
         response = requests.get(url, headers=headers)
-        
-        # Aqui verificamos o status e mostramos as respostas completas
-        print(f"Status da requisição: {response.status_code}")
-        print(f"Resposta completa: {response.text}")
-        print(f"Cabeçalhos enviados: {response.request.headers}")
-
         
         response.raise_for_status()  # Levanta exceção para códigos de erro HTTP (não 2xx)
         
@@ -91,13 +85,12 @@ def get_player_stats(league_id: int, season_id: int, quantidade: int, team_filte
     elif game_type == "Fora":
         type_filter = "type.EQ.away%2C"
 
-    url = f"{API_BASE_URL}/unique-tournament/{league_id}/season/{season_id}/statistics?limit={quantidade}&order={order_by}&accumulation=total&fields={fields}&filters={type_filter}{position_filter}"
+    url = f"{API_BASE_URL}/unique-tournament/{league_id}/season/{season_id}/statistics?limit={quantidade}&order={order_by}&accumulation=total&fields={fields}&filters={type_filter}{position_filter}{team_filter}"
     print(url)
     return make_api_request(url)
     
 
 def process_finalizacoes_data(data: Dict[str, Any]) -> pd.DataFrame:
-    print(data)
     all_data = []
     for player in data['results']:
         all_data.append({
@@ -211,7 +204,6 @@ def process_finalizacoes_data(data: Dict[str, Any]) -> pd.DataFrame:
     return df
 
 def process_defesa_data(data: Dict[str, Any]) -> pd.DataFrame:
-    print(data)
     """
     Processa os dados de defesa dos goleiros.
     
@@ -291,6 +283,7 @@ def get_shots_data(event_id: int) -> Dict[str, List[Dict[str, Any]]]:
     time.sleep(1)  # Intervalo de 1 segundo antes da requisição
     
     url = f"{API_BASE_URL}/event/{event_id}/lineups"
+    print(url)
     data = make_api_request(url)
     if data:
         shots_data = {'home': [], 'away': []}
