@@ -1,0 +1,4 @@
+[http]
+    sslCAInfo = C:\Users\samuel.conceicao\Downloads\Fortinet_CA_SSL.cer
+[https]
+    sslCAInfo = C:\Users\samuel.conceicao\Downloads\Fortinet_CA_SSL.cer

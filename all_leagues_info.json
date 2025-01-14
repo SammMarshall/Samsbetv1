@@ -1738,259 +1738,277 @@
     },
     "Liga Profesional de Fútbol": {
         "league_id": "155",
-        "season_id": "57478",
+        "season_id": "70268",
         "country": "Argentina",
         "teams": [
             {
-                "id": 189723,
-                "nome": "Deportivo Riestra",
+                "id": 3219,
+                "nome": "Banfield",
                 "lastEvent": {
-                    "id": 11937339,
-                    "startDate": "06/10/2024 15:00",
-                    "slug": "deportivo-riestra-independiente"
-                }
-            },
-            {
-                "id": 3210,
-                "nome": "Talleres",
-                "lastEvent": {
-                    "id": 11937342,
-                    "startDate": "06/10/2024 16:30",
-                    "slug": "talleres-belgrano"
-                }
-            },
-            {
-                "id": 36833,
-                "nome": "Atlético Tucumán",
-                "lastEvent": {
-                    "id": 11937340,
-                    "startDate": "07/10/2024 21:00",
-                    "slug": "atletico-tucuman-tigre"
-                }
-            },
-            {
-                "id": 3211,
-                "nome": "River Plate",
-                "lastEvent": {
-                    "id": 11937343,
-                    "startDate": "06/10/2024 19:00",
-                    "slug": "platense-river-plate"
-                }
-            },
-            {
-                "id": 3208,
-                "nome": "Vélez Sarsfield",
-                "lastEvent": {
-                    "id": 11937344,
-                    "startDate": "05/10/2024 15:00",
-                    "slug": "racing-club-velez-sarsfield"
-                }
-            },
-            {
-                "id": 7629,
-                "nome": "Huracán",
-                "lastEvent": {
-                    "id": 11937336,
-                    "startDate": "04/10/2024 21:00",
-                    "slug": "sarmiento-huracan"
-                }
-            },
-            {
-                "id": 3215,
-                "nome": "Racing Club",
-                "lastEvent": {
-                    "id": 11937344,
-                    "startDate": "05/10/2024 15:00",
-                    "slug": "racing-club-velez-sarsfield"
-                }
-            },
-            {
-                "id": 3203,
-                "nome": "Belgrano",
-                "lastEvent": {
-                    "id": 11937342,
-                    "startDate": "06/10/2024 16:30",
-                    "slug": "talleres-belgrano"
-                }
-            },
-            {
-                "id": 4937,
-                "nome": "Instituto De Córdoba",
-                "lastEvent": {
-                    "id": 11937347,
-                    "startDate": "05/10/2024 20:00",
-                    "slug": "instituto-de-cordoba-san-lorenzo"
-                }
-            },
-            {
-                "id": 3204,
-                "nome": "Club Atlético Unión de Santa Fe",
-                "lastEvent": {
-                    "id": 11937335,
-                    "startDate": "04/10/2024 19:00",
-                    "slug": "central-cordoba-club-atletico-union-de-santa-fe"
-                }
-            },
-            {
-                "id": 3218,
-                "nome": "Lanús",
-                "lastEvent": {
-                    "id": 11937338,
-                    "startDate": "05/10/2024 17:30",
-                    "slug": "lanus-newells-old-boys"
-                }
-            },
-            {
-                "id": 3205,
-                "nome": "Gimnasia y Esgrima",
-                "lastEvent": {
-                    "id": 11937337,
-                    "startDate": "05/10/2024 17:30",
-                    "slug": "godoy-cruz-gimnasia-y-esgrima"
-                }
-            },
-            {
-                "id": 3206,
-                "nome": "Estudiantes de La Plata",
-                "lastEvent": {
-                    "id": 11937346,
-                    "startDate": "07/10/2024 18:00",
-                    "slug": "banfield-estudiantes-de-la-plata"
-                }
-            },
-            {
-                "id": 3216,
-                "nome": "Argentinos Juniors",
-                "lastEvent": {
-                    "id": 11937341,
-                    "startDate": "06/10/2024 21:00",
-                    "slug": "argentinos-juniors-boca-juniors"
+                    "id": 11937481,
+                    "startDate": "14/12/2024 00:15",
+                    "slug": "sarmiento-banfield"
                 }
             },
             {
                 "id": 3202,
                 "nome": "Boca Juniors",
                 "lastEvent": {
-                    "id": 11937341,
-                    "startDate": "06/10/2024 21:00",
-                    "slug": "argentinos-juniors-boca-juniors"
+                    "id": 11937476,
+                    "startDate": "14/12/2024 22:15",
+                    "slug": "ca-independiente-boca-juniors"
                 }
             },
             {
-                "id": 3217,
-                "nome": "Rosario Central",
+                "id": 3216,
+                "nome": "Argentinos Juniors",
                 "lastEvent": {
-                    "id": 11937345,
-                    "startDate": "07/10/2024 18:45",
-                    "slug": "defensa-y-justicia-rosario-central"
+                    "id": 11937486,
+                    "startDate": "13/12/2024 22:00",
+                    "slug": "argentinos-juniors-estudiantes-de-la-plata"
                 }
             },
             {
-                "id": 6074,
-                "nome": "Godoy Cruz",
+                "id": 36836,
+                "nome": "Aldosivi",
                 "lastEvent": {
-                    "id": 11937337,
-                    "startDate": "05/10/2024 17:30",
-                    "slug": "godoy-cruz-gimnasia-y-esgrima"
-                }
-            },
-            {
-                "id": 36842,
-                "nome": "Independiente Rivadavia",
-                "lastEvent": {
-                    "id": 11937348,
-                    "startDate": "07/10/2024 15:00",
-                    "slug": "barracas-central-independiente-rivadavia"
-                }
-            },
-            {
-                "id": 36837,
-                "nome": "Platense",
-                "lastEvent": {
-                    "id": 11937343,
-                    "startDate": "06/10/2024 19:00",
-                    "slug": "platense-river-plate"
-                }
-            },
-            {
-                "id": 3209,
-                "nome": "Independiente",
-                "lastEvent": {
-                    "id": 11937339,
-                    "startDate": "06/10/2024 15:00",
-                    "slug": "deportivo-riestra-independiente"
-                }
-            },
-            {
-                "id": 3201,
-                "nome": "San Lorenzo",
-                "lastEvent": {
-                    "id": 11937347,
-                    "startDate": "05/10/2024 20:00",
-                    "slug": "instituto-de-cordoba-san-lorenzo"
-                }
-            },
-            {
-                "id": 3219,
-                "nome": "Banfield",
-                "lastEvent": {
-                    "id": 11937346,
-                    "startDate": "07/10/2024 18:00",
-                    "slug": "banfield-estudiantes-de-la-plata"
+                    "id": 13058865,
+                    "startDate": "03/11/2024 18:00",
+                    "slug": "aldosivi-san-martin-de-tucuman"
                 }
             },
             {
                 "id": 7628,
                 "nome": "Tigre",
                 "lastEvent": {
-                    "id": 11937340,
-                    "startDate": "07/10/2024 21:00",
-                    "slug": "atletico-tucuman-tigre"
+                    "id": 11937485,
+                    "startDate": "14/12/2024 00:15",
+                    "slug": "tigre-san-lorenzo"
                 }
             },
             {
-                "id": 3212,
-                "nome": "Newell's Old Boys",
+                "id": 3203,
+                "nome": "Belgrano",
                 "lastEvent": {
-                    "id": 11937338,
-                    "startDate": "05/10/2024 17:30",
-                    "slug": "lanus-newells-old-boys"
+                    "id": 11937487,
+                    "startDate": "14/12/2024 20:00",
+                    "slug": "rosario-central-belgrano"
+                }
+            },
+            {
+                "id": 7629,
+                "nome": "Huracán",
+                "lastEvent": {
+                    "id": 13262363,
+                    "startDate": "12/01/2025 23:00",
+                    "slug": "huracan-danubio"
                 }
             },
             {
                 "id": 65676,
                 "nome": "Central Córdoba",
                 "lastEvent": {
-                    "id": 11937335,
-                    "startDate": "04/10/2024 19:00",
-                    "slug": "central-cordoba-club-atletico-union-de-santa-fe"
-                }
-            },
-            {
-                "id": 65668,
-                "nome": "Barracas Central",
-                "lastEvent": {
-                    "id": 11937348,
-                    "startDate": "07/10/2024 15:00",
-                    "slug": "barracas-central-independiente-rivadavia"
-                }
-            },
-            {
-                "id": 42338,
-                "nome": "Sarmiento",
-                "lastEvent": {
-                    "id": 11937336,
-                    "startDate": "04/10/2024 21:00",
-                    "slug": "sarmiento-huracan"
+                    "id": 11937475,
+                    "startDate": "17/12/2024 00:00",
+                    "slug": "central-cordoba-atletico-tucuman"
                 }
             },
             {
                 "id": 36839,
                 "nome": "Defensa y Justicia",
                 "lastEvent": {
-                    "id": 11937345,
-                    "startDate": "07/10/2024 18:45",
-                    "slug": "defensa-y-justicia-rosario-central"
+                    "id": 13262369,
+                    "startDate": "13/01/2025 23:00",
+                    "slug": "defensa-y-justicia-racing-de-montevideo"
+                }
+            },
+            {
+                "id": 65668,
+                "nome": "Barracas Central",
+                "lastEvent": {
+                    "id": 11937483,
+                    "startDate": "13/12/2024 22:00",
+                    "slug": "barracas-central-lanus"
+                }
+            },
+            {
+                "id": 3206,
+                "nome": "Estudiantes de La Plata",
+                "lastEvent": {
+                    "id": 13238264,
+                    "startDate": "22/12/2024 00:00",
+                    "slug": "velez-sarsfield-estudiantes-de-la-plata"
+                }
+            },
+            {
+                "id": 36842,
+                "nome": "Independiente Rivadavia",
+                "lastEvent": {
+                    "id": 11937484,
+                    "startDate": "17/12/2024 00:00",
+                    "slug": "deportivo-riestra-independiente-rivadavia"
+                }
+            },
+            {
+                "id": 3212,
+                "nome": "Newell's Old Boys",
+                "lastEvent": {
+                    "id": 11937477,
+                    "startDate": "15/12/2024 22:30",
+                    "slug": "newells-old-boys-talleres"
+                }
+            },
+            {
+                "id": 3215,
+                "nome": "Racing Club",
+                "lastEvent": {
+                    "id": 11937488,
+                    "startDate": "15/12/2024 00:15",
+                    "slug": "racing-club-river-plate"
+                }
+            },
+            {
+                "id": 3211,
+                "nome": "River Plate",
+                "lastEvent": {
+                    "id": 11937488,
+                    "startDate": "15/12/2024 00:15",
+                    "slug": "racing-club-river-plate"
+                }
+            },
+            {
+                "id": 3204,
+                "nome": "Club Atlético Unión de Santa Fe",
+                "lastEvent": {
+                    "id": 13262389,
+                    "startDate": "12/01/2025 00:00",
+                    "slug": "club-atletico-union-de-santa-fe-universidad-catolica"
+                }
+            },
+            {
+                "id": 36833,
+                "nome": "Atlético Tucumán",
+                "lastEvent": {
+                    "id": 11937475,
+                    "startDate": "17/12/2024 00:00",
+                    "slug": "central-cordoba-atletico-tucuman"
+                }
+            },
+            {
+                "id": 3218,
+                "nome": "Lanús",
+                "lastEvent": {
+                    "id": 11937483,
+                    "startDate": "13/12/2024 22:00",
+                    "slug": "barracas-central-lanus"
+                }
+            },
+            {
+                "id": 3209,
+                "nome": "CA Independiente",
+                "lastEvent": {
+                    "id": 11937476,
+                    "startDate": "14/12/2024 22:15",
+                    "slug": "ca-independiente-boca-juniors"
+                }
+            },
+            {
+                "id": 36837,
+                "nome": "Platense",
+                "lastEvent": {
+                    "id": 11937478,
+                    "startDate": "15/12/2024 20:00",
+                    "slug": "platense-gimnasia-y-esgrima"
+                }
+            },
+            {
+                "id": 3217,
+                "nome": "Rosario Central",
+                "lastEvent": {
+                    "id": 11937487,
+                    "startDate": "14/12/2024 20:00",
+                    "slug": "rosario-central-belgrano"
+                }
+            },
+            {
+                "id": 3201,
+                "nome": "San Lorenzo",
+                "lastEvent": {
+                    "id": 13262364,
+                    "startDate": "14/01/2025 01:00",
+                    "slug": "club-nacional-san-lorenzo"
+                }
+            },
+            {
+                "id": 42338,
+                "nome": "Sarmiento",
+                "lastEvent": {
+                    "id": 11937481,
+                    "startDate": "14/12/2024 00:15",
+                    "slug": "sarmiento-banfield"
+                }
+            },
+            {
+                "id": 3210,
+                "nome": "Talleres",
+                "lastEvent": {
+                    "id": 11937477,
+                    "startDate": "15/12/2024 22:30",
+                    "slug": "newells-old-boys-talleres"
+                }
+            },
+            {
+                "id": 6074,
+                "nome": "Godoy Cruz",
+                "lastEvent": {
+                    "id": 13323309,
+                    "startDate": "11/01/2025 21:00",
+                    "slug": "godoy-cruz-universidad-de-chile"
+                }
+            },
+            {
+                "id": 189723,
+                "nome": "Deportivo Riestra",
+                "lastEvent": {
+                    "id": 11937484,
+                    "startDate": "17/12/2024 00:00",
+                    "slug": "deportivo-riestra-independiente-rivadavia"
+                }
+            },
+            {
+                "id": 4937,
+                "nome": "Instituto De Córdoba",
+                "lastEvent": {
+                    "id": 11937482,
+                    "startDate": "14/12/2024 20:00",
+                    "slug": "godoy-cruz-instituto-de-cordoba"
+                }
+            },
+            {
+                "id": 7772,
+                "nome": "San Martín de San Juan",
+                "lastEvent": {
+                    "id": 13193026,
+                    "startDate": "08/12/2024 20:00",
+                    "slug": "gimnasia-y-esgrima-mendoza-san-martin-de-san-juan"
+                }
+            },
+            {
+                "id": 3208,
+                "nome": "Vélez Sarsfield",
+                "lastEvent": {
+                    "id": 13238264,
+                    "startDate": "22/12/2024 00:00",
+                    "slug": "velez-sarsfield-estudiantes-de-la-plata"
+                }
+            },
+            {
+                "id": 3205,
+                "nome": "Gimnasia y Esgrima",
+                "lastEvent": {
+                    "id": 11937478,
+                    "startDate": "15/12/2024 20:00",
+                    "slug": "platense-gimnasia-y-esgrima"
                 }
             }
         ]
@@ -3444,6 +3462,229 @@
                     "id": 12146481,
                     "startDate": "04/10/2024 19:00",
                     "slug": "coritiba-america-mineiro"
+                }
+            }
+        ]
+    },
+    "League One": {
+        "league_id": "24",
+        "season_id": "61959",
+        "country": "England",
+        "teams": [
+            {
+                "id": 9,
+                "nome": "Birmingham City",
+                "lastEvent": {
+                    "id": 12469464,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "leyton-orient-birmingham-city"
+                }
+            },
+            {
+                "id": 62,
+                "nome": "Wycombe Wanderers",
+                "lastEvent": {
+                    "id": 12469457,
+                    "startDate": "11/01/2025 17:15",
+                    "slug": "wycombe-wanderers-rotherham-united"
+                }
+            },
+            {
+                "id": 10,
+                "nome": "Stockport County",
+                "lastEvent": {
+                    "id": 13189394,
+                    "startDate": "12/01/2025 15:00",
+                    "slug": "stockport-county-crystal-palace"
+                }
+            },
+            {
+                "id": 23,
+                "nome": "Barnsley",
+                "lastEvent": {
+                    "id": 12469454,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "northampton-town-barnsley"
+                }
+            },
+            {
+                "id": 59,
+                "nome": "Huddersfield Town",
+                "lastEvent": {
+                    "id": 12469453,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "shrewsbury-town-huddersfield-town"
+                }
+            },
+            {
+                "id": 5,
+                "nome": "Bolton Wanderers",
+                "lastEvent": {
+                    "id": 12469461,
+                    "startDate": "11/01/2025 19:45",
+                    "slug": "charlton-athletic-bolton-wanderers"
+                }
+            },
+            {
+                "id": 83,
+                "nome": "Leyton Orient",
+                "lastEvent": {
+                    "id": 13189389,
+                    "startDate": "11/01/2025 18:00",
+                    "slug": "leyton-orient-derby-county"
+                }
+            },
+            {
+                "id": 70,
+                "nome": "Mansfield Town",
+                "lastEvent": {
+                    "id": 13189415,
+                    "startDate": "11/01/2025 18:00",
+                    "slug": "mansfield-town-wigan-athletic"
+                }
+            },
+            {
+                "id": 64,
+                "nome": "Wrexham",
+                "lastEvent": {
+                    "id": 12469455,
+                    "startDate": "11/01/2025 12:30",
+                    "slug": "wrexham-reading"
+                }
+            },
+            {
+                "id": 28,
+                "nome": "Reading",
+                "lastEvent": {
+                    "id": 13189405,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "reading-burnley"
+                }
+            },
+            {
+                "id": 47,
+                "nome": "Charlton Athletic",
+                "lastEvent": {
+                    "id": 12469461,
+                    "startDate": "11/01/2025 19:45",
+                    "slug": "charlton-athletic-bolton-wanderers"
+                }
+            },
+            {
+                "id": 92,
+                "nome": "Lincoln City",
+                "lastEvent": {
+                    "id": 12469458,
+                    "startDate": "11/01/2025 12:30",
+                    "slug": "lincoln-city-mansfield-town"
+                }
+            },
+            {
+                "id": 13,
+                "nome": "Rotherham United",
+                "lastEvent": {
+                    "id": 12469457,
+                    "startDate": "11/01/2025 17:15",
+                    "slug": "wycombe-wanderers-rotherham-united"
+                }
+            },
+            {
+                "id": 133,
+                "nome": "Stevenage",
+                "lastEvent": {
+                    "id": 12469460,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "burton-albion-stevenage"
+                }
+            },
+            {
+                "id": 49,
+                "nome": "Wigan Athletic",
+                "lastEvent": {
+                    "id": 13189415,
+                    "startDate": "11/01/2025 18:00",
+                    "slug": "mansfield-town-wigan-athletic"
+                }
+            },
+            {
+                "id": 67,
+                "nome": "Blackpool",
+                "lastEvent": {
+                    "id": 12469467,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "blackpool-cambridge-united"
+                }
+            },
+            {
+                "id": 76,
+                "nome": "Bristol Rovers",
+                "lastEvent": {
+                    "id": 13189411,
+                    "startDate": "12/01/2025 15:00",
+                    "slug": "bristol-rovers-ipswich-town"
+                }
+            },
+            {
+                "id": 54,
+                "nome": "Peterborough United",
+                "lastEvent": {
+                    "id": 12469452,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "exeter-city-peterborough-united"
+                }
+            },
+            {
+                "id": 86,
+                "nome": "Exeter City",
+                "lastEvent": {
+                    "id": 13189401,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "oxford-united-exeter-city"
+                }
+            },
+            {
+                "id": 57,
+                "nome": "Northampton Town",
+                "lastEvent": {
+                    "id": 12469454,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "northampton-town-barnsley"
+                }
+            },
+            {
+                "id": 4875,
+                "nome": "Crawley Town",
+                "lastEvent": {
+                    "id": 12469459,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "crawley-town-wigan-athletic"
+                }
+            },
+            {
+                "id": 82,
+                "nome": "Shrewsbury Town",
+                "lastEvent": {
+                    "id": 12469453,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "shrewsbury-town-huddersfield-town"
+                }
+            },
+            {
+                "id": 63,
+                "nome": "Cambridge United",
+                "lastEvent": {
+                    "id": 12469467,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "blackpool-cambridge-united"
+                }
+            },
+            {
+                "id": 134,
+                "nome": "Burton Albion",
+                "lastEvent": {
+                    "id": 12469460,
+                    "startDate": "11/01/2025 15:00",
+                    "slug": "burton-albion-stevenage"
                 }
             }
         ]

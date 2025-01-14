@@ -49,7 +49,7 @@ def analise_finalizacoes():
     league_id, season_id = get_league_info(leagues_in_country, selected_league)
     selected_teams, game_type, teams = select_teams_and_game_type(leagues_data, selected_league)
     
-    quantidade = st.slider('Número de jogadores:', 30, 50, 100, step=10)
+    quantidade = st.slider('Número de jogadores:', 10, step=10)
     team_filter = get_team_filter(selected_teams, teams)
 
     data = get_player_stats(
@@ -60,6 +60,14 @@ def analise_finalizacoes():
     )
 
     df = process_finalizacoes_data(data)
+    
+    if 'Min/Jogados' not in df.columns:
+        st.error("A coluna 'Min/Jogados' não está presente nos dados processados.")
+        return
+    
+    if 'Time' not in df.columns:
+        st.error("A coluna 'Time' não está presente nos dados processados.")
+        return
 
     if st.button("Carregar informações da última partida"):
         df = add_last_match_info(df, leagues_data, selected_league, selected_teams)
