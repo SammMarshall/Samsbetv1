@@ -49,7 +49,7 @@ def analise_finalizacoes():
     league_id, season_id = get_league_info(leagues_in_country, selected_league)
     selected_teams, game_type, teams = select_teams_and_game_type(leagues_data, selected_league)
     
-    quantidade = st.slider('Número de jogadores:', 10, step=10)
+    quantidade = st.slider('Número de jogadores:', 50, step=10)
     team_filter = get_team_filter(selected_teams, teams)
 
     data = get_player_stats(
@@ -73,7 +73,13 @@ def analise_finalizacoes():
         df = add_last_match_info(df, leagues_data, selected_league, selected_teams)
 
     column_config = get_finalizacoes_column_config()
-    st.dataframe(df, column_config=column_config)
+    st.dataframe(
+        df,
+        column_config=column_config,
+        hide_index=True,
+        use_container_width=True,
+        column_order=["Jogador", "Time"] + [col for col in df.columns if col not in ["Jogador", "Time"]],
+    )
     show_column_legend(column_config)
 
     # Calcular o total de finalizações por time
