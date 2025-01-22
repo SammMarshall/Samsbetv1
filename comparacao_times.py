@@ -12,6 +12,20 @@ from api_utils import (
 )
 from datetime import datetime
 
+LIGAS_SEM_FILTRO_LOCAL = {
+    'nomes': ['Ukrainian Premier League'], 
+}
+
+def get_available_locations(league_id, league_name, country):
+    """
+    Verifica se a liga suporta filtro por localização baseado em critérios predefinidos
+    """
+    if (
+        league_name in LIGAS_SEM_FILTRO_LOCAL['nomes']
+    ):
+        return ["Ambos"]
+    return ["Casa", "Fora", "Ambos"]
+
 def comparacao_times():
     st.title('Comparação de Finalizações entre Times de Ligas Diferentes')
 
@@ -29,10 +43,13 @@ def comparacao_times():
         team1 = st.selectbox('Selecione o primeiro time:', 
                            [team['nome'] for team in leagues_data[league1]['teams']], 
                            key="team1_select")
-        # Opção de mandante/visitante para o primeiro time
+        # Verifica opções disponíveis para a liga
+        locations1 = get_available_locations(league_id1, league1, country1)
+        if len(locations1) == 1:
+            st.info("Esta liga só possui dados consolidados, sem separação por mandante/visitante.")
         local_team1 = st.radio(
             "Condição do primeiro time:",
-            ["Casa", "Fora", "Ambos"],
+            locations1,
             key="local_team1"
         )
 
@@ -44,9 +61,12 @@ def comparacao_times():
                            [team['nome'] for team in leagues_data[league2]['teams']], 
                            key="team2_select")
         # Opção de mandante/visitante para o segundo time
+        locations2 = get_available_locations(league_id2, league2, country2) 
+        if len(locations2) == 1:
+            st.info("Esta liga só possui dados consolidados, sem separação por mandante/visitante.")
         local_team2 = st.radio(
             "Condição do segundo time:",
-            ["Casa", "Fora", "Ambos"],
+            locations2,
             key="local_team2"
         )
 
