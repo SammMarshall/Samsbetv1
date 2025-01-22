@@ -1476,111 +1476,111 @@
         "country": "Austria",
         "teams": [
             {
-                "id": 2051,
-                "nome": "SK Sturm Graz",
-                "lastEvent": {
-                    "id": 12481109,
-                    "startDate": "06/10/2024 12:00",
-                    "slug": "sk-sturm-graz-red-bull-salzburg"
-                }
-            },
-            {
-                "id": 2055,
-                "nome": "SK Rapid Wien",
-                "lastEvent": {
-                    "id": 12965004,
-                    "startDate": "10/10/2024 08:00",
-                    "slug": "sv-horn-sk-rapid-wien"
-                }
-            },
-            {
                 "id": 2046,
                 "nome": "Red Bull Salzburg",
                 "lastEvent": {
-                    "id": 12481109,
-                    "startDate": "06/10/2024 12:00",
-                    "slug": "sk-sturm-graz-red-bull-salzburg"
+                    "id": 13295937,
+                    "startDate": "15/01/2025 15:00",
+                    "slug": "red-bull-salzburg-fc-midtjylland"
                 }
             },
             {
-                "id": 2076,
-                "nome": "Wolfsberger AC",
+                "id": 2051,
+                "nome": "SK Sturm Graz",
                 "lastEvent": {
-                    "id": 12481115,
-                    "startDate": "05/10/2024 12:00",
-                    "slug": "wolfsberger-ac-tsv-hartberg"
-                }
-            },
-            {
-                "id": 2113,
-                "nome": "FC Blau Weiss Linz",
-                "lastEvent": {
-                    "id": 12481108,
-                    "startDate": "05/10/2024 12:00",
-                    "slug": "wsg-tirol-fc-blau-weiss-linz"
+                    "id": 12763976,
+                    "startDate": "21/01/2025 17:45",
+                    "slug": "atalanta-sk-sturm-graz"
                 }
             },
             {
                 "id": 43254,
                 "nome": "Austria Klagenfurt",
                 "lastEvent": {
-                    "id": 12481112,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "austria-klagenfurt-lask"
+                    "id": 13358392,
+                    "startDate": "19/01/2025 13:00",
+                    "slug": "viktoria-berlin-austria-klagenfurt"
+                }
+            },
+            {
+                "id": 2076,
+                "nome": "Wolfsberger AC",
+                "lastEvent": {
+                    "id": 13359094,
+                    "startDate": "20/01/2025 15:00",
+                    "slug": "fc-slovan-liberec-wolfsberger-ac"
+                }
+            },
+            {
+                "id": 2113,
+                "nome": "FC Blau Weiss Linz",
+                "lastEvent": {
+                    "id": 13336511,
+                    "startDate": "15/01/2025 17:00",
+                    "slug": "sku-amstetten-fc-blau-weiss-linz"
+                }
+            },
+            {
+                "id": 2055,
+                "nome": "SK Rapid Wien",
+                "lastEvent": {
+                    "id": 13354190,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "skn-st-polten-sk-rapid-wien"
                 }
             },
             {
                 "id": 2075,
                 "nome": "TSV Hartberg",
                 "lastEvent": {
-                    "id": 12481115,
-                    "startDate": "05/10/2024 12:00",
-                    "slug": "wolfsberger-ac-tsv-hartberg"
+                    "id": 13337914,
+                    "startDate": "20/01/2025 13:30",
+                    "slug": "triglav-kranj-tsv-hartberg"
                 }
             },
             {
                 "id": 2203,
                 "nome": "Austria Wien",
                 "lastEvent": {
-                    "id": 12962541,
-                    "startDate": "11/10/2024 10:00",
-                    "slug": "austria-wien-admira-wacker"
+                    "id": 13345901,
+                    "startDate": "16/01/2025 12:00",
+                    "slug": "fk-tsc-backa-topola-austria-wien"
                 }
             },
             {
                 "id": 5405,
                 "nome": "WSG Tirol",
                 "lastEvent": {
-                    "id": 12962186,
-                    "startDate": "10/10/2024 09:30",
-                    "slug": "wsg-tirol-sc-austria-lustenau"
-                }
-            },
-            {
-                "id": 4856,
-                "nome": "SC Rheindorf Altach",
-                "lastEvent": {
-                    "id": 12481107,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "sc-rheindorf-altach-sk-rapid-wien"
+                    "id": 13352648,
+                    "startDate": "17/01/2025 15:30",
+                    "slug": "sc-schwaz-wsg-tirol"
                 }
             },
             {
                 "id": 2058,
                 "nome": "LASK",
                 "lastEvent": {
-                    "id": 12481112,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "austria-klagenfurt-lask"
+                    "id": 13363433,
+                    "startDate": "21/01/2025 13:30",
+                    "slug": "lask-admira-wacker"
+                }
+            },
+            {
+                "id": 4856,
+                "nome": "SC Rheindorf Altach",
+                "lastEvent": {
+                    "id": 13338456,
+                    "startDate": "18/01/2025 13:30",
+                    "slug": "schwarz-weiss-bregenz-sc-rheindorf-altach"
                 }
             },
             {
                 "id": 2052,
                 "nome": "Grazer AK 1902",
                 "lastEvent": {
-                    "id": 12962543,
-                    "startDate": "11/10/2024 10:30",
-                    "slug": "ask-voitsberg-grazer-ak-1902"
+                    "id": 13354140,
+                    "startDate": "18/01/2025 13:30",
+                    "slug": "grazer-ak-1902-hnk-rijeka"
                 }
             }
         ]
@@ -1592,146 +1592,146 @@
         "teams": [
             {
                 "id": 2216,
-                "nome": "Slavia Praha",
+                "nome": "SK Slavia Praha",
                 "lastEvent": {
-                    "id": 12580671,
-                    "startDate": "06/10/2024 13:30",
-                    "slug": "sparta-praha-slavia-praha"
-                }
-            },
-            {
-                "id": 2218,
-                "nome": "Sparta Praha",
-                "lastEvent": {
-                    "id": 12580671,
-                    "startDate": "06/10/2024 13:30",
-                    "slug": "sparta-praha-slavia-praha"
+                    "id": 13329682,
+                    "startDate": "19/01/2025 14:30",
+                    "slug": "philadelphia-union-sk-slavia-praha"
                 }
             },
             {
                 "id": 4502,
                 "nome": "Viktoria Plzeň",
                 "lastEvent": {
-                    "id": 12580677,
-                    "startDate": "06/10/2024 08:00",
-                    "slug": "viktoria-plzen-fk-pardubice"
+                    "id": 13342181,
+                    "startDate": "16/01/2025 14:15",
+                    "slug": "viktoria-plzen-aik"
                 }
             },
             {
-                "id": 2204,
-                "nome": "Baník Ostrava",
+                "id": 2218,
+                "nome": "AC Sparta Praha",
                 "lastEvent": {
-                    "id": 12580675,
-                    "startDate": "06/10/2024 10:30",
-                    "slug": "mlada-boleslav-banik-ostrava"
+                    "id": 13328800,
+                    "startDate": "15/01/2025 13:00",
+                    "slug": "ac-sparta-praha-bodoglimt"
                 }
             },
             {
                 "id": 2207,
                 "nome": "SK Sigma Olomouc",
                 "lastEvent": {
-                    "id": 12580668,
-                    "startDate": "06/10/2024 10:30",
-                    "slug": "bohemians-praha-1905-sk-sigma-olomouc"
-                }
-            },
-            {
-                "id": 2205,
-                "nome": "FK Jablonec",
-                "lastEvent": {
-                    "id": 12580666,
-                    "startDate": "05/10/2024 14:00",
-                    "slug": "fc-slovan-liberec-fk-jablonec"
-                }
-            },
-            {
-                "id": 4871,
-                "nome": "1. FC Slovácko",
-                "lastEvent": {
-                    "id": 12580681,
-                    "startDate": "05/10/2024 11:00",
-                    "slug": "1-fc-slovacko-sk-dynamo-ceske-budejovice"
-                }
-            },
-            {
-                "id": 2219,
-                "nome": "FC Slovan Liberec",
-                "lastEvent": {
-                    "id": 12580666,
-                    "startDate": "05/10/2024 14:00",
-                    "slug": "fc-slovan-liberec-fk-jablonec"
-                }
-            },
-            {
-                "id": 2217,
-                "nome": "FC Hradec Králové",
-                "lastEvent": {
-                    "id": 12580679,
-                    "startDate": "05/10/2024 08:30",
-                    "slug": "mfk-karvina-fc-hradec-kralove"
+                    "id": 13363434,
+                    "startDate": "21/01/2025 12:00",
+                    "slug": "fk-mladost-lucani-sk-sigma-olomouc"
                 }
             },
             {
                 "id": 2224,
                 "nome": "Mladá Boleslav",
                 "lastEvent": {
-                    "id": 12580675,
-                    "startDate": "06/10/2024 10:30",
-                    "slug": "mlada-boleslav-banik-ostrava"
+                    "id": 13360782,
+                    "startDate": "20/01/2025 13:00",
+                    "slug": "fc-voluntari-mlada-boleslav"
+                }
+            },
+            {
+                "id": 4871,
+                "nome": "1. FC Slovácko",
+                "lastEvent": {
+                    "id": 13363428,
+                    "startDate": "21/01/2025 13:00",
+                    "slug": "fk-sarajevo-1-fc-slovacko"
+                }
+            },
+            {
+                "id": 2204,
+                "nome": "Baník Ostrava",
+                "lastEvent": {
+                    "id": 13363432,
+                    "startDate": "21/01/2025 14:00",
+                    "slug": "mks-korona-kielce-banik-ostrava"
+                }
+            },
+            {
+                "id": 2219,
+                "nome": "FC Slovan Liberec",
+                "lastEvent": {
+                    "id": 13359094,
+                    "startDate": "20/01/2025 15:00",
+                    "slug": "fc-slovan-liberec-wolfsberger-ac"
+                }
+            },
+            {
+                "id": 2217,
+                "nome": "FC Hradec Králové",
+                "lastEvent": {
+                    "id": 13363425,
+                    "startDate": "21/01/2025 12:30",
+                    "slug": "arda-kardzhali-fc-hradec-kralove"
+                }
+            },
+            {
+                "id": 2205,
+                "nome": "FK Jablonec",
+                "lastEvent": {
+                    "id": 13363426,
+                    "startDate": "21/01/2025 13:00",
+                    "slug": "kecskemet-te-fk-jablonec"
                 }
             },
             {
                 "id": 23951,
                 "nome": "MFK Karviná",
                 "lastEvent": {
-                    "id": 12965601,
-                    "startDate": "11/10/2024 06:00",
-                    "slug": "mfk-karvina-oks-odra-opole"
+                    "id": 13363421,
+                    "startDate": "21/01/2025 12:00",
+                    "slug": "mfk-karvina-ks-lechia-gdansk"
                 }
             },
             {
                 "id": 6064,
                 "nome": "Bohemians Praha 1905",
                 "lastEvent": {
-                    "id": 12580668,
-                    "startDate": "06/10/2024 10:30",
-                    "slug": "bohemians-praha-1905-sk-sigma-olomouc"
-                }
-            },
-            {
-                "id": 2230,
-                "nome": "FK Pardubice",
-                "lastEvent": {
-                    "id": 12580677,
-                    "startDate": "06/10/2024 08:00",
-                    "slug": "viktoria-plzen-fk-pardubice"
-                }
-            },
-            {
-                "id": 7739,
-                "nome": "Dukla Praha",
-                "lastEvent": {
-                    "id": 12580673,
-                    "startDate": "05/10/2024 11:00",
-                    "slug": "dukla-praha-fk-teplice"
+                    "id": 13363422,
+                    "startDate": "21/01/2025 12:00",
+                    "slug": "puszcza-niepolomice-bohemians-praha-1905"
                 }
             },
             {
                 "id": 2208,
                 "nome": "FK Teplice",
                 "lastEvent": {
-                    "id": 12580673,
-                    "startDate": "05/10/2024 11:00",
-                    "slug": "dukla-praha-fk-teplice"
+                    "id": 13250877,
+                    "startDate": "21/01/2025 09:30",
+                    "slug": "mfk-chrudim-fk-teplice"
+                }
+            },
+            {
+                "id": 2230,
+                "nome": "FK Pardubice",
+                "lastEvent": {
+                    "id": 13363431,
+                    "startDate": "21/01/2025 15:00",
+                    "slug": "fk-pardubice-agf"
+                }
+            },
+            {
+                "id": 7739,
+                "nome": "Dukla Praha",
+                "lastEvent": {
+                    "id": 13363404,
+                    "startDate": "22/01/2025 08:00",
+                    "slug": "dukla-praha-widzew-lodz"
                 }
             },
             {
                 "id": 2221,
                 "nome": "SK Dynamo České Budějovice",
                 "lastEvent": {
-                    "id": 12580681,
-                    "startDate": "05/10/2024 11:00",
-                    "slug": "1-fc-slovacko-sk-dynamo-ceske-budejovice"
+                    "id": 13363418,
+                    "startDate": "21/01/2025 09:30",
+                    "slug": "fc-silon-taborsko-sk-dynamo-ceske-budejovice"
                 }
             }
         ]
@@ -2019,147 +2019,147 @@
         "country": "Ukraine",
         "teams": [
             {
-                "id": 3313,
-                "nome": "Shakhtar Donetsk",
-                "lastEvent": {
-                    "id": 12484454,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "lnz-cherkasy-shakhtar-donetsk"
-                }
-            },
-            {
-                "id": 3316,
-                "nome": "Karpaty Lviv",
-                "lastEvent": {
-                    "id": 12484336,
-                    "startDate": "04/10/2024 12:00",
-                    "slug": "inhulets-petrove-karpaty-lviv"
-                }
-            },
-            {
                 "id": 3305,
                 "nome": "Dynamo Kyiv",
                 "lastEvent": {
-                    "id": 12484456,
-                    "startDate": "06/10/2024 12:00",
-                    "slug": "fc-kryvbas-kryvyi-rih-dynamo-kyiv"
+                    "id": 12764260,
+                    "startDate": "21/01/2025 15:30",
+                    "slug": "dynamo-kyiv-galatasaray"
                 }
             },
             {
-                "id": 258536,
-                "nome": "Polissya Zhytomyr",
+                "id": 3313,
+                "nome": "Shakhtar Donetsk",
                 "lastEvent": {
-                    "id": 12484333,
-                    "startDate": "06/10/2024 07:00",
-                    "slug": "polissya-zhytomyr-vorskla-poltava"
-                }
-            },
-            {
-                "id": 294048,
-                "nome": "FC Kryvbas Kryvyi Rih",
-                "lastEvent": {
-                    "id": 12484456,
-                    "startDate": "06/10/2024 12:00",
-                    "slug": "fc-kryvbas-kryvyi-rih-dynamo-kyiv"
-                }
-            },
-            {
-                "id": 284427,
-                "nome": "LNZ Cherkasy",
-                "lastEvent": {
-                    "id": 12484454,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "lnz-cherkasy-shakhtar-donetsk"
-                }
-            },
-            {
-                "id": 5987,
-                "nome": "Zorya Luhansk",
-                "lastEvent": {
-                    "id": 12484452,
-                    "startDate": "05/10/2024 07:00",
-                    "slug": "veres-rivne-zorya-luhansk"
-                }
-            },
-            {
-                "id": 229644,
-                "nome": "Rukh Lviv",
-                "lastEvent": {
-                    "id": 12484451,
-                    "startDate": "05/10/2024 09:30",
-                    "slug": "rukh-lviv-oleksandria"
-                }
-            },
-            {
-                "id": 25479,
-                "nome": "Oleksandria",
-                "lastEvent": {
-                    "id": 12484451,
-                    "startDate": "05/10/2024 09:30",
-                    "slug": "rukh-lviv-oleksandria"
-                }
-            },
-            {
-                "id": 3309,
-                "nome": "Vorskla Poltava",
-                "lastEvent": {
-                    "id": 12484333,
-                    "startDate": "06/10/2024 07:00",
-                    "slug": "polissya-zhytomyr-vorskla-poltava"
-                }
-            },
-            {
-                "id": 200773,
-                "nome": "Veres Rivne",
-                "lastEvent": {
-                    "id": 12484452,
-                    "startDate": "05/10/2024 07:00",
-                    "slug": "veres-rivne-zorya-luhansk"
-                }
-            },
-            {
-                "id": 138564,
-                "nome": "Obolon Kyiv",
-                "lastEvent": {
-                    "id": 12484447,
-                    "startDate": "04/10/2024 09:30",
-                    "slug": "obolon-kyiv-chornomorets-odesa"
-                }
-            },
-            {
-                "id": 3310,
-                "nome": "Chornomorets Odesa",
-                "lastEvent": {
-                    "id": 12484447,
-                    "startDate": "04/10/2024 09:30",
-                    "slug": "obolon-kyiv-chornomorets-odesa"
-                }
-            },
-            {
-                "id": 200123,
-                "nome": "Inhulets Petrove",
-                "lastEvent": {
-                    "id": 12484336,
-                    "startDate": "04/10/2024 12:00",
-                    "slug": "inhulets-petrove-karpaty-lviv"
+                    "id": 13329680,
+                    "startDate": "15/01/2025 14:00",
+                    "slug": "ludogorets-shakhtar-donetsk"
                 }
             },
             {
                 "id": 200776,
                 "nome": "Kolos Kovalivka",
                 "lastEvent": {
-                    "id": 12632675,
-                    "startDate": "05/10/2024 12:00",
-                    "slug": "fc-livyi-bereh-kyiv-kolos-kovalivka"
+                    "id": 13354115,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "kolos-kovalivka-inhulets-petrove"
+                }
+            },
+            {
+                "id": 5987,
+                "nome": "Zorya Luhansk",
+                "lastEvent": {
+                    "id": 12484390,
+                    "startDate": "14/12/2024 16:00",
+                    "slug": "zorya-luhansk-chornomorets-odesa"
+                }
+            },
+            {
+                "id": 229644,
+                "nome": "Rukh Lviv",
+                "lastEvent": {
+                    "id": 12484382,
+                    "startDate": "15/12/2024 13:30",
+                    "slug": "rukh-lviv-obolon-kyiv"
+                }
+            },
+            {
+                "id": 200773,
+                "nome": "Veres Rivne",
+                "lastEvent": {
+                    "id": 13363427,
+                    "startDate": "21/01/2025 13:00",
+                    "slug": "veres-rivne-gks-katowice"
+                }
+            },
+            {
+                "id": 258536,
+                "nome": "Polissya Zhytomyr",
+                "lastEvent": {
+                    "id": 13354120,
+                    "startDate": "18/01/2025 12:00",
+                    "slug": "polissya-zhytomyr-ks-lechia-gdansk"
+                }
+            },
+            {
+                "id": 25479,
+                "nome": "Oleksandria",
+                "lastEvent": {
+                    "id": 13360025,
+                    "startDate": "20/01/2025 14:00",
+                    "slug": "dinamo-batumi-oleksandria"
+                }
+            },
+            {
+                "id": 284427,
+                "nome": "LNZ Cherkasy",
+                "lastEvent": {
+                    "id": 12484386,
+                    "startDate": "14/12/2024 11:00",
+                    "slug": "lnz-cherkasy-oleksandria"
+                }
+            },
+            {
+                "id": 3316,
+                "nome": "Karpaty Lviv",
+                "lastEvent": {
+                    "id": 12484389,
+                    "startDate": "14/12/2024 13:30",
+                    "slug": "fc-kryvbas-kryvyi-rih-karpaty-lviv"
+                }
+            },
+            {
+                "id": 294048,
+                "nome": "FC Kryvbas Kryvyi Rih",
+                "lastEvent": {
+                    "id": 12484389,
+                    "startDate": "14/12/2024 13:30",
+                    "slug": "fc-kryvbas-kryvyi-rih-karpaty-lviv"
+                }
+            },
+            {
+                "id": 3309,
+                "nome": "Vorskla Poltava",
+                "lastEvent": {
+                    "id": 13340630,
+                    "startDate": "21/01/2025 08:00",
+                    "slug": "vorskla-poltava-banik-ostrava"
                 }
             },
             {
                 "id": 388209,
                 "nome": "FC Livyi Bereh Kyiv",
                 "lastEvent": {
-                    "id": 12632675,
-                    "startDate": "05/10/2024 12:00",
-                    "slug": "fc-livyi-bereh-kyiv-kolos-kovalivka"
+                    "id": 13372941,
+                    "startDate": "22/01/2025 10:30",
+                    "slug": "fc-livyi-bereh-kyiv-metalist-1925"
+                }
+            },
+            {
+                "id": 138564,
+                "nome": "Obolon Kyiv",
+                "lastEvent": {
+                    "id": 12484382,
+                    "startDate": "15/12/2024 13:30",
+                    "slug": "rukh-lviv-obolon-kyiv"
+                }
+            },
+            {
+                "id": 3310,
+                "nome": "Chornomorets Odesa",
+                "lastEvent": {
+                    "id": 12484390,
+                    "startDate": "14/12/2024 16:00",
+                    "slug": "zorya-luhansk-chornomorets-odesa"
+                }
+            },
+            {
+                "id": 200123,
+                "nome": "Inhulets Petrove",
+                "lastEvent": {
+                    "id": 13354115,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "kolos-kovalivka-inhulets-petrove"
                 }
             }
         ]
@@ -2170,165 +2170,165 @@
         "country": "Netherlands",
         "teams": [
             {
-                "id": 2955,
-                "nome": "FC Twente",
+                "id": 2950,
+                "nome": "AZ Alkmaar",
                 "lastEvent": {
-                    "id": 12448375,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "feyenoord-fc-twente"
+                    "id": 12448301,
+                    "startDate": "18/01/2025 17:45",
+                    "slug": "az-alkmaar-fc-utrecht"
                 }
             },
             {
                 "id": 2953,
                 "nome": "Ajax",
                 "lastEvent": {
-                    "id": 12448376,
-                    "startDate": "06/10/2024 11:45",
-                    "slug": "ajax-fc-groningen"
+                    "id": 12448308,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "sc-heerenveen-ajax"
                 }
             },
             {
-                "id": 2952,
-                "nome": "PSV Eindhoven",
+                "id": 2955,
+                "nome": "FC Twente",
                 "lastEvent": {
-                    "id": 12448373,
-                    "startDate": "05/10/2024 15:00",
-                    "slug": "sparta-rotterdam-psv-eindhoven"
-                }
-            },
-            {
-                "id": 2950,
-                "nome": "AZ Alkmaar",
-                "lastEvent": {
-                    "id": 12448378,
-                    "startDate": "06/10/2024 15:00",
-                    "slug": "fortuna-sittard-az-alkmaar"
-                }
-            },
-            {
-                "id": 2951,
-                "nome": "FC Groningen",
-                "lastEvent": {
-                    "id": 12965111,
-                    "startDate": "10/10/2024 14:00",
-                    "slug": "fc-groningen-viking-fk"
+                    "id": 12448305,
+                    "startDate": "19/01/2025 11:15",
+                    "slug": "fc-twente-nac-breda"
                 }
             },
             {
                 "id": 2959,
                 "nome": "Feyenoord",
                 "lastEvent": {
-                    "id": 12448375,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "feyenoord-fc-twente"
+                    "id": 12448311,
+                    "startDate": "18/01/2025 19:00",
+                    "slug": "willem-ii-tilburg-feyenoord"
                 }
             },
             {
-                "id": 2960,
-                "nome": "Sparta Rotterdam",
+                "id": 2952,
+                "nome": "PSV Eindhoven",
                 "lastEvent": {
-                    "id": 12448373,
-                    "startDate": "05/10/2024 15:00",
-                    "slug": "sparta-rotterdam-psv-eindhoven"
-                }
-            },
-            {
-                "id": 2977,
-                "nome": "Heracles Almelo",
-                "lastEvent": {
-                    "id": 12965109,
-                    "startDate": "10/10/2024 08:15",
-                    "slug": "heracles-almelo-fortuna-dusseldorf"
-                }
-            },
-            {
-                "id": 2979,
-                "nome": "Go Ahead Eagles",
-                "lastEvent": {
-                    "id": 12448377,
-                    "startDate": "06/10/2024 07:15",
-                    "slug": "go-ahead-eagles-heracles-almelo"
-                }
-            },
-            {
-                "id": 2948,
-                "nome": "FC Utrecht",
-                "lastEvent": {
-                    "id": 12448374,
-                    "startDate": "05/10/2024 16:00",
-                    "slug": "rkc-waalwijk-fc-utrecht"
-                }
-            },
-            {
-                "id": 2962,
-                "nome": "NEC Nijmegen",
-                "lastEvent": {
-                    "id": 12448370,
-                    "startDate": "05/10/2024 13:45",
-                    "slug": "nec-nijmegen-nac-breda"
+                    "id": 12764217,
+                    "startDate": "21/01/2025 20:00",
+                    "slug": "fk-crvena-zvezda-psv-eindhoven"
                 }
             },
             {
                 "id": 2957,
                 "nome": "Fortuna Sittard",
                 "lastEvent": {
-                    "id": 12448378,
-                    "startDate": "06/10/2024 15:00",
-                    "slug": "fortuna-sittard-az-alkmaar"
+                    "id": 12448304,
+                    "startDate": "19/01/2025 15:45",
+                    "slug": "nec-nijmegen-fortuna-sittard"
+                }
+            },
+            {
+                "id": 2948,
+                "nome": "FC Utrecht",
+                "lastEvent": {
+                    "id": 12448301,
+                    "startDate": "18/01/2025 17:45",
+                    "slug": "az-alkmaar-fc-utrecht"
                 }
             },
             {
                 "id": 2947,
                 "nome": "NAC Breda",
                 "lastEvent": {
-                    "id": 12962880,
-                    "startDate": "10/10/2024 08:00",
-                    "slug": "ado-den-haag-nac-breda"
-                }
-            },
-            {
-                "id": 2956,
-                "nome": "RKC Waalwijk",
-                "lastEvent": {
-                    "id": 12448374,
-                    "startDate": "05/10/2024 16:00",
-                    "slug": "rkc-waalwijk-fc-utrecht"
-                }
-            },
-            {
-                "id": 2961,
-                "nome": "Willem II Tilburg",
-                "lastEvent": {
-                    "id": 12448371,
-                    "startDate": "04/10/2024 15:00",
-                    "slug": "almere-city-fc-willem-ii-tilburg"
+                    "id": 12448305,
+                    "startDate": "19/01/2025 11:15",
+                    "slug": "fc-twente-nac-breda"
                 }
             },
             {
                 "id": 2971,
                 "nome": "PEC Zwolle",
                 "lastEvent": {
-                    "id": 12448372,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "pec-zwolle-sc-heerenveen"
+                    "id": 12448307,
+                    "startDate": "18/01/2025 15:30",
+                    "slug": "pec-zwolle-psv-eindhoven"
+                }
+            },
+            {
+                "id": 2961,
+                "nome": "Willem II Tilburg",
+                "lastEvent": {
+                    "id": 12448311,
+                    "startDate": "18/01/2025 19:00",
+                    "slug": "willem-ii-tilburg-feyenoord"
+                }
+            },
+            {
+                "id": 2962,
+                "nome": "NEC Nijmegen",
+                "lastEvent": {
+                    "id": 12448304,
+                    "startDate": "19/01/2025 15:45",
+                    "slug": "nec-nijmegen-fortuna-sittard"
+                }
+            },
+            {
+                "id": 2979,
+                "nome": "Go Ahead Eagles",
+                "lastEvent": {
+                    "id": 12448303,
+                    "startDate": "18/01/2025 20:00",
+                    "slug": "go-ahead-eagles-fc-groningen"
                 }
             },
             {
                 "id": 2964,
                 "nome": "SC Heerenveen",
                 "lastEvent": {
-                    "id": 12448372,
-                    "startDate": "06/10/2024 09:30",
-                    "slug": "pec-zwolle-sc-heerenveen"
+                    "id": 12448308,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "sc-heerenveen-ajax"
+                }
+            },
+            {
+                "id": 2960,
+                "nome": "Sparta Rotterdam",
+                "lastEvent": {
+                    "id": 12448309,
+                    "startDate": "19/01/2025 19:00",
+                    "slug": "sparta-rotterdam-rkc-waalwijk"
+                }
+            },
+            {
+                "id": 2951,
+                "nome": "FC Groningen",
+                "lastEvent": {
+                    "id": 12448303,
+                    "startDate": "18/01/2025 20:00",
+                    "slug": "go-ahead-eagles-fc-groningen"
+                }
+            },
+            {
+                "id": 2977,
+                "nome": "Heracles Almelo",
+                "lastEvent": {
+                    "id": 12448300,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "almere-city-fc-heracles-almelo"
+                }
+            },
+            {
+                "id": 2956,
+                "nome": "RKC Waalwijk",
+                "lastEvent": {
+                    "id": 12448309,
+                    "startDate": "19/01/2025 19:00",
+                    "slug": "sparta-rotterdam-rkc-waalwijk"
                 }
             },
             {
                 "id": 2990,
                 "nome": "Almere City FC",
                 "lastEvent": {
-                    "id": 12448371,
-                    "startDate": "04/10/2024 15:00",
-                    "slug": "almere-city-fc-willem-ii-tilburg"
+                    "id": 12448300,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "almere-city-fc-heracles-almelo"
                 }
             }
         ]
@@ -3685,6 +3685,1446 @@
                     "id": 12469460,
                     "startDate": "11/01/2025 15:00",
                     "slug": "burton-albion-stevenage"
+                }
+            }
+        ]
+    },
+    "Liga Portugal Betclic": {
+        "league_id": "238",
+        "season_id": "63670",
+        "country": "Portugal",
+        "teams": [
+            {
+                "id": 3001,
+                "nome": "Sporting",
+                "lastEvent": {
+                    "id": 12514205,
+                    "startDate": "18/01/2025 18:00",
+                    "slug": "rio-ave-sporting"
+                }
+            },
+            {
+                "id": 3002,
+                "nome": "FC Porto",
+                "lastEvent": {
+                    "id": 12514206,
+                    "startDate": "19/01/2025 20:30",
+                    "slug": "gil-vicente-fc-porto"
+                }
+            },
+            {
+                "id": 3006,
+                "nome": "Benfica",
+                "lastEvent": {
+                    "id": 12764100,
+                    "startDate": "21/01/2025 20:00",
+                    "slug": "benfica-barcelona"
+                }
+            },
+            {
+                "id": 36365,
+                "nome": "Casa Pia",
+                "lastEvent": {
+                    "id": 12514204,
+                    "startDate": "20/01/2025 20:15",
+                    "slug": "casa-pia-boavista"
+                }
+            },
+            {
+                "id": 3011,
+                "nome": "Santa Clara",
+                "lastEvent": {
+                    "id": 12514197,
+                    "startDate": "18/01/2025 15:30",
+                    "slug": "estoril-praia-santa-clara"
+                }
+            },
+            {
+                "id": 4500,
+                "nome": "Estoril Praia",
+                "lastEvent": {
+                    "id": 12514197,
+                    "startDate": "18/01/2025 15:30",
+                    "slug": "estoril-praia-santa-clara"
+                }
+            },
+            {
+                "id": 3014,
+                "nome": "Moreirense",
+                "lastEvent": {
+                    "id": 12514200,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "moreirense-sc-farense"
+                }
+            },
+            {
+                "id": 2999,
+                "nome": "Sporting Braga",
+                "lastEvent": {
+                    "id": 12514198,
+                    "startDate": "19/01/2025 18:00",
+                    "slug": "cf-estrela-amadora-sporting-braga"
+                }
+            },
+            {
+                "id": 3010,
+                "nome": "Gil Vicente",
+                "lastEvent": {
+                    "id": 12514206,
+                    "startDate": "19/01/2025 20:30",
+                    "slug": "gil-vicente-fc-porto"
+                }
+            },
+            {
+                "id": 3009,
+                "nome": "Vitória SC",
+                "lastEvent": {
+                    "id": 12514199,
+                    "startDate": "18/01/2025 20:30",
+                    "slug": "fc-arouca-vitoria-sc"
+                }
+            },
+            {
+                "id": 3036,
+                "nome": "Rio Ave",
+                "lastEvent": {
+                    "id": 12514205,
+                    "startDate": "18/01/2025 18:00",
+                    "slug": "rio-ave-sporting"
+                }
+            },
+            {
+                "id": 49531,
+                "nome": "Famalicão",
+                "lastEvent": {
+                    "id": 12514202,
+                    "startDate": "17/01/2025 20:15",
+                    "slug": "famalicao-benfica"
+                }
+            },
+            {
+                "id": 3013,
+                "nome": "CD Nacional",
+                "lastEvent": {
+                    "id": 12514201,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "avs-futebol-sad-cd-nacional"
+                }
+            },
+            {
+                "id": 483088,
+                "nome": "AVS - Futebol SAD",
+                "lastEvent": {
+                    "id": 12514201,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "avs-futebol-sad-cd-nacional"
+                }
+            },
+            {
+                "id": 3035,
+                "nome": "CF Estrela Amadora",
+                "lastEvent": {
+                    "id": 12514198,
+                    "startDate": "19/01/2025 18:00",
+                    "slug": "cf-estrela-amadora-sporting-braga"
+                }
+            },
+            {
+                "id": 2998,
+                "nome": "SC Farense",
+                "lastEvent": {
+                    "id": 12514200,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "moreirense-sc-farense"
+                }
+            },
+            {
+                "id": 25777,
+                "nome": "FC Arouca",
+                "lastEvent": {
+                    "id": 12514199,
+                    "startDate": "18/01/2025 20:30",
+                    "slug": "fc-arouca-vitoria-sc"
+                }
+            },
+            {
+                "id": 2995,
+                "nome": "Boavista",
+                "lastEvent": {
+                    "id": 12514204,
+                    "startDate": "20/01/2025 20:15",
+                    "slug": "casa-pia-boavista"
+                }
+            }
+        ]
+    },
+    "UEFA Europa League": {
+        "league_id": "679",
+        "season_id": "61645",
+        "country": "Europe",
+        "teams": [
+            {
+                "id": 2900,
+                "nome": "RSC Anderlecht",
+                "lastEvent": {
+                    "id": 12421195,
+                    "startDate": "19/01/2025 12:30",
+                    "slug": "kv-kortrijk-rsc-anderlecht"
+                }
+            },
+            {
+                "id": 2699,
+                "nome": "Lazio",
+                "lastEvent": {
+                    "id": 12504418,
+                    "startDate": "19/01/2025 17:00",
+                    "slug": "hellas-verona-lazio"
+                }
+            },
+            {
+                "id": 35,
+                "nome": "Manchester United",
+                "lastEvent": {
+                    "id": 12436883,
+                    "startDate": "19/01/2025 14:00",
+                    "slug": "manchester-united-brighton-and-hove-albion"
+                }
+            },
+            {
+                "id": 3301,
+                "nome": "FCSB",
+                "lastEvent": {
+                    "id": 12487757,
+                    "startDate": "17/01/2025 18:00",
+                    "slug": "fc-hermannstadt-fcsb"
+                }
+            },
+            {
+                "id": 3061,
+                "nome": "Galatasaray",
+                "lastEvent": {
+                    "id": 12764260,
+                    "startDate": "21/01/2025 15:30",
+                    "slug": "dynamo-kyiv-galatasaray"
+                }
+            },
+            {
+                "id": 2351,
+                "nome": "Rangers",
+                "lastEvent": {
+                    "id": 13247412,
+                    "startDate": "19/01/2025 14:15",
+                    "slug": "fraserburgh-fc-rangers"
+                }
+            },
+            {
+                "id": 2674,
+                "nome": "Eintracht Frankfurt",
+                "lastEvent": {
+                    "id": 12499695,
+                    "startDate": "17/01/2025 19:30",
+                    "slug": "eintracht-frankfurt-borussia-dortmund"
+                }
+            },
+            {
+                "id": 2825,
+                "nome": "Athletic Club",
+                "lastEvent": {
+                    "id": 12437834,
+                    "startDate": "19/01/2025 13:00",
+                    "slug": "athletic-club-celta-vigo"
+                }
+            },
+            {
+                "id": 3002,
+                "nome": "FC Porto",
+                "lastEvent": {
+                    "id": 12514206,
+                    "startDate": "19/01/2025 20:30",
+                    "slug": "gil-vicente-fc-porto"
+                }
+            },
+            {
+                "id": 33,
+                "nome": "Tottenham Hotspur",
+                "lastEvent": {
+                    "id": 12436448,
+                    "startDate": "19/01/2025 14:00",
+                    "slug": "everton-tottenham-hotspur"
+                }
+            },
+            {
+                "id": 1649,
+                "nome": "Olympique Lyonnais",
+                "lastEvent": {
+                    "id": 12450954,
+                    "startDate": "18/01/2025 20:05",
+                    "slug": "toulouse-olympique-lyonnais"
+                }
+            },
+            {
+                "id": 1925,
+                "nome": "Ferencváros TC",
+                "lastEvent": {
+                    "id": 13336478,
+                    "startDate": "15/01/2025 13:00",
+                    "slug": "piast-gliwice-ferencvaros-tc"
+                }
+            },
+            {
+                "id": 656,
+                "nome": "Bodø/Glimt",
+                "lastEvent": {
+                    "id": 13328800,
+                    "startDate": "15/01/2025 13:00",
+                    "slug": "ac-sparta-praha-bodoglimt"
+                }
+            },
+            {
+                "id": 2702,
+                "nome": "Roma",
+                "lastEvent": {
+                    "id": 12504424,
+                    "startDate": "17/01/2025 19:45",
+                    "slug": "genoa-roma"
+                }
+            },
+            {
+                "id": 4860,
+                "nome": "Royale Union Saint-Gilloise",
+                "lastEvent": {
+                    "id": 12421192,
+                    "startDate": "19/01/2025 15:00",
+                    "slug": "royale-union-saint-gilloise-oud-heverlee-leuven"
+                }
+            },
+            {
+                "id": 2999,
+                "nome": "Sporting Braga",
+                "lastEvent": {
+                    "id": 12514198,
+                    "startDate": "19/01/2025 18:00",
+                    "slug": "cf-estrela-amadora-sporting-braga"
+                }
+            },
+            {
+                "id": 4502,
+                "nome": "Viktoria Plzeň",
+                "lastEvent": {
+                    "id": 13342181,
+                    "startDate": "16/01/2025 14:15",
+                    "slug": "viktoria-plzen-aik"
+                }
+            },
+            {
+                "id": 3245,
+                "nome": "Olympiacos FC",
+                "lastEvent": {
+                    "id": 12568311,
+                    "startDate": "19/01/2025 13:00",
+                    "slug": "atromitos-athens-olympiacos-fc"
+                }
+            },
+            {
+                "id": 3052,
+                "nome": "Fenerbahçe",
+                "lastEvent": {
+                    "id": 12530790,
+                    "startDate": "19/01/2025 16:00",
+                    "slug": "adana-demirspor-fenerbahce"
+                }
+            },
+            {
+                "id": 2950,
+                "nome": "AZ Alkmaar",
+                "lastEvent": {
+                    "id": 12448301,
+                    "startDate": "18/01/2025 17:45",
+                    "slug": "az-alkmaar-fc-utrecht"
+                }
+            },
+            {
+                "id": 2953,
+                "nome": "Ajax",
+                "lastEvent": {
+                    "id": 12448308,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "sc-heerenveen-ajax"
+                }
+            },
+            {
+                "id": 2824,
+                "nome": "Real Sociedad",
+                "lastEvent": {
+                    "id": 12437844,
+                    "startDate": "19/01/2025 20:00",
+                    "slug": "valencia-real-sociedad"
+                }
+            },
+            {
+                "id": 3251,
+                "nome": "PAOK",
+                "lastEvent": {
+                    "id": 12568306,
+                    "startDate": "19/01/2025 17:00",
+                    "slug": "aris-thessaloniki-paok"
+                }
+            },
+            {
+                "id": 1289,
+                "nome": "FC Midtjylland",
+                "lastEvent": {
+                    "id": 13295937,
+                    "startDate": "15/01/2025 15:00",
+                    "slug": "red-bull-salzburg-fc-midtjylland"
+                }
+            },
+            {
+                "id": 2569,
+                "nome": "TSG Hoffenheim",
+                "lastEvent": {
+                    "id": 12499715,
+                    "startDate": "18/01/2025 14:30",
+                    "slug": "holstein-kiel-tsg-hoffenheim"
+                }
+            },
+            {
+                "id": 3050,
+                "nome": "Beşiktaş",
+                "lastEvent": {
+                    "id": 12530784,
+                    "startDate": "18/01/2025 16:00",
+                    "slug": "samsunspor-besiktas"
+                }
+            },
+            {
+                "id": 5198,
+                "nome": "Maccabi Tel Aviv",
+                "lastEvent": {
+                    "id": 12463890,
+                    "startDate": "18/01/2025 18:00",
+                    "slug": "maccabi-netanya-maccabi-tel-aviv"
+                }
+            },
+            {
+                "id": 2216,
+                "nome": "SK Slavia Praha",
+                "lastEvent": {
+                    "id": 13329682,
+                    "startDate": "19/01/2025 14:30",
+                    "slug": "philadelphia-union-sk-slavia-praha"
+                }
+            },
+            {
+                "id": 2955,
+                "nome": "FC Twente",
+                "lastEvent": {
+                    "id": 12448305,
+                    "startDate": "19/01/2025 11:15",
+                    "slug": "fc-twente-nac-breda"
+                }
+            },
+            {
+                "id": 1762,
+                "nome": "IF Elfsborg",
+                "lastEvent": {
+                    "id": 13345903,
+                    "startDate": "16/01/2025 15:00",
+                    "slug": "stal-mielec-if-elfsborg"
+                }
+            },
+            {
+                "id": 43840,
+                "nome": "Ludogorets",
+                "lastEvent": {
+                    "id": 13329680,
+                    "startDate": "15/01/2025 14:00",
+                    "slug": "ludogorets-shakhtar-donetsk"
+                }
+            },
+            {
+                "id": 1892,
+                "nome": "Malmö FF",
+                "lastEvent": {
+                    "id": 13336254,
+                    "startDate": "16/01/2025 14:30",
+                    "slug": "fc-slovan-liberec-malmo-ff"
+                }
+            },
+            {
+                "id": 68718,
+                "nome": "RFS",
+                "lastEvent": {
+                    "id": 13338458,
+                    "startDate": "18/01/2025 16:00",
+                    "slug": "rfs-fk-zalgiris"
+                }
+            },
+            {
+                "id": 5962,
+                "nome": "Qarabağ",
+                "lastEvent": {
+                    "id": 12797943,
+                    "startDate": "17/01/2025 15:00",
+                    "slug": "samaxi-fk-qarabag"
+                }
+            },
+            {
+                "id": 1661,
+                "nome": "Nice",
+                "lastEvent": {
+                    "id": 12450953,
+                    "startDate": "17/01/2025 20:05",
+                    "slug": "nice-lille"
+                }
+            },
+            {
+                "id": 3305,
+                "nome": "Dynamo Kyiv",
+                "lastEvent": {
+                    "id": 12764260,
+                    "startDate": "21/01/2025 15:30",
+                    "slug": "dynamo-kyiv-galatasaray"
+                }
+            }
+        ]
+    },
+    "HNL": {
+        "league_id": "170",
+        "season_id": "61243",
+        "country": "Croatia",
+        "teams": [
+            {
+                "id": 2032,
+                "nome": "GNK Dinamo Zagreb",
+                "lastEvent": {
+                    "id": 13340574,
+                    "startDate": "15/01/2025 14:00",
+                    "slug": "jagiellonia-bialystok-gnk-dinamo-zagreb"
+                }
+            },
+            {
+                "id": 36246,
+                "nome": "NK Lokomotiva Zagreb",
+                "lastEvent": {
+                    "id": 13353605,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "nk-varazdin-nk-lokomotiva-zagreb"
+                }
+            },
+            {
+                "id": 25529,
+                "nome": "NK Istra 1961",
+                "lastEvent": {
+                    "id": 13356600,
+                    "startDate": "18/01/2025 12:30",
+                    "slug": "nk-istra-1961-fc-koper"
+                }
+            },
+            {
+                "id": 231380,
+                "nome": "NK Varaždin",
+                "lastEvent": {
+                    "id": 13353605,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "nk-varazdin-nk-lokomotiva-zagreb"
+                }
+            },
+            {
+                "id": 2029,
+                "nome": "HNK Šibenik",
+                "lastEvent": {
+                    "id": 13350117,
+                    "startDate": "17/01/2025 16:00",
+                    "slug": "gosk-gabela-hnk-sibenik"
+                }
+            },
+            {
+                "id": 2039,
+                "nome": "HNK Rijeka",
+                "lastEvent": {
+                    "id": 13354140,
+                    "startDate": "18/01/2025 13:30",
+                    "slug": "grazer-ak-1902-hnk-rijeka"
+                }
+            },
+            {
+                "id": 2042,
+                "nome": "NK Slaven Belupo",
+                "lastEvent": {
+                    "id": 13351572,
+                    "startDate": "17/01/2025 10:00",
+                    "slug": "nd-primorje-nk-slaven-belupo"
+                }
+            },
+            {
+                "id": 2040,
+                "nome": "NK Osijek",
+                "lastEvent": {
+                    "id": 13354126,
+                    "startDate": "18/01/2025 10:30",
+                    "slug": "nk-celje-nk-osijek"
+                }
+            },
+            {
+                "id": 43917,
+                "nome": "HNK Gorica",
+                "lastEvent": {
+                    "id": 13352513,
+                    "startDate": "17/01/2025 10:00",
+                    "slug": "nk-dugopolje-hnk-gorica"
+                }
+            },
+            {
+                "id": 2036,
+                "nome": "HNK Hajduk Split",
+                "lastEvent": {
+                    "id": 13325079,
+                    "startDate": "15/01/2025 10:00",
+                    "slug": "real-murcia-hnk-hajduk-split"
+                }
+            }
+        ]
+    },
+    "Swiss Super League": {
+        "league_id": "215",
+        "season_id": "61658",
+        "country": "Switzerland",
+        "teams": [
+            {
+                "id": 2501,
+                "nome": "Basel",
+                "lastEvent": {
+                    "id": 12439800,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "basel-fc-lugano"
+                }
+            },
+            {
+                "id": 2445,
+                "nome": "Young Boys",
+                "lastEvent": {
+                    "id": 12439798,
+                    "startDate": "18/01/2025 17:00",
+                    "slug": "fc-winterthur-young-boys"
+                }
+            },
+            {
+                "id": 2452,
+                "nome": "FC Sion",
+                "lastEvent": {
+                    "id": 12439797,
+                    "startDate": "18/01/2025 17:00",
+                    "slug": "fc-sion-grasshopper-club-zurich"
+                }
+            },
+            {
+                "id": 2443,
+                "nome": "FC Lugano",
+                "lastEvent": {
+                    "id": 12439800,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "basel-fc-lugano"
+                }
+            },
+            {
+                "id": 2450,
+                "nome": "FC Zürich",
+                "lastEvent": {
+                    "id": 12439872,
+                    "startDate": "19/01/2025 13:15",
+                    "slug": "yverdon-sport-fc-fc-zurich"
+                }
+            },
+            {
+                "id": 2448,
+                "nome": "Servette FC",
+                "lastEvent": {
+                    "id": 12439820,
+                    "startDate": "18/01/2025 19:30",
+                    "slug": "servette-fc-fc-st-gallen-1879"
+                }
+            },
+            {
+                "id": 2446,
+                "nome": "FC Lausanne-Sport",
+                "lastEvent": {
+                    "id": 12439877,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "fc-luzern-fc-lausanne-sport"
+                }
+            },
+            {
+                "id": 2453,
+                "nome": "FC Luzern",
+                "lastEvent": {
+                    "id": 12439877,
+                    "startDate": "19/01/2025 15:30",
+                    "slug": "fc-luzern-fc-lausanne-sport"
+                }
+            },
+            {
+                "id": 2449,
+                "nome": "Grasshopper Club Zürich",
+                "lastEvent": {
+                    "id": 12439797,
+                    "startDate": "18/01/2025 17:00",
+                    "slug": "fc-sion-grasshopper-club-zurich"
+                }
+            },
+            {
+                "id": 2442,
+                "nome": "FC St. Gallen 1879",
+                "lastEvent": {
+                    "id": 12439820,
+                    "startDate": "18/01/2025 19:30",
+                    "slug": "servette-fc-fc-st-gallen-1879"
+                }
+            },
+            {
+                "id": 2460,
+                "nome": "Yverdon-Sport FC",
+                "lastEvent": {
+                    "id": 12439872,
+                    "startDate": "19/01/2025 13:15",
+                    "slug": "yverdon-sport-fc-fc-zurich"
+                }
+            },
+            {
+                "id": 2458,
+                "nome": "FC Winterthur",
+                "lastEvent": {
+                    "id": 12439798,
+                    "startDate": "18/01/2025 17:00",
+                    "slug": "fc-winterthur-young-boys"
+                }
+            }
+        ]
+    },
+    "Scottish Premiership": {
+        "league_id": "36",
+        "season_id": "62408",
+        "country": "Scotland",
+        "teams": [
+            {
+                "id": 2351,
+                "nome": "Rangers",
+                "lastEvent": {
+                    "id": 13247412,
+                    "startDate": "19/01/2025 14:15",
+                    "slug": "fraserburgh-fc-rangers"
+                }
+            },
+            {
+                "id": 2359,
+                "nome": "St. Mirren",
+                "lastEvent": {
+                    "id": 13247406,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "queen-of-the-south-st-mirren"
+                }
+            },
+            {
+                "id": 2352,
+                "nome": "Celtic",
+                "lastEvent": {
+                    "id": 13247410,
+                    "startDate": "18/01/2025 17:30",
+                    "slug": "celtic-kilmarnock"
+                }
+            },
+            {
+                "id": 2349,
+                "nome": "Dundee United",
+                "lastEvent": {
+                    "id": 13247413,
+                    "startDate": "20/01/2025 20:00",
+                    "slug": "dundee-fc-dundee-united"
+                }
+            },
+            {
+                "id": 2353,
+                "nome": "Heart of Midlothian",
+                "lastEvent": {
+                    "id": 13247398,
+                    "startDate": "17/01/2025 19:45",
+                    "slug": "brechin-city-heart-of-midlothian"
+                }
+            },
+            {
+                "id": 2355,
+                "nome": "Aberdeen",
+                "lastEvent": {
+                    "id": 13247403,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "elgin-city-aberdeen"
+                }
+            },
+            {
+                "id": 2354,
+                "nome": "Hibernian",
+                "lastEvent": {
+                    "id": 13247405,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "clydebank-fc-hibernian"
+                }
+            },
+            {
+                "id": 2347,
+                "nome": "Kilmarnock",
+                "lastEvent": {
+                    "id": 13247410,
+                    "startDate": "18/01/2025 17:30",
+                    "slug": "celtic-kilmarnock"
+                }
+            },
+            {
+                "id": 2357,
+                "nome": "Dundee FC",
+                "lastEvent": {
+                    "id": 13247413,
+                    "startDate": "20/01/2025 20:00",
+                    "slug": "dundee-fc-dundee-united"
+                }
+            },
+            {
+                "id": 2346,
+                "nome": "Motherwell",
+                "lastEvent": {
+                    "id": 13247409,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "st-johnstone-motherwell"
+                }
+            },
+            {
+                "id": 2365,
+                "nome": "Ross County",
+                "lastEvent": {
+                    "id": 13247408,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "ross-county-livingston"
+                }
+            },
+            {
+                "id": 2348,
+                "nome": "St. Johnstone",
+                "lastEvent": {
+                    "id": 13247409,
+                    "startDate": "18/01/2025 15:00",
+                    "slug": "st-johnstone-motherwell"
+                }
+            }
+        ]
+    },
+    "Trendyol Süper Lig": {
+        "league_id": "52",
+        "season_id": "63814",
+        "country": "Turkey",
+        "teams": [
+            {
+                "id": 3050,
+                "nome": "Beşiktaş",
+                "lastEvent": {
+                    "id": 12530784,
+                    "startDate": "18/01/2025 16:00",
+                    "slug": "samsunspor-besiktas"
+                }
+            },
+            {
+                "id": 3052,
+                "nome": "Fenerbahçe",
+                "lastEvent": {
+                    "id": 12530790,
+                    "startDate": "19/01/2025 16:00",
+                    "slug": "adana-demirspor-fenerbahce"
+                }
+            },
+            {
+                "id": 3061,
+                "nome": "Galatasaray",
+                "lastEvent": {
+                    "id": 12764260,
+                    "startDate": "21/01/2025 15:30",
+                    "slug": "dynamo-kyiv-galatasaray"
+                }
+            },
+            {
+                "id": 3054,
+                "nome": "Göztepe",
+                "lastEvent": {
+                    "id": 12530785,
+                    "startDate": "19/01/2025 10:30",
+                    "slug": "antalyaspor-goztepe"
+                }
+            },
+            {
+                "id": 3053,
+                "nome": "Samsunspor",
+                "lastEvent": {
+                    "id": 12530784,
+                    "startDate": "18/01/2025 16:00",
+                    "slug": "samsunspor-besiktas"
+                }
+            },
+            {
+                "id": 3086,
+                "nome": "Başakşehir FK",
+                "lastEvent": {
+                    "id": 12530791,
+                    "startDate": "18/01/2025 10:30",
+                    "slug": "basaksehir-fk-caykur-rizespor"
+                }
+            },
+            {
+                "id": 7040,
+                "nome": "Eyüpspor",
+                "lastEvent": {
+                    "id": 12530787,
+                    "startDate": "19/01/2025 16:00",
+                    "slug": "eyupspor-alanyaspor"
+                }
+            },
+            {
+                "id": 3051,
+                "nome": "Trabzonspor",
+                "lastEvent": {
+                    "id": 12530792,
+                    "startDate": "20/01/2025 17:00",
+                    "slug": "sivasspor-trabzonspor"
+                }
+            },
+            {
+                "id": 6362,
+                "nome": "Alanyaspor",
+                "lastEvent": {
+                    "id": 12530787,
+                    "startDate": "19/01/2025 16:00",
+                    "slug": "eyupspor-alanyaspor"
+                }
+            },
+            {
+                "id": 3085,
+                "nome": "Konyaspor",
+                "lastEvent": {
+                    "id": 12530789,
+                    "startDate": "19/01/2025 13:00",
+                    "slug": "kasimpasa-konyaspor"
+                }
+            },
+            {
+                "id": 6063,
+                "nome": "Kasımpaşa",
+                "lastEvent": {
+                    "id": 12530789,
+                    "startDate": "19/01/2025 13:00",
+                    "slug": "kasimpasa-konyaspor"
+                }
+            },
+            {
+                "id": 3064,
+                "nome": "Çaykur Rizespor",
+                "lastEvent": {
+                    "id": 12530791,
+                    "startDate": "18/01/2025 10:30",
+                    "slug": "basaksehir-fk-caykur-rizespor"
+                }
+            },
+            {
+                "id": 5138,
+                "nome": "Gaziantep FK",
+                "lastEvent": {
+                    "id": 12530782,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "bodrum-gaziantep-fk"
+                }
+            },
+            {
+                "id": 3076,
+                "nome": "Sivasspor",
+                "lastEvent": {
+                    "id": 12530792,
+                    "startDate": "20/01/2025 17:00",
+                    "slug": "sivasspor-trabzonspor"
+                }
+            },
+            {
+                "id": 3056,
+                "nome": "Antalyaspor",
+                "lastEvent": {
+                    "id": 12530785,
+                    "startDate": "19/01/2025 10:30",
+                    "slug": "antalyaspor-goztepe"
+                }
+            },
+            {
+                "id": 202390,
+                "nome": "Bodrum",
+                "lastEvent": {
+                    "id": 12530782,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "bodrum-gaziantep-fk"
+                }
+            },
+            {
+                "id": 3101,
+                "nome": "Adana Demirspor",
+                "lastEvent": {
+                    "id": 12530790,
+                    "startDate": "19/01/2025 16:00",
+                    "slug": "adana-demirspor-fenerbahce"
+                }
+            },
+            {
+                "id": 3072,
+                "nome": "Kayserispor",
+                "lastEvent": {
+                    "id": 12530801,
+                    "startDate": "11/01/2025 10:30",
+                    "slug": "kayserispor-samsunspor"
+                }
+            },
+            {
+                "id": 3091,
+                "nome": "Hatayspor",
+                "lastEvent": {
+                    "id": 12530786,
+                    "startDate": "17/01/2025 17:00",
+                    "slug": "hatayspor-galatasaray"
+                }
+            }
+        ]
+    },
+    "Saudi Pro League": {
+        "league_id": "955",
+        "season_id": "63998",
+        "country": "Saudi Arabia",
+        "teams": [
+            {
+                "id": 56027,
+                "nome": "Al-Qadsiah",
+                "lastEvent": {
+                    "id": 12624941,
+                    "startDate": "17/01/2025 15:40",
+                    "slug": "al-qadsiah-al-wehda"
+                }
+            },
+            {
+                "id": 34315,
+                "nome": "Al-Ittihad",
+                "lastEvent": {
+                    "id": 12624937,
+                    "startDate": "16/01/2025 17:00",
+                    "slug": "al-raed-al-ittihad"
+                }
+            },
+            {
+                "id": 204126,
+                "nome": "Damac FC",
+                "lastEvent": {
+                    "id": 12624940,
+                    "startDate": "15/01/2025 15:30",
+                    "slug": "damac-fc-al-ettifaq"
+                }
+            },
+            {
+                "id": 34313,
+                "nome": "Al-Shabab",
+                "lastEvent": {
+                    "id": 12624943,
+                    "startDate": "15/01/2025 15:05",
+                    "slug": "al-riyadh-al-shabab"
+                }
+            },
+            {
+                "id": 23400,
+                "nome": "Al-Nassr",
+                "lastEvent": {
+                    "id": 12624930,
+                    "startDate": "21/01/2025 14:50",
+                    "slug": "al-khaleej-al-nassr"
+                }
+            },
+            {
+                "id": 167228,
+                "nome": "Al-Khaleej",
+                "lastEvent": {
+                    "id": 12624930,
+                    "startDate": "21/01/2025 14:50",
+                    "slug": "al-khaleej-al-nassr"
+                }
+            },
+            {
+                "id": 168088,
+                "nome": "Al-Riyadh",
+                "lastEvent": {
+                    "id": 12624935,
+                    "startDate": "21/01/2025 15:10",
+                    "slug": "al-riyadh-al-taawoun"
+                }
+            },
+            {
+                "id": 21895,
+                "nome": "Al-Hilal",
+                "lastEvent": {
+                    "id": 12624929,
+                    "startDate": "21/01/2025 17:00",
+                    "slug": "al-wehda-al-hilal"
+                }
+            },
+            {
+                "id": 34469,
+                "nome": "Al-Ahli",
+                "lastEvent": {
+                    "id": 12624931,
+                    "startDate": "20/01/2025 17:00",
+                    "slug": "al-ahli-al-ettifaq"
+                }
+            },
+            {
+                "id": 56021,
+                "nome": "Al-Taawoun",
+                "lastEvent": {
+                    "id": 12624935,
+                    "startDate": "21/01/2025 15:10",
+                    "slug": "al-riyadh-al-taawoun"
+                }
+            },
+            {
+                "id": 114259,
+                "nome": "Al-Orobah",
+                "lastEvent": {
+                    "id": 12624939,
+                    "startDate": "17/01/2025 13:15",
+                    "slug": "al-khaleej-al-orobah"
+                }
+            },
+            {
+                "id": 56023,
+                "nome": "Al-Fateh",
+                "lastEvent": {
+                    "id": 12624947,
+                    "startDate": "16/01/2025 15:05",
+                    "slug": "al-fateh-al-hilal"
+                }
+            },
+            {
+                "id": 168094,
+                "nome": "Al-Fayha",
+                "lastEvent": {
+                    "id": 12624934,
+                    "startDate": "20/01/2025 15:10",
+                    "slug": "al-kholood-al-fayha"
+                }
+            },
+            {
+                "id": 32994,
+                "nome": "Al-Wehda",
+                "lastEvent": {
+                    "id": 12624929,
+                    "startDate": "21/01/2025 17:00",
+                    "slug": "al-wehda-al-hilal"
+                }
+            },
+            {
+                "id": 336456,
+                "nome": "Al-Okhdood",
+                "lastEvent": {
+                    "id": 12624942,
+                    "startDate": "20/01/2025 15:15",
+                    "slug": "al-okhdood-al-raed"
+                }
+            },
+            {
+                "id": 269199,
+                "nome": "Al-Kholood",
+                "lastEvent": {
+                    "id": 12624934,
+                    "startDate": "20/01/2025 15:10",
+                    "slug": "al-kholood-al-fayha"
+                }
+            },
+            {
+                "id": 34318,
+                "nome": "Al-Ettifaq",
+                "lastEvent": {
+                    "id": 12624931,
+                    "startDate": "20/01/2025 17:00",
+                    "slug": "al-ahli-al-ettifaq"
+                }
+            },
+            {
+                "id": 56031,
+                "nome": "Al-Raed",
+                "lastEvent": {
+                    "id": 12624942,
+                    "startDate": "20/01/2025 15:15",
+                    "slug": "al-okhdood-al-raed"
+                }
+            }
+        ]
+    },
+    "Mozzart Bet Superliga": {
+        "league_id": "210",
+        "season_id": "61448",
+        "country": "Serbia",
+        "teams": [
+            {
+                "id": 5149,
+                "nome": "FK Crvena zvezda",
+                "lastEvent": {
+                    "id": 12764217,
+                    "startDate": "21/01/2025 20:00",
+                    "slug": "fk-crvena-zvezda-psv-eindhoven"
+                }
+            },
+            {
+                "id": 43981,
+                "nome": "FK Radnički 1923",
+                "lastEvent": {
+                    "id": 13358394,
+                    "startDate": "19/01/2025 13:30",
+                    "slug": "pari-nizhny-novgorod-fk-radnicki-1923"
+                }
+            },
+            {
+                "id": 7771,
+                "nome": "FK Mladost Lučani",
+                "lastEvent": {
+                    "id": 13363434,
+                    "startDate": "21/01/2025 12:00",
+                    "slug": "fk-mladost-lucani-sk-sigma-olomouc"
+                }
+            },
+            {
+                "id": 5153,
+                "nome": "OFK Beograd",
+                "lastEvent": {
+                    "id": 13353510,
+                    "startDate": "18/01/2025 08:00",
+                    "slug": "ofk-beograd-banik-ostrava"
+                }
+            },
+            {
+                "id": 5148,
+                "nome": "FK Čukarički",
+                "lastEvent": {
+                    "id": 13358363,
+                    "startDate": "19/01/2025 14:00",
+                    "slug": "botev-plovdiv-fk-cukaricki"
+                }
+            },
+            {
+                "id": 25736,
+                "nome": "FK Novi Pazar",
+                "lastEvent": {
+                    "id": 13366288,
+                    "startDate": "22/01/2025 08:00",
+                    "slug": "fk-novi-pazar-fk-velez-mostar"
+                }
+            },
+            {
+                "id": 263360,
+                "nome": "FK TSC Bačka Topola",
+                "lastEvent": {
+                    "id": 13359996,
+                    "startDate": "20/01/2025 11:30",
+                    "slug": "fk-tsc-backa-topola-nk-maribor"
+                }
+            },
+            {
+                "id": 5152,
+                "nome": "FK Partizan",
+                "lastEvent": {
+                    "id": 13358397,
+                    "startDate": "19/01/2025 14:00",
+                    "slug": "dukla-praha-fk-partizan"
+                }
+            },
+            {
+                "id": 282203,
+                "nome": "FK Železničar Pančevo",
+                "lastEvent": {
+                    "id": 13360028,
+                    "startDate": "20/01/2025 12:00",
+                    "slug": "surkhon-termez-fk-zeleznicar-pancevo"
+                }
+            },
+            {
+                "id": 5150,
+                "nome": "FK Vojvodina",
+                "lastEvent": {
+                    "id": 13360609,
+                    "startDate": "21/01/2025 13:30",
+                    "slug": "fk-vojvodina-akhmat-grozny"
+                }
+            },
+            {
+                "id": 25737,
+                "nome": "FK Radnički Niš",
+                "lastEvent": {
+                    "id": 13354184,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "dinamo-makhachkala-fk-radnicki-nis"
+                }
+            },
+            {
+                "id": 7674,
+                "nome": "FK Napredak Kruševac",
+                "lastEvent": {
+                    "id": 13353574,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "fk-napredak-krusevac-cracovia"
+                }
+            },
+            {
+                "id": 284570,
+                "nome": "FK Jedinstvo Ub",
+                "lastEvent": {
+                    "id": 13366427,
+                    "startDate": "21/01/2025 08:30",
+                    "slug": "fk-jedinstvo-ub-motor-lublin"
+                }
+            },
+            {
+                "id": 308176,
+                "nome": "FK IMT Beograd",
+                "lastEvent": {
+                    "id": 13354050,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "fk-imt-beograd-gornik-zabrze"
+                }
+            },
+            {
+                "id": 36967,
+                "nome": "FK Spartak Subotica",
+                "lastEvent": {
+                    "id": 13363574,
+                    "startDate": "20/01/2025 12:00",
+                    "slug": "fk-spartak-subotica-szeged-csanad-grosics-akademia"
+                }
+            },
+            {
+                "id": 229348,
+                "nome": "FK Tekstilac Odžaci",
+                "lastEvent": {
+                    "id": 13362058,
+                    "startDate": "20/01/2025 16:00",
+                    "slug": "fk-tekstilac-odzaci-kalcer-radomlje"
+                }
+            }
+        ]
+    },
+    "Niké Liga": {
+        "league_id": "211",
+        "season_id": "61728",
+        "country": "Slovakia",
+        "teams": [
+            {
+                "id": 189813,
+                "nome": "KFC Komárno",
+                "lastEvent": {
+                    "id": 13354194,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "kfc-komarno-fc-tatabanya"
+                }
+            },
+            {
+                "id": 2404,
+                "nome": "ŠK Slovan Bratislava",
+                "lastEvent": {
+                    "id": 12764480,
+                    "startDate": "21/01/2025 20:00",
+                    "slug": "vfb-stuttgart-sk-slovan-bratislava"
+                }
+            },
+            {
+                "id": 7885,
+                "nome": "MFK Zemplín Michalovce",
+                "lastEvent": {
+                    "id": 13354106,
+                    "startDate": "18/01/2025 13:00",
+                    "slug": "kazincbarcikai-sc-mfk-zemplin-michalovce"
+                }
+            },
+            {
+                "id": 23833,
+                "nome": "DAC 1904",
+                "lastEvent": {
+                    "id": 13336710,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "dac-1904-zalaegerszegi-te"
+                }
+            },
+            {
+                "id": 2402,
+                "nome": "MŠK Žilina",
+                "lastEvent": {
+                    "id": 13354197,
+                    "startDate": "18/01/2025 12:00",
+                    "slug": "ulsan-hd-msk-zilina"
+                }
+            },
+            {
+                "id": 2406,
+                "nome": "FC Spartak Trnava",
+                "lastEvent": {
+                    "id": 13354192,
+                    "startDate": "18/01/2025 11:00",
+                    "slug": "bohemians-praha-1905-fc-spartak-trnava"
+                }
+            },
+            {
+                "id": 168476,
+                "nome": "FC Košice",
+                "lastEvent": {
+                    "id": 13354015,
+                    "startDate": "18/01/2025 12:00",
+                    "slug": "fc-kosice-mfk-stara-lubovna"
+                }
+            },
+            {
+                "id": 7887,
+                "nome": "FK Železiarne Podbrezová",
+                "lastEvent": {
+                    "id": 13336260,
+                    "startDate": "18/01/2025 10:00",
+                    "slug": "fk-zeleziarne-podbrezova-dukla-banska-bystrica"
+                }
+            },
+            {
+                "id": 2397,
+                "nome": "MFK Ružomberok",
+                "lastEvent": {
+                    "id": 13346535,
+                    "startDate": "17/01/2025 11:00",
+                    "slug": "fk-pohronie-mfk-ruzomberok"
+                }
+            },
+            {
+                "id": 4503,
+                "nome": "Dukla Banská Bystrica",
+                "lastEvent": {
+                    "id": 13354091,
+                    "startDate": "22/01/2025 11:00",
+                    "slug": "dukla-banska-bystrica-slezsky-fc-opava"
+                }
+            },
+            {
+                "id": 111061,
+                "nome": "MFK Skalica",
+                "lastEvent": {
+                    "id": 13338454,
+                    "startDate": "22/01/2025 10:00",
+                    "slug": "mfk-skalica-mfk-vyskov"
+                }
+            },
+            {
+                "id": 2398,
+                "nome": "AS Trenčín",
+                "lastEvent": {
+                    "id": 13304452,
+                    "startDate": "18/01/2025 12:00",
+                    "slug": "sk-sigma-olomouc-as-trencin"
                 }
             }
         ]
