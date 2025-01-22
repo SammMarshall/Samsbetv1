@@ -288,12 +288,13 @@ def get_shots_data(event_id: int) -> Dict[str, List[Dict[str, Any]]]:
     if data:
         shots_data = {'home': [], 'away': []}
         for team_type in ['home', 'away']:
-            if team_type in data:
+            if team_type in data and 'players' in data[team_type]:
                 for player in data[team_type]['players']:
-                    stats = player['statistics']
+                    stats = player.get('statistics', {})
+                    shots_blocked = stats.get('blockedScoringAttempt', 0)
                     shots_on_target = stats.get('onTargetScoringAttempt', 0)
                     shots_off_target = stats.get('shotOffTarget', 0)
-                    total_shots = shots_on_target + shots_off_target
+                    total_shots = shots_on_target + shots_off_target + shots_blocked
                     if total_shots > 0:
                         shots_data[team_type].append({
                             'name': player['player']['name'],
