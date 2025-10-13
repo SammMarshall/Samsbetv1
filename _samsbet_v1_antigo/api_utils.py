@@ -1,3 +1,4 @@
+#api_utils.py
 import requests
 import time
 import numpy as np
@@ -203,6 +204,8 @@ def process_finalizacoes_data(data: Dict[str, Any]) -> pd.DataFrame:
     )
     return df
 
+
+
 def process_defesa_data(data: Dict[str, Any]) -> pd.DataFrame:
     """
     Processa os dados de defesa dos goleiros.
@@ -297,6 +300,7 @@ def get_shots_data(event_id: int) -> Dict[str, List[Dict[str, Any]]]:
                     total_shots = shots_on_target + shots_off_target + shots_blocked
                     if total_shots > 0:
                         shots_data[team_type].append({
+                            'id': player['player']['id'],
                             'name': player['player']['name'],
                             'shots_on_target': shots_on_target,
                             'total_shots': total_shots

@@ -1,0 +1,5 @@
+https://www.sofascore.com/api/v1/sport/football/scheduled-events/2025-10-08/inverse
+Esse link é o que retorna os jogos de prioridade muito baixa, tipo um "ver mais". para isso a apai tem esse '/inverse' que chama esses jogos qeu não aparece na tela inicial.
+
+
+python -m streamlit run dashboard/app.py
