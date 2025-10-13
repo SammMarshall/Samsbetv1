@@ -1,12 +1,12 @@
 [project]
 name = "samsbet"
-version = "2.0.0"
+version = "2.0.1" # Incrementamos a versão para refletir a mudança
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-# <<< ADIÇÃO AQUI >>>
-# Diga explicitamente ao setuptools qual pasta é o nosso pacote
 [tool.setuptools]
+# Diz ao instalador que o nosso código fonte está dentro da pasta 'src'
+package_dir = {"" = "src"}
 packages = ["samsbet"]
