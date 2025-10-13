@@ -1,12 +1,13 @@
 [project]
 name = "samsbet"
-version = "2.0.1" # Incrementamos a versão para refletir a mudança
+version = "2.0.2" # Incrementamos a versão para refletir a correção
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-# Diz ao instalador que o nosso código fonte está dentro da pasta 'src'
-package_dir = {"" = "src"}
-packages = ["samsbet"]
+# <<< CORREÇÃO E MELHORIA AQUI >>>
+# Esta é a forma moderna e robusta de dizer ao setuptools
+# para encontrar todos os pacotes dentro da pasta 'src'.
+[tool.setuptools.packages.find]
+where = ["src"]
