@@ -5,4 +5,3 @@ streamlit
 plotly
 requests
 tzdata
-.
