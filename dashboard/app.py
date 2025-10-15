@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # --- Funções ---
-#@st.cache_data(ttl=86400)
+@st.cache_data(ttl=86400)
 def load_data(for_date: date) -> pd.DataFrame:
     """Carrega os dados dos jogos para a data selecionada."""
     return get_daily_matches_dataframe(for_date)
