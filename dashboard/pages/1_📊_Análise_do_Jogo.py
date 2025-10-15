@@ -10,11 +10,11 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_data(ttl=10800)
+#@st.cache_data(ttl=10800)
 def load_analysis_data(event_id: int, filter_by_location: bool):
     return get_match_analysis_data(event_id, filter_by_location=filter_by_location)
 
-@st.cache_data(ttl=10800)
+#@st.cache_data(ttl=10800)
 def load_gk_stats(
     event_id: int,
     home_last_event_id: int | None,
@@ -29,12 +29,12 @@ def load_gk_stats(
         last_match_saves_map_prefetched=last_match_saves_map,
     )
 
-@st.cache_data(ttl=30600) # H2H muda com menos frequência, cache maior
+#@st.cache_data(ttl=30600) # H2H muda com menos frequência, cache maior
 def load_h2h_data(custom_id: str, home_team: str, away_team: str):
     return get_h2h_data(custom_id, home_team, away_team)
 
 # <<< NOVA FUNÇÃO DE CACHE PARA STATS DE EVENTO ÚNICO >>>
-@st.cache_data(ttl=30600)
+#@st.cache_data(ttl=30600)
 def load_event_summary_stats(event_id: int):
     return get_summary_stats_for_event(event_id)
 
