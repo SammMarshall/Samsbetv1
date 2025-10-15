@@ -5,7 +5,6 @@ import numpy as np
 from scipy.stats import poisson
 from typing import List, Dict, Any
 from samsbet.api.sofascore_client import SofaScoreClient
-from samsbet.core.cache import get_from_cache, set_to_cache
 
 def _process_player_stats_to_dataframe(
     raw_player_stats: List[Dict[str, Any]],
@@ -135,24 +134,8 @@ def get_match_analysis_data(
     event_id: int, filter_by_location: bool = False
 ) -> Dict[str, Any]:
     """
-    Orquestrador que busca DADOS COMPLETOS, agora com uma camada de cache Redis.
+    Orquestrador que busca DADOS COMPLETOS (jogadores, time e posição) para a análise.
     """
-    # <<< ETAPA 1: Criar a Etiqueta (Chave Única) para o Cache >>>
-    cache_key = f"analysis:match_data:{event_id}:{filter_by_location}"
-    
-    # <<< ETAPA 2: Perguntar ao Guarda-Volumes (Verificar o Cache) >>>
-    cached_data = get_from_cache(cache_key)
-    if cached_data:
-        print(f"✅ CACHE HIT para a chave: {cache_key}")
-        # Se encontrou, precisamos converter os dados dos jogadores de volta para um DataFrame,
-        # pois o JSON os armazena como uma lista de dicionários.
-        cached_data["home"]["players"] = pd.DataFrame(cached_data["home"]["players"])
-        cached_data["away"]["players"] = pd.DataFrame(cached_data["away"]["players"])
-        return cached_data
-
-    # <<< ETAPA 3: Se o Guarda-Volumes estiver Vazio (CACHE MISS), Executar a Lógica Lenta >>>
-    print(f"❌ CACHE MISS para a chave: {cache_key}. Buscando dados na API...")
-    
     client = SofaScoreClient()
     event_details = client.get_event_details(event_id)
     if not event_details: return {}
@@ -165,6 +148,7 @@ def get_match_analysis_data(
     away_team_id = event_details.get("awayTeam", {}).get("id")
     if not all([tournament_id, season_id, home_team_id, away_team_id]): return {}
 
+    # <<< PASSO ADICIONAL 1: Buscar a tabela de classificação >>>
     standings_data = client.get_league_standings(tournament_id, season_id)
     positions_map = {}
     if standings_data and 'standings' in standings_data and standings_data['standings']:
@@ -178,6 +162,7 @@ def get_match_analysis_data(
     home_last_event = client.get_team_last_event(home_team_id)
     away_last_event = client.get_team_last_event(away_team_id)
 
+    # 2. Construir um mapa unificado de chutes da última partida (player_id -> stats)
     last_match_shots_map = {}
     if home_last_event_id := home_last_event.get("id"):
         shots_data = client.get_shots_data_for_event(home_last_event_id)
@@ -189,7 +174,8 @@ def get_match_analysis_data(
         shots_data = client.get_shots_data_for_event(away_last_event_id)
         for team_type in ['home', 'away']:
             for player in shots_data[team_type]:
-                last_match_shots_map[player['player_id']] = player 
+                # Adiciona ou sobrescreve, garantindo os dados do evento mais recente de cada jogador
+                last_match_shots_map[player['player_id']] = player            
 
     home_match_type = "home" if filter_by_location else None
     away_match_type = "away" if filter_by_location else None
@@ -209,6 +195,8 @@ def get_match_analysis_data(
             'Posição': positions_map.get(team_id, 'N/A'),
             'Total de Jogos': matches
         }
+        
+        # Se não houver jogos, retorna o resumo com zeros para evitar erros de divisão
         if matches == 0:
             default_metrics = {
                 'Média Chutes/J': 0, 'Média Chutes Alvo/J': 0,
@@ -219,25 +207,34 @@ def get_match_analysis_data(
             }
             summary.update(default_metrics)
             return summary
+
+        # --- Métricas Ofensivas (Pró) ---
         summary['Média Chutes/J'] = round(stats.get('shots', 0) / matches, 2)
         summary['Média Chutes Alvo/J'] = round(stats.get('shotsOnTarget', 0) / matches, 2)
         summary['Grandes Chances Criadas/J'] = round(stats.get('bigChancesCreated', 0) / matches, 2)
+        
         total_shots = stats.get('shots', 0)
         if total_shots > 0:
             summary['Índice de Perigo (%)'] = round((stats.get('shotsFromInsideTheBox', 0) / total_shots) * 100, 1)
         else:
             summary['Índice de Perigo (%)'] = 0
+
         big_chances_created = stats.get('bigChancesCreated', 0)
         if big_chances_created > 0:
             goals = stats.get('goalsScored', 0) - stats.get('penaltyGoals', 0)
             summary['Conversão de Grandes Chances (%)'] = round((goals / big_chances_created) * 100, 1)
         else:
             summary['Conversão de Grandes Chances (%)'] = 0
+            
+        # --- Métricas Defensivas (Contra) ---
         summary['Grandes Chances Cedidas/J'] = round(stats.get('bigChancesAgainst', 0) / matches, 2)
         summary['Média Chutes Alvo Cedidos/J'] = round(stats.get('shotsOnTargetAgainst', 0) / matches, 2)
         summary['Média Defesas/J'] = round(stats.get('saves', 0) / matches, 2)
+
+
         return summary
 
+    # Constrói um mapa de defesas da última partida por nome do jogador (para reuso na aba de goleiros)
     last_match_saves_map_by_name: Dict[str, int] = {}
     for player_stats in last_match_shots_map.values():
         saves_val = player_stats.get('saves', 0)
@@ -248,8 +245,10 @@ def get_match_analysis_data(
 
     analysis_data = {
         "tournament_name": tournament.get("name", "Campeonato"),
+        # IDs de último jogo para reuso em outras consultas (ex.: goleiros)
         "home_last_event_id": home_last_event.get("id"),
         "away_last_event_id": away_last_event.get("id"),
+        # Repassa também defesas da última partida já coletadas
         "last_match_saves_map": last_match_saves_map_by_name,
         "home": {
             "players": home_players_df,
@@ -260,14 +259,6 @@ def get_match_analysis_data(
             "summary": _create_summary(team_stats_away, away_team_id)
         }
     }
-
-    # Antes de retornar, precisamos converter os DataFrames para um formato que o JSON entenda.
-    data_to_cache = analysis_data.copy()
-    data_to_cache["home"]["players"] = data_to_cache["home"]["players"].to_dict('records')
-    data_to_cache["away"]["players"] = data_to_cache["away"]["players"].to_dict('records')
-    
-    set_to_cache(cache_key, data_to_cache) # Salva no Redis com o TTL padrão
-    
     return analysis_data
 
 def get_goalkeeper_stats_for_match(
@@ -277,27 +268,9 @@ def get_goalkeeper_stats_for_match(
     last_match_saves_map_prefetched: Dict[str, int] | None = None,
 ) -> Dict[str, pd.DataFrame]:
     """
-    Orquestrador que busca dados de goleiros, agora com uma camada de cache Redis.
+    Orquestrador dedicado a buscar e processar as estatísticas de goleiros,
+    incluindo dados da última partida.
     """
-    # <<< ETAPA 1: Criar a Etiqueta (Chave Única) para o Cache >>>
-    # A chave é baseada apenas no event_id, pois essa é a identidade única da análise.
-    cache_key = f"analysis:gk_stats:{event_id}"
-
-    # <<< ETAPA 2: Perguntar ao Guarda-Volumes (Verificar o Cache) >>>
-    cached_data = get_from_cache(cache_key)
-    if cached_data:
-        print(f"✅ CACHE HIT para a chave: {cache_key}")
-        # Se encontrou, reconstrói os DataFrames a partir dos dados do cache e retorna.
-        home_df = pd.DataFrame(cached_data.get("home", []))
-        away_df = pd.DataFrame(cached_data.get("away", []))
-        return {"home": home_df, "away": away_df}
-
-    # <<< ETAPA 3: Se o Guarda-Volumes estiver Vazio (CACHE MISS), Executar a Lógica Lenta >>>
-    print(f"❌ CACHE MISS para a chave: {cache_key}. Buscando dados na API...")
-    
-    # =======================================================================================
-    # O CÓDIGO ABAIXO É A SUA LÓGICA ORIGINAL, 100% PRESERVADA
-    # =======================================================================================
     client = SofaScoreClient()
     event_details = client.get_event_details(event_id)
     if not event_details:
@@ -311,9 +284,11 @@ def get_goalkeeper_stats_for_match(
     if not all([uniqueTournament_id, season_id, home_team_id, away_team_id]):
         return {"home": pd.DataFrame(), "away": pd.DataFrame()}
 
+    # --- Busca e construção do mapa de defesas da última partida ---
     if last_match_saves_map_prefetched is not None:
         last_match_saves_map = last_match_saves_map_prefetched
     else:
+        # Reutiliza IDs de último jogo se fornecidos para evitar chamadas extras
         if home_last_event_id is None:
             home_last_event = client.get_team_last_event(home_team_id)
             home_last_event_id = home_last_event.get("id")
@@ -335,27 +310,14 @@ def get_goalkeeper_stats_for_match(
                 for player in stats_data[team_type]:
                     if player.get('saves', 0) > 0:
                         last_match_saves_map[player['player_name']] = player['saves']
-    
+        
     raw_gk_home = client.get_goalkeeper_stats_for_team(uniqueTournament_id, season_id, home_team_id)
     raw_gk_away = client.get_goalkeeper_stats_for_team(uniqueTournament_id, season_id, away_team_id)
 
     home_gk_df = _process_goalkeeper_stats_to_dataframe(raw_gk_home, last_match_saves_map)
     away_gk_df = _process_goalkeeper_stats_to_dataframe(raw_gk_away, last_match_saves_map)
 
-    # O resultado final da sua lógica original
-    result = {"home": home_gk_df, "away": away_gk_df}
-    # =======================================================================================
-
-    # <<< ETAPA 4: Guarde o Pacote para a Próxima Vez (Salvar no Cache) >>>
-    # Prepara os dados para serem armazenados em formato JSON
-    data_to_cache = {
-        "home": result["home"].to_dict('records'),
-        "away": result["away"].to_dict('records')
-    }
-    
-    set_to_cache(cache_key, data_to_cache) # Salva no Redis
-    
-    return result
+    return {"home": home_gk_df, "away": away_gk_df}
 
 def _process_h2h_events_to_dataframe(
     raw_h2h_events: List[Dict[str, Any]], home_team_name: str, away_team_name: str
@@ -407,59 +369,17 @@ def _process_h2h_events_to_dataframe(
 
 def get_h2h_data(custom_id: str, home_team_name: str, away_team_name: str) -> pd.DataFrame:
     """
-    Orquestrador dedicado a buscar e processar os dados de confronto direto (H2H),
-    agora com uma camada de cache Redis.
+    Orquestrador dedicado a buscar e processar os dados de confronto direto (H2H).
     """
-    # <<< ETAPA 1: Criar a Etiqueta (Chave Única) para o Cache >>>
-    # O custom_id é o identificador perfeito e único para esta análise.
-    cache_key = f"analysis:h2h:{custom_id}"
-
-    # <<< ETAPA 2: Perguntar ao Guarda-Volumes (Verificar o Cache) >>>
-    cached_data = get_from_cache(cache_key)
-    if cached_data is not None:
-        print(f"✅ CACHE HIT para a chave: {cache_key}")
-        # Se encontrou, reconstrói o DataFrame a partir da lista de dicionários do cache.
-        return pd.DataFrame(cached_data)
-
-    # <<< ETAPA 3: Se o Guarda-Volumes estiver Vazio (CACHE MISS), Executar a Lógica Lenta >>>
-    print(f"❌ CACHE MISS para a chave: {cache_key}. Buscando dados na API...")
-
-    # =======================================================================================
-    # O CÓDIGO ABAIXO É A SUA LÓGICA ORIGINAL, 100% PRESERVADA
-    # =======================================================================================
     client = SofaScoreClient()
     raw_h2h_events = client.get_h2h_events(custom_id)
     h2h_df = _process_h2h_events_to_dataframe(raw_h2h_events, home_team_name, away_team_name)
-    # =======================================================================================
-
-    # <<< ETAPA 4: Guarde o Pacote para a Próxima Vez (Salvar no Cache) >>>
-    # Antes de retornar, converte o DataFrame para uma lista de dicionários para salvar em JSON.
-    # Usamos um TTL maior (24 horas) pois o histórico de jogos muda raramente.
-    set_to_cache(cache_key, h2h_df.to_dict('records'), ttl_seconds=86400)
-    
     return h2h_df
 
 def get_summary_stats_for_event(event_id: int) -> Dict[str, Dict[str, int]]:
     """
-    Busca e resume os dados de um evento, agora com uma camada de cache Redis.
+    Busca os dados de um evento e retorna a SOMA de chutes, chutes a gol e defesas.
     """
-    # <<< ETAPA 1: Criar a Etiqueta (Chave Única) para o Cache >>>
-    # O event_id é o identificador perfeito.
-    cache_key = f"analysis:event_summary:{event_id}"
-
-    # <<< ETAPA 2: Perguntar ao Guarda-Volumes (Verificar o Cache) >>>
-    cached_data = get_from_cache(cache_key)
-    if cached_data is not None:
-        print(f"✅ CACHE HIT para a chave: {cache_key}")
-        # Se encontrou, retorna os dados do cache instantaneamente.
-        return cached_data
-
-    # <<< ETAPA 3: Se o Guarda-Volumes estiver Vazio (CACHE MISS), Executar a Lógica Lenta >>>
-    print(f"❌ CACHE MISS para a chave: {cache_key}. Buscando dados na API...")
-    
-    # =======================================================================================
-    # O CÓDIGO ABAIXO É A SUA LÓGICA ORIGINAL, 100% PRESERVADA
-    # =======================================================================================
     client = SofaScoreClient()
     player_stats = client.get_shots_data_for_event(event_id)
     
@@ -473,11 +393,5 @@ def get_summary_stats_for_event(event_id: int) -> Dict[str, Dict[str, int]]:
             summary[team_type]["total_shots"] += player.get("total_shots", 0)
             summary[team_type]["shots_on_target"] += player.get("shots_on_target", 0)
             summary[team_type]["saves"] += player.get("saves", 0)
-    # =======================================================================================
-    
-    # <<< ETAPA 4: Guarde o Pacote para a Próxima Vez (Salvar no Cache) >>>
-    # Como os dados de um jogo passado nunca mudam, podemos usar um tempo de cache bem longo.
-    # Vamos usar 7 dias (604800 segundos).
-    set_to_cache(cache_key, summary, ttl_seconds=604800)
-    
+            
     return summary
