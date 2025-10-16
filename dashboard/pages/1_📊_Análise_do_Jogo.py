@@ -10,11 +10,11 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_data(ttl=10800)
+@st.cache_data(ttl=86400)
 def load_analysis_data(event_id: int, filter_by_location: bool):
     return get_match_analysis_data(event_id, filter_by_location=filter_by_location)
 
-@st.cache_data(ttl=10800)
+@st.cache_data(ttl=86400)
 def load_gk_stats(
     event_id: int,
     home_last_event_id: int | None,
@@ -29,12 +29,12 @@ def load_gk_stats(
         last_match_saves_map_prefetched=last_match_saves_map,
     )
 
-@st.cache_data(ttl=30600) # H2H muda com menos frequência, cache maior
+@st.cache_data(ttl=86400) # H2H muda com menos frequência, cache maior
 def load_h2h_data(custom_id: str, home_team: str, away_team: str):
     return get_h2h_data(custom_id, home_team, away_team)
 
 # <<< NOVA FUNÇÃO DE CACHE PARA STATS DE EVENTO ÚNICO >>>
-@st.cache_data(ttl=30600)
+@st.cache_data(ttl=86400)
 def load_event_summary_stats(event_id: int):
     return get_summary_stats_for_event(event_id)
 
@@ -104,16 +104,18 @@ else:
                 home_total_jogos = home_summary.get('Total de Jogos', '')
                 st.subheader(f"{home_team} ({home_pos}º) - {home_total_jogos} jogos")
                 st.markdown("##### Métricas Ofensivas (Pró)")
-                off_cols = st.columns(4)
+                off_cols = st.columns(5)
                 off_cols[0].metric("Média Chutes/J", home_summary.get('Média Chutes/J', 0))
                 off_cols[1].metric("Média Chutes Alvo/J", home_summary.get('Média Chutes Alvo/J', 0))
                 off_cols[2].metric("Grandes Chances Criadas/J", home_summary.get('Grandes Chances Criadas/J', 0))
                 off_cols[3].metric(f"Índice de Perigo", f"{home_summary.get('Índice de Perigo (%)', 0)}%")
+                off_cols[4].metric("Média Gols Pró/J", home_summary.get('Média Gols Pró/J', 0))
                 st.markdown("##### Métricas Defensivas (Contra)")
-                def_cols = st.columns(3)
+                def_cols = st.columns(4)
                 def_cols[0].metric("Média Chutes Alvo Cedidos/J", home_summary.get('Média Chutes Alvo Cedidos/J', 0))
                 def_cols[1].metric("Grandes Chances Cedidas/J", home_summary.get('Grandes Chances Cedidas/J', 0))
                 def_cols[2].metric("Média Defesas/J", home_summary.get('Média Defesas/J', 0)) 
+                def_cols[3].metric("Média Gols Contra/J", home_summary.get('Média Gols Contra/J', 0)) 
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not home_players_df.empty:
@@ -127,16 +129,18 @@ else:
 
                 st.subheader(f"{away_team} ({away_pos}º) - {away_total_jogos} jogos")
                 st.markdown("##### Métricas Ofensivas (Pró)")
-                off_cols = st.columns(4)
+                off_cols = st.columns(5)
                 off_cols[0].metric("Média Chutes/J", away_summary.get('Média Chutes/J', 0))
                 off_cols[1].metric("Média Chutes Alvo/J", away_summary.get('Média Chutes Alvo/J', 0))
                 off_cols[2].metric("Grandes Chances Criadas/J", away_summary.get('Grandes Chances Criadas/J', 0))
                 off_cols[3].metric("Índice de Perigo", f"{away_summary.get('Índice de Perigo (%)', 0)}%")
+                off_cols[4].metric("Média Gols Pró/J", away_summary.get('Média Gols Pró/J', 0))
                 st.markdown("##### Métricas Defensivas (Contra)")
-                def_cols = st.columns(3)
+                def_cols = st.columns(4)
                 def_cols[0].metric("Média Chutes Alvo Cedidos/J", away_summary.get('Média Chutes Alvo Cedidos/J', 0))
                 def_cols[1].metric("Grandes Chances Cedidas/J", away_summary.get('Grandes Chances Cedidas/J', 0))
-                def_cols[2].metric("Média Defesas/J", away_summary.get('Média Defesas/J', 0)) 
+                def_cols[2].metric("Média Defesas/J", away_summary.get('Média Defesas/J', 0))
+                def_cols[3].metric("Média Gols Contra/J", away_summary.get('Média Gols Contra/J', 0)) 
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not away_players_df.empty:
@@ -377,6 +381,16 @@ else:
                         # Calculando a porcentagem para Ambas Não Marcam (BTTS)
                         ambas_n_pct = 100 - btts_pct
 
+                        # --- CÁLCULOS DE "UNDER" ---
+                        under_0_5_pct = 100 - over_0_5_pct
+                        under_1_5_pct = 100 - over_1_5_pct
+                        under_2_5_pct = 100 - over_2_5_pct
+                        under_3_5_pct = 100 - over_3_5_pct
+                        under_4_5_pct = 100 - over_4_5_pct
+                        under_5_5_pct = 100 - over_5_5_pct
+                        under_6_5_pct = 100 - over_6_5_pct
+                        under_7_5_pct = 100 - over_7_5_pct
+
 
                         # Exibindo as métricas de tendências
                         tendencia_cols = st.columns(11)
@@ -402,7 +416,7 @@ else:
                                 return round(1 / (pct / 100), 2)
                             return "∞" # Infinito se a probabilidade é zero
 
-                        # Cálculo das Odds Justas
+                        # Cálculo das Odds Justas - OVER
                         odd_justa_o0 = calcular_odd_justa(zero_gols_pct)
                         odd_justa_o0_5 = calcular_odd_justa(over_0_5_pct)
                         odd_justa_o1_5 = calcular_odd_justa(over_1_5_pct)
@@ -414,8 +428,18 @@ else:
                         odd_justa_o7_5 = calcular_odd_justa(over_7_5_pct)
                         odd_justa_btts = calcular_odd_justa(btts_pct)
                         odd_justa_n = calcular_odd_justa(ambas_n_pct)
-                        
 
+                        # --- CÁLCULO DAS ODDS JUSTAS - UNDER ---
+                        odd_justa_u0_5 = calcular_odd_justa(under_0_5_pct)
+                        odd_justa_u1_5 = calcular_odd_justa(under_1_5_pct)
+                        odd_justa_u2_5 = calcular_odd_justa(under_2_5_pct)
+                        odd_justa_u3_5 = calcular_odd_justa(under_3_5_pct)
+                        odd_justa_u4_5 = calcular_odd_justa(under_4_5_pct)
+                        odd_justa_u5_5 = calcular_odd_justa(under_5_5_pct)
+                        odd_justa_u6_5 = calcular_odd_justa(under_6_5_pct)
+                        odd_justa_u7_5 = calcular_odd_justa(under_7_5_pct)
+                        
+                        #Over
                         val_odd_0 = f"{odd_justa_o0:.2f}" if isinstance(odd_justa_o0, (int, float)) else odd_justa_o0
                         val_odd_0_5 = f"{odd_justa_o0_5:.2f}" if isinstance(odd_justa_o0_5, (int, float)) else odd_justa_o0_5
                         val_odd_1_5 = f"{odd_justa_o1_5:.2f}" if isinstance(odd_justa_o1_5, (int, float)) else odd_justa_o1_5
@@ -428,7 +452,18 @@ else:
                         val_odd_abm = f"{odd_justa_btts:.2f}" if isinstance(odd_justa_btts, (int, float)) else odd_justa_btts
                         val_odd_abnm = f"{odd_justa_n:.2f}" if isinstance(odd_justa_n, (int, float)) else odd_justa_n
 
-                        cols_over = st.columns(11)
+                        #Under
+                        val_odd_u0_5 = f"{odd_justa_u0_5:.2f}" if isinstance(odd_justa_u0_5, (int, float)) else odd_justa_u0_5
+                        val_odd_u1_5 = f"{odd_justa_u1_5:.2f}" if isinstance(odd_justa_u1_5, (int, float)) else odd_justa_u1_5
+                        val_odd_u2_5 = f"{odd_justa_u2_5:.2f}" if isinstance(odd_justa_u2_5, (int, float)) else odd_justa_u2_5
+                        val_odd_u3_5 = f"{odd_justa_u3_5:.2f}" if isinstance(odd_justa_u3_5, (int, float)) else odd_justa_u3_5
+                        val_odd_u4_5 = f"{odd_justa_u4_5:.2f}" if isinstance(odd_justa_u4_5, (int, float)) else odd_justa_u4_5
+                        val_odd_u5_5 = f"{odd_justa_u5_5:.2f}" if isinstance(odd_justa_u5_5, (int, float)) else odd_justa_u5_5
+                        val_odd_u6_5 = f"{odd_justa_u6_5:.2f}" if isinstance(odd_justa_u6_5, (int, float)) else odd_justa_u6_5
+                        val_odd_u7_5 = f"{odd_justa_u7_5:.2f}" if isinstance(odd_justa_u7_5, (int, float)) else odd_justa_u7_5
+
+                        st.markdown("##### Odds Justas Over (+)")
+                        cols_over = st.columns(9)
                         cols_over[0].metric(label="Odd Justa 0 Gols", value=val_odd_0)
                         cols_over[1].metric(label="Odd Justa 0.5", value=val_odd_0_5)
                         cols_over[2].metric(label="Odd Justa 1.5", value=val_odd_1_5)
@@ -438,8 +473,96 @@ else:
                         cols_over[6].metric(label="Odd Justa 5.5", value=val_odd_5_5)
                         cols_over[7].metric(label="Odd Justa 6.5", value=val_odd_6_5)
                         cols_over[8].metric(label="Odd Justa 7.5", value=val_odd_7_5)
-                        cols_over[9].metric(label="Odd Justa (Ambas - Sim)", value=val_odd_abm)
-                        cols_over[10].metric(label="Odd Justa (Ambas - Não)", value=val_odd_abnm)
+                        
+                        st.markdown("##### Odds Justas Under (-)")
+                        cols_under = st.columns(9)
+                        cols_under[0].markdown("")
+                        cols_under[1].metric(label="Odd Justa -0.5", value=val_odd_u0_5)
+                        cols_under[2].metric(label="Odd Justa -1.5", value=val_odd_u1_5)
+                        cols_under[3].metric(label="Odd Justa -2.5", value=val_odd_u2_5)
+                        cols_under[4].metric(label="Odd Justa -3.5", value=val_odd_u3_5)
+                        cols_under[5].metric(label="Odd Justa -4.5", value=val_odd_u4_5)
+                        cols_under[6].metric(label="Odd Justa -5.5", value=val_odd_u5_5)
+                        cols_under[7].metric(label="Odd Justa -6.5", value=val_odd_u6_5)
+                        cols_under[8].metric(label="Odd Justa -7.5", value=val_odd_u7_5)
+
+                        st.markdown("##### Odds Justas Ambas")
+                        cols_ambas = st.columns(2)
+                        cols_ambas[0].metric(label="Odd Justa (Ambas - Sim)", value=val_odd_abm)
+                        cols_ambas[1].metric(label="Odd Justa (Ambas - Não)", value=val_odd_abnm)
+
+                        st.divider()
+                        st.subheader("Linhas Asiáticas de Gols (H2H)")
+
+                        total_jogos = len(h2h_df)
+                        if total_jogos > 0:
+            
+                        # --- FUNÇÃO AUXILIAR PARA CALCULAR ODDS ASIÁTICAS ---
+                            def calcular_odd_justa_asiatica(line_type, p_win=0, p_push=0, p_half_win=0, p_half_loss=0):
+                                # Converte porcentagens para decimais
+                                prob_win, prob_push, prob_half_win, prob_half_loss = p_win/100, p_push/100, p_half_win/100, p_half_loss/100
+                
+                                try:
+                                    if line_type == 'cheia':
+                                        # Formula: (1 - P(Push)) / P(Win)
+                                        if prob_win == 0: return "∞"
+                                        return round((1 - prob_push) / prob_win, 2)
+                    
+                                    elif line_type == 'x25':
+                                        # Formula: (1 - 0.5 * P(Half Loss)) / P(Full Win)
+                                        if prob_win == 0: return "∞"
+                                        return round((1 - 0.5 * prob_half_loss) / prob_win, 2)
+
+                                    elif line_type == 'x75':
+                                        # Formula: (1 - 0.5 * P(Half Win)) / (P(Full Win) + 0.5 * P(Half Win))
+                                        denominator = prob_win + 0.5 * prob_half_win
+                                        if denominator == 0: return "∞"
+                                        return round((1 - 0.5 * prob_half_win) / denominator, 2)
+                                except ZeroDivisionError:
+                                    return "∞"
+                                return "N/A"
+
+                            # --- EXIBIÇÃO DAS LINHAS ---
+                            asian_lines_over = [1.0, 1.25, 1.75, 2.0, 2.25, 2.75, 3.0, 3.25, 3.75]
+                            st.markdown("###### Frequência de Resultados e Odd Justa para Mercados 'Over'")
+
+                            for line in asian_lines_over:
+                                # Lógica para Linhas Cheias (1.0, 2.0, 3.0)
+                                if line.is_integer():
+                                    wins_pct = ((h2h_df['Gols Totais'] > line).sum() / total_jogos) * 100
+                                    pushes_pct = ((h2h_df['Gols Totais'] == line).sum() / total_jogos) * 100
+                                    losses_pct = 100 - wins_pct - pushes_pct
+                                    odd_justa = calcular_odd_justa_asiatica('cheia', p_win=wins_pct, p_push=pushes_pct)
+
+                                    st.markdown(f"**Linha: Over {line:.2f}**")
+                                    cols = st.columns(1)
+                                    cols[0].metric("📈 Odd Justa", odd_justa)
+
+                                # Lógica para Linhas de Quarto (X.25)
+                                elif line % 0.5 == 0.25:
+                                    line_low, line_high = line - 0.25, line + 0.25
+                                    full_win_pct = ((h2h_df['Gols Totais'] >= line_high).sum() / total_jogos) * 100
+                                    half_loss_pct = ((h2h_df['Gols Totais'] == line_low).sum() / total_jogos) * 100
+                                    full_loss_pct = 100 - full_win_pct - half_loss_pct
+                                    odd_justa = calcular_odd_justa_asiatica('x25', p_win=full_win_pct, p_half_loss=half_loss_pct)
+
+                                    st.markdown(f"**Linha: Over {line:.2f}** (metade em {line_low}, metade em {line_high})")
+                                    cols = st.columns(1)
+                                    cols[0].metric("📈 Odd Justa", odd_justa)
+
+                                # Lógica para Linhas de Quarto (X.75)
+                                elif line % 0.5 == 0.75:
+                                    line_low, line_high = line - 0.25, line + 0.25
+                                    full_win_pct = ((h2h_df['Gols Totais'] > line_high).sum() / total_jogos) * 100
+                                    half_win_pct = ((h2h_df['Gols Totais'] == line_high).sum() / total_jogos) * 100
+                                    full_loss_pct = 100 - full_win_pct - half_win_pct
+                                    odd_justa = calcular_odd_justa_asiatica('x75', p_win=full_win_pct, p_half_win=half_win_pct)
+
+                                    st.markdown(f"**Linha: Over {line:.2f}** (metade em {line_low}, metade em {line_high})")
+                                    cols = st.columns(1)
+                                    cols[1].metric("📈 Odd Justa", odd_justa)
+                        else:
+                            st.info("Dados insuficientes para calcular tendências asiáticas.")
 
                         st.info(
                         "**Como usar:** Compare a 'Odd Justa' com a odd oferecida pela casa de apostas. "

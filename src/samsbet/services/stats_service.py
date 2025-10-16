@@ -149,15 +149,20 @@ def get_match_analysis_data(
     if not all([tournament_id, season_id, home_team_id, away_team_id]): return {}
 
     # <<< PASSO ADICIONAL 1: Buscar a tabela de classificação >>>
+    # <<< MUDANÇA 1: Criamos um mapa mais completo para os dados da tabela >>>
     standings_data = client.get_league_standings(tournament_id, season_id)
-    positions_map = {}
+    standings_info_map = {} # De 'positions_map' para 'standings_info_map'
     if standings_data and 'standings' in standings_data and standings_data['standings']:
         rows = standings_data['standings'][0].get('rows', [])
         for row in rows:
             team_id = row.get('team', {}).get('id')
-            position = row.get('position')
-            if team_id and position is not None:
-                positions_map[team_id] = position
+            if team_id:
+                standings_info_map[team_id] = {
+                    "position": row.get('position'),
+                    "matches": row.get('matches'),
+                    "scoresFor": row.get('scoresFor'),
+                    "scoresAgainst": row.get('scoresAgainst')
+                }
 
     home_last_event = client.get_team_last_event(home_team_id)
     away_last_event = client.get_team_last_event(away_team_id)
@@ -190,9 +195,12 @@ def get_match_analysis_data(
     away_players_df = _process_player_stats_to_dataframe(raw_players_away, last_match_shots_map)
 
     def _create_summary(stats: Dict, team_id: int) -> Dict:
-        matches = stats.get('matches', 0)
+        # Pega os dados específicos deste time do nosso mapa
+        team_standings_info = standings_info_map.get(team_id, {})
+        
+        matches = team_standings_info.get('matches', 0) # Usamos o 'matches' da tabela, que é mais confiável
         summary = {
-            'Posição': positions_map.get(team_id, 'N/A'),
+            'Posição': team_standings_info.get('position', 'N/A'),
             'Total de Jogos': matches
         }
         
@@ -203,7 +211,8 @@ def get_match_analysis_data(
                 'Grandes Chances Criadas/J': 0, 'Índice de Perigo (%)': 0,
                 'Conversão de Grandes Chances (%)': 0,
                 'Grandes Chances Cedidas/J': 0, 'Média Chutes Alvo Cedidos/J': 0,
-                'Média Defesas/J': 0
+                'Média Defesas/J': 0, 'Média Gols Pró/J': 0,
+                'Média Gols Contra/J': 0
             }
             summary.update(default_metrics)
             return summary
@@ -212,6 +221,7 @@ def get_match_analysis_data(
         summary['Média Chutes/J'] = round(stats.get('shots', 0) / matches, 2)
         summary['Média Chutes Alvo/J'] = round(stats.get('shotsOnTarget', 0) / matches, 2)
         summary['Grandes Chances Criadas/J'] = round(stats.get('bigChancesCreated', 0) / matches, 2)
+        summary['Média Gols Pró/J'] = round(team_standings_info.get('scoresFor', 0) / matches, 2)
         
         total_shots = stats.get('shots', 0)
         if total_shots > 0:
@@ -230,6 +240,8 @@ def get_match_analysis_data(
         summary['Grandes Chances Cedidas/J'] = round(stats.get('bigChancesAgainst', 0) / matches, 2)
         summary['Média Chutes Alvo Cedidos/J'] = round(stats.get('shotsOnTargetAgainst', 0) / matches, 2)
         summary['Média Defesas/J'] = round(stats.get('saves', 0) / matches, 2)
+        summary['Média Gols Contra/J'] = round(team_standings_info.get('scoresAgainst', 0) / matches, 2)
+
 
 
         return summary
