@@ -12,8 +12,8 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class SofaScoreClient:
-    API_BASE_URL = "https://www.sofascore.com/api/v1" #"https://samsbet-proxy.onrender.com"
-    REQUEST_INTERVAL_SECONDS = 1.1
+    API_BASE_URL = "https://samsbet-proxy.onrender.com"
+    REQUEST_INTERVAL_SECONDS = 0.9
 
     # ... (métodos __init__, _rate_limit, _make_request, get_scheduled_events, get_event_details não mudam) ...
     def __init__(self):
