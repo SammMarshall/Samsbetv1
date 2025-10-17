@@ -12,7 +12,7 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class SofaScoreClient:
-    API_BASE_URL = "https://samsbet-proxy.onrender.com"
+    API_BASE_URL = "https://www.sofascore.com/api/v1" #"https://samsbet-proxy.onrender.com"
     REQUEST_INTERVAL_SECONDS = 1.1
 
     # ... (métodos __init__, _rate_limit, _make_request, get_scheduled_events, get_event_details não mudam) ...
@@ -165,7 +165,182 @@ class SofaScoreClient:
             return events[-1]
         return {}
 
-    def get_shots_data_for_event(self, event_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    def get_team_stats_for_event(self, event_id: int) -> Dict[str, Dict[str, Any]]:
+        """
+        Obtém dados de estatísticas gerais de um evento (apenas tempo regulamentar - 1ST + 2ND).
+        """
+        endpoint = f"event/{event_id}/statistics"
+        default_stats = {
+            'home': {
+                #Shots
+                'total_shots': 0,
+                'shots_on_target': 0,
+                'hit_woodwork': 0, #chutes na trave
+                #Match overview
+                'expected_goals': 0.0, #expectativa de gols (float)
+                'corner_kicks': 0, #escanteios
+                'fouls': 0,
+                'yellow_cards': 0,
+                'red_cards': 0,
+                'ball_possession': 0,
+                #Attack
+                'offsides': 0, #impedimento
+                #Passes
+                'throw_ins': 0, #laterais
+                #Defending
+                'total_tackles': 0, #desarmes
+                #Goalkeeping
+                'goal_kicks': 0, #tiro de meta
+                'saves': 0
+            },
+            'away': {
+                #Shots
+                'total_shots': 0,
+                'shots_on_target': 0,
+                'hit_woodwork': 0, #chutes na trave
+                #Match overview
+                'expected_goals': 0.0, #expectativa de gols (float)
+                'corner_kicks': 0, #escanteios
+                'fouls': 0,
+                'yellow_cards': 0,
+                'red_cards': 0,
+                'ball_possession': 0,
+                #Attack
+                'offsides': 0, #impedimento
+                #Passes
+                'throw_ins': 0, #laterais
+                #Defending
+                'total_tackles': 0, #desarmes
+                #Goalkeeping
+                'goal_kicks': 0, #tiro de meta
+                'saves': 0
+            }
+        }   
+
+        try:
+            data = self._make_request(endpoint)
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                logging.warning(f"Dados de estatísticas não encontrados para o evento {event_id} (404).")
+                return default_stats
+            else:
+                raise
+
+        if not data or 'statistics' not in data:
+            return default_stats
+
+        # Função auxiliar para processar um período
+        def process_period(period_groups, stats_dict):
+            for group in period_groups:
+                group_name = group.get('groupName', '')
+                
+                # Extrai estatísticas de Shots
+                if group_name == 'Shots':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+                        
+                        if key == 'totalShotsOnGoal':
+                            stats_dict['home']['total_shots'] += home_value
+                            stats_dict['away']['total_shots'] += away_value
+                        elif key == 'shotsOnGoal':
+                            stats_dict['home']['shots_on_target'] += home_value
+                            stats_dict['away']['shots_on_target'] += away_value
+                        elif key == 'hitWoodwork':
+                            stats_dict['home']['hit_woodwork'] += home_value
+                            stats_dict['away']['hit_woodwork'] += away_value
+                
+                # Extrai estatísticas de Goalkeeping
+                elif group_name == 'Goalkeeping':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+                        
+                        if key == 'goalkeeperSaves':
+                            stats_dict['home']['saves'] += home_value
+                            stats_dict['away']['saves'] += away_value
+                        elif key == 'goalKicks':
+                            stats_dict['home']['goal_kicks'] += home_value
+                            stats_dict['away']['goal_kicks'] += away_value
+
+                # Extrai estatísticas de Match Overview
+                elif group_name == 'Match overview':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+
+                        if key == 'expectedGoals':
+                            stats_dict['home']['expected_goals'] += float(home_value)
+                            stats_dict['away']['expected_goals'] += float(away_value)
+                        elif key == 'cornerKicks':
+                            stats_dict['home']['corner_kicks'] += home_value
+                            stats_dict['away']['corner_kicks'] += away_value
+                        elif key == 'fouls':
+                            stats_dict['home']['fouls'] += home_value
+                            stats_dict['away']['fouls'] += away_value
+                        elif key == 'yellowCards':
+                            stats_dict['home']['yellow_cards'] += home_value
+                            stats_dict['away']['yellow_cards'] += away_value
+                        elif key == 'redCards':
+                            stats_dict['home']['red_cards'] += home_value
+                            stats_dict['away']['red_cards'] += away_value
+                        elif key == 'ballPossession':
+                            # Para posse de bola, fazemos média ao invés de somar
+                            stats_dict['home']['ball_possession'] += home_value / 2
+                            stats_dict['away']['ball_possession'] += away_value / 2
+        
+                # Extrai estatísticas de Attack
+                elif group_name == 'Attack':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+
+                        if key == 'offsides':
+                            stats_dict['home']['offsides'] += home_value
+                            stats_dict['away']['offsides'] += away_value
+
+                # Extrai estatísticas de Passes
+                elif group_name == 'Passes':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+                        
+                        if key == 'throwIns':
+                            stats_dict['home']['throw_ins'] += home_value
+                            stats_dict['away']['throw_ins'] += away_value
+                
+                # Extrai estatísticas de Defending
+                elif group_name == 'Defending':
+                    for stat in group.get('statisticsItems', []):
+                        key = stat.get('key', '')
+                        home_value = stat.get('homeValue', 0)
+                        away_value = stat.get('awayValue', 0)
+                        
+                        if key == 'totalTackle':
+                            stats_dict['home']['total_tackles'] += home_value
+                            stats_dict['away']['total_tackles'] += away_value
+
+        # Processa 1ST e 2ND períodos
+        for period_data in data['statistics']:
+            period = period_data.get('period')
+            if period in ['1ST', '2ND']:
+                groups = period_data.get('groups', [])
+                process_period(groups, default_stats)
+        
+        # Arredonda valores finais
+        default_stats['home']['expected_goals'] = round(default_stats['home']['expected_goals'], 2)
+        default_stats['away']['expected_goals'] = round(default_stats['away']['expected_goals'], 2)
+        default_stats['home']['ball_possession'] = round(default_stats['home']['ball_possession'])
+        default_stats['away']['ball_possession'] = round(default_stats['away']['ball_possession'])
+        
+        return default_stats
+
+    def get_player_stats_for_event(self, event_id: int) -> Dict[str, List[Dict[str, Any]]]:
         """Obtém dados de estatísticas de um evento, tratando o erro 404 graciosamente."""
         endpoint = f"event/{event_id}/lineups"
         event_stats_data = {'home': [], 'away': []}

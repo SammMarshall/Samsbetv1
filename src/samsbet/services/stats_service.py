@@ -128,6 +128,31 @@ def _process_goalkeeper_stats_to_dataframe(
         df['Jogos s/ Sofrer Gol (%)'] = (df['Sem Sofrer Gol'] / df['Partidas'] * 100).round(1)
     
     df = df.fillna(0)
+
+    # <<< NOVO BLOCO DE ANÁLISE DE ODDS >>>
+    min_jogos = 5
+    jogos_validos = df['Partidas'] >= min_jogos
+    lambda_defesas = df.loc[jogos_validos, 'Defesas/J']
+
+    # Linhas de aposta que vamos calcular (1.5, 2.5, 3.5)
+    for line in [0.5, 1.5, 2.5, 3.5, 4.5]:
+        k = int(line) # O valor para o CDF (ex: para Over 2.5, k=2)
+        
+        # Probabilidade de Over (1 - P(defesas <= k))
+        prob_over = 1 - poisson.cdf(k, lambda_defesas)
+        df[f'Prob_Over_{line}'] = np.nan
+        df.loc[jogos_validos, f'Prob_Over_{line}'] = prob_over
+
+        # Probabilidade de Under (P(defesas <= k))
+        prob_under = poisson.cdf(k, lambda_defesas)
+        df[f'Prob_Under_{line}'] = np.nan
+        df.loc[jogos_validos, f'Prob_Under_{line}'] = prob_under
+
+        # Odds Justas
+        df[f'Odd_Over_{line}'] = (1 / df[f'Prob_Over_{line}']).round(2)
+        df[f'Odd_Under_{line}'] = (1 / df[f'Prob_Under_{line}']).round(2)
+    
+    df = df.fillna(0)
     return df.sort_values(by="Partidas", ascending=False).reset_index(drop=True)
 
 def get_match_analysis_data(
@@ -170,13 +195,13 @@ def get_match_analysis_data(
     # 2. Construir um mapa unificado de chutes da última partida (player_id -> stats)
     last_match_shots_map = {}
     if home_last_event_id := home_last_event.get("id"):
-        shots_data = client.get_shots_data_for_event(home_last_event_id)
+        shots_data = client.get_player_stats_for_event(home_last_event_id)
         for team_type in ['home', 'away']:
             for player in shots_data[team_type]:
                 last_match_shots_map[player['player_id']] = player
 
     if away_last_event_id := away_last_event.get("id"):
-        shots_data = client.get_shots_data_for_event(away_last_event_id)
+        shots_data = client.get_player_stats_for_event(away_last_event_id)
         for team_type in ['home', 'away']:
             for player in shots_data[team_type]:
                 # Adiciona ou sobrescreve, garantindo os dados do evento mais recente de cada jogador
@@ -310,14 +335,14 @@ def get_goalkeeper_stats_for_match(
 
         last_match_saves_map: Dict[str, int] = {}
         if home_last_event_id:
-            stats_data = client.get_shots_data_for_event(home_last_event_id)
+            stats_data = client.get_player_stats_for_event(home_last_event_id)
             for team_type in ['home', 'away']:
                 for player in stats_data[team_type]:
                     if player.get('saves', 0) > 0:
                         last_match_saves_map[player['player_name']] = player['saves']
 
         if away_last_event_id:
-            stats_data = client.get_shots_data_for_event(away_last_event_id)
+            stats_data = client.get_player_stats_for_event(away_last_event_id)
             for team_type in ['home', 'away']:
                 for player in stats_data[team_type]:
                     if player.get('saves', 0) > 0:
@@ -390,20 +415,61 @@ def get_h2h_data(custom_id: str, home_team_name: str, away_team_name: str) -> pd
 
 def get_summary_stats_for_event(event_id: int) -> Dict[str, Dict[str, int]]:
     """
-    Busca os dados de um evento e retorna a SOMA de chutes, chutes a gol e defesas.
+    Busca os dados de um evento usando o endpoint de estatísticas agregadas.
     """
     client = SofaScoreClient()
-    player_stats = client.get_shots_data_for_event(event_id)
-    
+    # Chama a sua nova e poderosa função!
+    stats = client.get_team_stats_for_event(event_id) 
+
+    # Como a nova função já retorna os dados agregados, só precisamos garantir o formato.
     summary = {
-        "home": {"total_shots": 0, "shots_on_target": 0, "saves": 0},
-        "away": {"total_shots": 0, "shots_on_target": 0, "saves": 0}
+        "home": {
+            # Shots
+            "total_shots": stats.get('home', {}).get('total_shots', 0),
+            "shots_on_target": stats.get('home', {}).get('shots_on_target', 0),
+            "hit_woodwork": stats.get('home', {}).get('hit_woodwork', 0),
+            # Match Overview
+            "expected_goals": stats.get('home', {}).get('expected_goals', 0.0),
+            "corner_kicks": stats.get('home', {}).get('corner_kicks', 0),
+            "fouls": stats.get('home', {}).get('fouls', 0),
+            "yellow_cards": stats.get('home', {}).get('yellow_cards', 0),
+            "red_cards": stats.get('home', {}).get('red_cards', 0),
+            "ball_possession": stats.get('home', {}).get('ball_possession', 0),
+            # Attack
+            "offsides": stats.get('home', {}).get('offsides', 0),
+            # Passes
+            "throw_ins": stats.get('home', {}).get('throw_ins', 0),
+            # Defending
+            "total_tackles": stats.get('home', {}).get('total_tackles', 0),
+            # Goalkeeping
+            "goal_kicks": stats.get('home', {}).get('goal_kicks', 0),
+            "saves": stats.get('home', {}).get('saves', 0)
+        },
+        "away": {
+            # Shots
+            "total_shots": stats.get('away', {}).get('total_shots', 0),
+            "shots_on_target": stats.get('away', {}).get('shots_on_target', 0),
+            "hit_woodwork": stats.get('away', {}).get('hit_woodwork', 0),
+            # Match Overview
+            "expected_goals": stats.get('away', {}).get('expected_goals', 0.0),
+            "corner_kicks": stats.get('away', {}).get('corner_kicks', 0),
+            "fouls": stats.get('away', {}).get('fouls', 0),
+            "yellow_cards": stats.get('away', {}).get('yellow_cards', 0),
+            "red_cards": stats.get('away', {}).get('red_cards', 0),
+            "ball_possession": stats.get('away', {}).get('ball_possession', 0),
+            # Attack
+            "offsides": stats.get('away', {}).get('offsides', 0),
+            # Passes
+            "throw_ins": stats.get('away', {}).get('throw_ins', 0),
+            # Defending
+            "total_tackles": stats.get('away', {}).get('total_tackles', 0),
+            # Goalkeeping
+            "goal_kicks": stats.get('away', {}).get('goal_kicks', 0),
+            "saves": stats.get('away', {}).get('saves', 0)
+        }
     }
 
-    for team_type in ['home', 'away']:
-        for player in player_stats[team_type]:
-            summary[team_type]["total_shots"] += player.get("total_shots", 0)
-            summary[team_type]["shots_on_target"] += player.get("shots_on_target", 0)
-            summary[team_type]["saves"] += player.get("saves", 0)
-            
+    print(summary)
+
     return summary
+

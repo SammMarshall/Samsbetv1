@@ -59,7 +59,7 @@ if not matches_df.empty:
     # Usamos o st.data_editor, que retorna o dataframe editado
     edited_df = st.data_editor(
         display_df,
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
         column_order=(
             "Analisar", "display_time", "tournament_name", "country", "home_team", "away_team", "status"
