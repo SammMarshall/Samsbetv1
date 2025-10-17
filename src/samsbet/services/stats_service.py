@@ -237,7 +237,9 @@ def get_match_analysis_data(
                 'Conversão de Grandes Chances (%)': 0,
                 'Grandes Chances Cedidas/J': 0, 'Média Chutes Alvo Cedidos/J': 0,
                 'Média Defesas/J': 0, 'Média Gols Pró/J': 0,
-                'Média Gols Contra/J': 0
+                'Média Gols Contra/J': 0,
+                'Média Escanteios/J': 0,
+                'Média Escanteios Contra/J': 0
             }
             summary.update(default_metrics)
             return summary
@@ -267,7 +269,9 @@ def get_match_analysis_data(
         summary['Média Defesas/J'] = round(stats.get('saves', 0) / matches, 2)
         summary['Média Gols Contra/J'] = round(team_standings_info.get('scoresAgainst', 0) / matches, 2)
 
-
+        # Média de escanteios >>>
+        summary['Média Escanteios/J'] = round(stats.get('corners', 0) / matches, 2)
+        summary['Média Escanteios Contra/J'] = round(stats.get('cornersAgainst', 0) / matches, 2)
 
         return summary
 
@@ -469,7 +473,68 @@ def get_summary_stats_for_event(event_id: int) -> Dict[str, Dict[str, int]]:
         }
     }
 
-    print(summary)
-
     return summary
 
+def get_h2h_goalkeeper_analysis(custom_id: str, home_team_name: str, away_team_name: str) -> Dict[str, Any]:
+    """
+    Analisa o histórico de confrontos para calcular a média de defesas da POSIÇÃO de goleiro,
+    usando apenas os jogos que contêm estatísticas válidas.
+    """
+    client = SofaScoreClient()
+    h2h_events = client.get_h2h_events(custom_id)
+    
+    if not h2h_events or len(h2h_events) <= 1:
+        return {}
+
+    home_team_saves_list = []
+    away_team_saves_list = []
+
+    for event in h2h_events[1:]:
+        event_id = event.get("id")
+        if not event_id: continue
+        
+        stats = get_summary_stats_for_event(event_id)
+        
+        # <<< MUDANÇA E CORREÇÃO AQUI >>>
+        # Verificamos se há dados de defesas válidos ANTES de adicioná-los à lista.
+        # Isso garante que não estamos adicionando '0' de jogos sem estatísticas.
+        home_saves = stats['home']['saves']
+        away_saves = stats['away']['saves']
+        home_total_shots = stats['home']['total_shots']
+        away_total_shots = stats['away']['total_shots']
+
+        if home_saves > 0 or away_saves > 0 or home_total_shots > 0 or away_total_shots > 0:
+            if event.get("homeTeam", {}).get("name") == home_team_name:
+                home_team_saves_list.append(home_saves)
+                away_team_saves_list.append(away_saves)
+            else:
+                home_team_saves_list.append(away_saves)
+                away_team_saves_list.append(home_saves)
+    
+    # Função auxiliar interna para calcular as odds
+    def calculate_odds(saves_list: List[int]) -> Dict[str, Any]:
+        if not saves_list:
+            return {}
+        
+        avg_saves = np.mean(saves_list)
+        results = {"avg_saves": round(avg_saves, 2)}
+        
+        # Linhas de aposta comuns para defesas de goleiro
+        for line in [0.5, 1.5, 2.5, 3.5, 4.5]:
+            k = int(line)
+            
+            # Usamos o modelo de Poisson com a média de defesas do H2H como nosso lambda
+            prob_under = poisson.cdf(k, avg_saves)
+            prob_over = 1 - prob_under
+            
+            # Converte probabilidades em Odds Justas
+            results[f'Odd_Over_{line}'] = round(1 / prob_over, 2) if prob_over > 0 else "∞"
+            results[f'Odd_Under_{line}'] = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+            
+        return results
+
+    # Retorna um dicionário com os resultados para cada time
+    return {
+        "home": calculate_odds(home_team_saves_list),
+        "away": calculate_odds(away_team_saves_list)
+    }
