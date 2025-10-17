@@ -3,7 +3,7 @@
 import streamlit as st
 import pandas as pd
 from scipy.stats import poisson
-from samsbet.services.stats_service import get_match_analysis_data, get_goalkeeper_stats_for_match, get_h2h_data, get_summary_stats_for_event
+from samsbet.services.stats_service import get_match_analysis_data, get_goalkeeper_stats_for_match, get_h2h_data, get_summary_stats_for_event, get_h2h_goalkeeper_analysis
 from samsbet.models.texts import ASIAN_ODDS_GUIDE
 
 st.set_page_config(
@@ -39,6 +39,11 @@ def load_h2h_data(custom_id: str, home_team: str, away_team: str):
 @st.cache_data(ttl=86400)
 def load_event_summary_stats(event_id: int):
     return get_summary_stats_for_event(event_id)
+
+# Nova função de cache para a análise H2H de goleiros
+@st.cache_data(ttl=86400)
+def load_h2h_gk_analysis(custom_id: str, home_team: str, away_team: str):
+    return get_h2h_goalkeeper_analysis(custom_id, home_team, away_team)
 
 if 'selected_event_id' not in st.session_state:
     st.warning("Por favor, selecione um jogo na página principal para começar a análise.")
@@ -87,10 +92,10 @@ else:
         away_last_event_id = analysis_data.get('away_last_event_id')
         last_match_saves_map = analysis_data.get('last_match_saves_map')
 
-        tab1, tab2 = st.tabs(["🎯 Finalizações", "🚩 Escanteios"])
+        tab1, tab2 = st.tabs(["🧙‍♂️ Predições", "Outros (Em Breve)"])
 
         with tab1:
-            st.header("Análise de Finalizações (Temporada Completa)")
+            st.header("🥅 Análise de Finalizações (Temporada Completa)")
             
             column_config = {
                 "Chutes Alvo/P": st.column_config.NumberColumn(format="%.2f"),
@@ -117,7 +122,7 @@ else:
                 def_cols[0].metric("Média Chutes Alvo Cedidos/J", home_summary.get('Média Chutes Alvo Cedidos/J', 0))
                 def_cols[1].metric("Grandes Chances Cedidas/J", home_summary.get('Grandes Chances Cedidas/J', 0))
                 def_cols[2].metric("Média Defesas/J", home_summary.get('Média Defesas/J', 0)) 
-                def_cols[3].metric("Média Gols Contra/J", home_summary.get('Média Gols Contra/J', 0)) 
+                def_cols[3].metric("Média Gols Sofridos/J", home_summary.get('Média Gols Contra/J', 0)) 
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not home_players_df.empty:
@@ -142,7 +147,7 @@ else:
                 def_cols[0].metric("Média Chutes Alvo Cedidos/J", away_summary.get('Média Chutes Alvo Cedidos/J', 0))
                 def_cols[1].metric("Grandes Chances Cedidas/J", away_summary.get('Grandes Chances Cedidas/J', 0))
                 def_cols[2].metric("Média Defesas/J", away_summary.get('Média Defesas/J', 0))
-                def_cols[3].metric("Média Gols Contra/J", away_summary.get('Média Gols Contra/J', 0)) 
+                def_cols[3].metric("Média Gols Sofridos/J", away_summary.get('Média Gols Contra/J', 0)) 
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not away_players_df.empty:
@@ -360,19 +365,19 @@ else:
 
                     st.subheader(f"Resumo do Confronto - {home_team}")
                     h2h_home_cols = st.columns(5)
-                    h2h_home_cols[0].metric("Vitórias Totais", home_wins)
-                    h2h_home_cols[1].metric("Vitórias (Casa)", home_home_wins)
-                    h2h_home_cols[2].metric("Vitórias (Fora)", home_away_wins)
-                    h2h_home_cols[3].metric("Derrotas (Casa)", home_home_losses)
-                    h2h_home_cols[4].metric("Derrotas (Fora)", home_away_losses)
+                    h2h_home_cols[0].metric("✅Vitórias Totais", home_wins)
+                    h2h_home_cols[1].metric("✅🏠Vitórias (Casa)", home_home_wins)
+                    h2h_home_cols[2].metric("✅✈️Vitórias (Fora)", home_away_wins)
+                    h2h_home_cols[3].metric("❌🏠Derrotas (Casa)", home_home_losses)
+                    h2h_home_cols[4].metric("❌✈️Derrotas (Fora)", home_away_losses)
                     
                     st.subheader(f"Resumo do Confronto - {away_team}")
                     h2h_away_cols = st.columns(5)
-                    h2h_away_cols[0].metric("Vitórias Totais", away_wins)
-                    h2h_away_cols[1].metric("Vitórias (Casa)", away_home_wins)
-                    h2h_away_cols[2].metric("Vitórias (Fora)", away_away_wins)
-                    h2h_away_cols[3].metric("Derrotas (Casa)", away_home_losses)
-                    h2h_away_cols[4].metric("Derrotas (Fora)", away_away_losses)
+                    h2h_away_cols[0].metric("✅Vitórias Totais", away_wins)
+                    h2h_away_cols[1].metric("✅🏠Vitórias (Casa)", away_home_wins)
+                    h2h_away_cols[2].metric("✅✈️Vitórias (Fora)", away_away_wins)
+                    h2h_away_cols[3].metric("❌🏠Derrotas (Casa)", away_home_losses)
+                    h2h_away_cols[4].metric("❌✈️Derrotas (Fora)", away_away_losses)
 
                     st.subheader("Resumo Geral")
                     h2h_geral_cols = st.columns(4)
@@ -388,7 +393,7 @@ else:
 
                     st.divider()
 
-                    st.subheader("📊 Tendências de Gols nos Confrontos (H2H)")
+                    st.subheader("⚽ Tendências de Gols nos Confrontos (H2H)")
 
                     if total_jogos > 0:
                         # Calculando as porcentagens para os mercados de Over
@@ -432,7 +437,7 @@ else:
                         tendencia_cols[9].metric(label="Ambas Marcam", value=f"{btts_pct:.1f}%")
                         tendencia_cols[10].metric(label="Ambas Não Marcam", value=f"{ambas_n_pct:.1f}%")
                     else:
-                        st.info("Dados insuficientes para calcular tendências.")
+                        st.info("Dados insuficientes para calcular tendências de gols.")
 
                     total_jogos = len(h2h_df)
                     if total_jogos > 0:
@@ -488,21 +493,21 @@ else:
                         val_odd_u6_5 = f"{odd_justa_u6_5:.2f}" if isinstance(odd_justa_u6_5, (int, float)) else odd_justa_u6_5
                         val_odd_u7_5 = f"{odd_justa_u7_5:.2f}" if isinstance(odd_justa_u7_5, (int, float)) else odd_justa_u7_5
 
-                        st.markdown("##### Odds Justas Over (+)")
+                        st.markdown("##### 📈 Odds Justas Over (+)")
                         cols_over = st.columns(11)
                         cols_over[0].metric(label="Odd Justa 0 Gols", value=val_odd_0)
-                        cols_over[1].metric(label="Odd Justa 0.5", value=val_odd_0_5)
-                        cols_over[2].metric(label="Odd Justa 1.5", value=val_odd_1_5)
-                        cols_over[3].metric(label="Odd Justa 2.5", value=val_odd_2_5)
-                        cols_over[4].metric(label="Odd Justa 3.5", value=val_odd_3_5)
-                        cols_over[5].metric(label="Odd Justa 4.5", value=val_odd_4_5)
-                        cols_over[6].metric(label="Odd Justa 5.5", value=val_odd_5_5)
-                        cols_over[7].metric(label="Odd Justa 6.5", value=val_odd_6_5)
-                        cols_over[8].metric(label="Odd Justa 7.5", value=val_odd_7_5)
+                        cols_over[1].metric(label="Odd Justa +0.5", value=val_odd_0_5)
+                        cols_over[2].metric(label="Odd Justa +1.5", value=val_odd_1_5)
+                        cols_over[3].metric(label="Odd Justa +2.5", value=val_odd_2_5)
+                        cols_over[4].metric(label="Odd Justa +3.5", value=val_odd_3_5)
+                        cols_over[5].metric(label="Odd Justa +4.5", value=val_odd_4_5)
+                        cols_over[6].metric(label="Odd Justa +5.5", value=val_odd_5_5)
+                        cols_over[7].metric(label="Odd Justa +6.5", value=val_odd_6_5)
+                        cols_over[8].metric(label="Odd Justa +7.5", value=val_odd_7_5)
                         cols_over[9].markdown("")
                         cols_over[10].markdown("")
                         
-                        st.markdown("##### Odds Justas Under (-)")
+                        st.markdown("##### 📉 Odds Justas Under (-)")
                         cols_under = st.columns(11)
                         cols_under[0].markdown("")
                         cols_under[1].metric(label="Odd Justa -0.5", value=val_odd_u0_5)
@@ -517,11 +522,11 @@ else:
                         cols_under[10].markdown("")
 
                         st.markdown("##### Odds Justas Ambas")
-                        cols_ambas = st.columns(2)
-                        cols_ambas[0].metric(label="Odd Justa (Ambas - Sim)", value=val_odd_abm)
-                        cols_ambas[1].metric(label="Odd Justa (Ambas - Não)", value=val_odd_abnm)
+                        cols_ambas = st.columns(11)
+                        cols_ambas[0].metric(label="Ambas Marcam", value=val_odd_abm)
+                        cols_ambas[1].metric(label="Ambas Não Marcam", value=val_odd_abnm)
 
-                        with st.expander("📊 Análise Avançada: Odds Justas de Gols Asiáticos (H2H)"):
+                        with st.expander("⚽🉐 Análise Avançada: Odds Justas de Gols Asiáticos (H2H)"):
                             total_jogos = len(h2h_df)
                             if total_jogos > 0:
                 
@@ -622,51 +627,6 @@ else:
 
                             with st.expander("📚 Como interpretar as Odds Asiáticas", expanded=False):
                                 st.markdown(ASIAN_ODDS_GUIDE)
-
-                        st.divider()
-
-                        st.subheader("📊 Odds Justas de Escanteios (H2H)")
-
-                        # Usamos total_jogos_analisados para garantir que a média é confiável
-                        if total_jogos_analisados > 0:
-                            # Nosso lambda é a média total de escanteios por jogo
-                            lambda_escanteios = media_escanteios_partida
-                            st.write(f"Baseado em uma média histórica de **{lambda_escanteios:.2f}** escanteios por jogo nos confrontos diretos.")
-
-                            # Linhas de escanteios que vamos analisar
-                            corner_lines = [4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5]
-                            
-                            # Cria as colunas para exibir as odds lado a lado
-                            odd_cols = st.columns(len(corner_lines))
-
-                            # Função auxiliar para calcular Odd Justa (já deve existir no seu código)
-                            def calcular_odd_justa(pct):
-                                if pct > 0:
-                                    return round(1 / (pct / 100), 2)
-                                return "∞"
-
-                            for i, line in enumerate(corner_lines):
-                                with odd_cols[i]:
-                                    k = int(line) # O limiar para o cálculo (ex: para 9.5, k=9)
-                                    
-                                    # Calcula as probabilidades de Over e Under
-                                    prob_under = poisson.cdf(k, lambda_escanteios) * 100
-                                    prob_over = 100 - prob_under
-                                    
-                                    # Calcula as Odds Justas
-                                    odd_justa_under = calcular_odd_justa(prob_under)
-                                    odd_justa_over = calcular_odd_justa(prob_over)
-                                    
-                                    # Exibe as métricas
-                                    st.markdown(f"**Linha {line}**")
-                                    st.metric(label=f"Odd Over {line}", value=odd_justa_over)
-                                    st.metric(label=f"Odd Under {line}", value=odd_justa_under)
-                                    # Opcional: Exibir a probabilidade implícita
-                                    # st.caption(f"Over: {prob_over:.1f}%")
-
-                        else:
-                            st.info("Dados de escanteios insuficientes para calcular as odds justas.")
-
                         
                         st.divider()
                         
@@ -675,7 +635,89 @@ else:
                 else:
                     st.info("Não foram encontrados confrontos diretos recentes entre as equipes.")
             
-            st.header("Análise de Goleiros (Temporada Completa)")
+            
+            st.header("🚩 Análise de Escanteios (Temporada Completa)")
+
+            # Pega os dados de resumo que já foram carregados
+            home_summary = analysis_data['home']['summary']
+            away_summary = analysis_data['away']['summary']
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader(f"Média de Escanteios - {home_team}")
+                st.metric(
+                    label=f"{home_team} (Pró)",
+                    value=f"{home_summary.get('Média Escanteios/J', 0):.2f}"
+                )
+                st.metric(
+                    label=f"{home_team} (Contra)",
+                    value=f"{home_summary.get('Média Escanteios Contra/J', 0):.2f}"
+                )
+                st.metric(
+                    label=f"{home_team} (Total por Jogo)",
+                    value=f"{home_summary.get('Média Escanteios/J', 0) + home_summary.get('Média Escanteios Contra/J', 0):.2f}"
+                )
+
+            with col2:
+                st.subheader(f"Média de Escanteios - {away_team}")
+                st.metric(
+                    label=f"{away_team} (Pró)",
+                    value=f"{away_summary.get('Média Escanteios/J', 0):.2f}"
+                )
+                st.metric(
+                    label=f"{away_team} (Contra)",
+                    value=f"{away_summary.get('Média Escanteios Contra/J', 0):.2f}"
+                )
+                st.metric(
+                    label=f"{away_team} (Total por Jogo)",
+                    value=f"{away_summary.get('Média Escanteios/J', 0) + away_summary.get('Média Escanteios Contra/J', 0):.2f}"
+                )
+            
+            st.subheader("Odds Justas de Escanteios (H2H)")
+
+            if total_jogos_analisados > 0:
+                lambda_escanteios = media_escanteios_partida
+                st.write(f"Baseado em uma média histórica de **{lambda_escanteios:.2f}** escanteios por jogo nos confrontos diretos.")
+
+                corner_lines = [4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5]
+
+                # Função auxiliar (pode estar fora do bloco, mas ok aqui)
+                def calcular_odd_justa(pct):
+                    if pct > 0:
+                        return round(1 / (pct / 100), 2)
+                    return float('inf')  # ou "∞", mas float('inf') é mais fácil para exibição
+
+                # === Linha 1: Over ===
+                st.markdown("#### 📈 Odds Justas Over (+)")
+                over_cols = st.columns(len(corner_lines))
+                for i, line in enumerate(corner_lines):
+                    k = int(line)
+                    prob_over = (1 - poisson.cdf(k, lambda_escanteios)) * 100
+                    odd_justa_over = calcular_odd_justa(prob_over)
+                    with over_cols[i]:
+                        st.metric(label=f"Over {line}", value=odd_justa_over)
+
+                # Espaçamento visual (opcional)
+                st.write("")  # ou st.divider() se quiser separar mais
+
+                # === Linha 2: Under ===
+                st.markdown("#### 📉 Odds Justas Under (-)")
+                under_cols = st.columns(len(corner_lines))
+                for i, line in enumerate(corner_lines):
+                    k = int(line)
+                    prob_under = poisson.cdf(k, lambda_escanteios) * 100
+                    odd_justa_under = calcular_odd_justa(prob_under)
+                    with under_cols[i]:
+                        st.metric(label=f"Under {line}", value=odd_justa_under)
+
+                st.divider()
+
+            else:
+                st.info("Dados de escanteios insuficientes para calcular as odds justas.")
+
+
+            
+            st.header("🧤 Análise de Goleiros (Temporada Completa)")
             
             with st.spinner("Buscando dados dos goleiros... 🧤"):
             # Reutiliza os dados de 'analysis_data' para otimizar as chamadas
@@ -728,7 +770,7 @@ else:
                     st.divider()
 
                     # 2. Seção Interativa de Odds Justas
-                    st.markdown("##### 📈 Odds Justas por Goleiro")
+                    st.markdown("##### Odds Justas por Goleiro")
         
                     selected_gk = st.selectbox(
                         "Selecione um goleiro para análise de odds:",
@@ -766,4 +808,60 @@ else:
     
             with col2:
                 display_gk_analysis(away_team, away_summary, away_gk_df)
+
+            st.divider()
+            st.subheader("Desempenho da Posição (Confronto Direto - H2H)")
+
+            if not custom_id:
+                st.warning("ID para H2H não encontrado.")
+            else:
+                with st.spinner("Analisando histórico de defesas no H2H... 🕵️"):
+                    h2h_gk_data = load_h2h_gk_analysis(custom_id, home_team, away_team)
+                
+                if not h2h_gk_data.get('home') and not h2h_gk_data.get('away'):
+                    st.info("Não há dados de defesas suficientes no histórico de confrontos para esta análise.")
+                else:
+                    h2h_col1, h2h_col2 = st.columns(2)
+                    
+                    def display_h2h_gk_analysis(team_name, h2h_data):
+                        """
+                        Função para renderizar a análise H2H de goleiros para um time,
+                        agora com odds justas lateralizadas.
+                        """
+                        st.markdown(f"**{team_name}**")
+                        st.metric(
+                            "Média de Defesas/J no H2H",
+                            value=h2h_data.get('avg_saves', 'N/A')
+                        )
+                        
+                        with st.expander("Ver Odds Justas (H2H)"):
+                            # Garante que temos dados para processar
+                            if not h2h_data or h2h_data.get('avg_saves') is None:
+                                st.info("Nenhuma odd para exibir.")
+                            else:
+                                lines_to_show = [0.5, 1.5, 2.5, 3.5, 4.5]
+                                # <<< MUDANÇA CRUCIAL AQUI: Criamos as colunas ANTES do loop >>>
+                                odd_cols = st.columns(len(lines_to_show))
+                                
+                                # Iteramos sobre as colunas e as linhas de aposta ao mesmo tempo
+                                for i, line in enumerate(lines_to_show):
+                                    with odd_cols[i]: # Entramos na coluna correta para cada linha
+                                        st.markdown(f"**Linha {line}**")
+                                        
+                                        over_value = h2h_data.get(f"Odd_Over_{line}", "N/A")
+                                        under_value = h2h_data.get(f"Odd_Under_{line}", "N/A")
+
+                                        # Garante que valores "infinitos" ou zero sejam exibidos de forma limpa
+                                        if over_value == "∞" or over_value == 0: over_value = "N/A"
+                                        if under_value == "∞" or under_value == 0: under_value = "N/A"
+
+                                        # Exibimos as duas métricas, uma abaixo da outra, DENTRO da mesma coluna
+                                        st.metric(label=f"Odd Over +{line}", value=over_value)
+                                        st.metric(label=f"Odd Under -{line}", value=under_value)
+
+                    with h2h_col1:
+                        display_h2h_gk_analysis(home_team, h2h_gk_data.get('home', {}))
+                    
+                    with h2h_col2:
+                        display_h2h_gk_analysis(away_team, h2h_gk_data.get('away', {}))
         
