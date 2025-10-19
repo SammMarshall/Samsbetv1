@@ -1,6 +1,7 @@
 # samsbet/api/sofascore_client.py
 
 import time
+import os
 import random
 import requests
 from typing import Dict, Any, List, Optional
@@ -8,12 +9,15 @@ from datetime import date
 import logging
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from samsbet.core.disk_cache import get_from_disk_cache, set_to_disk_cache
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class SofaScoreClient:
     API_BASE_URL =  "https://samsbet-proxy.onrender.com" #"https://www.sofascore.com/api/v1"
-    REQUEST_INTERVAL_SECONDS = 0.9
+    REQUEST_INTERVAL_SECONDS = 0.2
+    # TTL máximo para persistência em disco (padrão: 24h)
+    MAX_DISK_CACHE_TTL = int(os.environ.get("SAMSBET_DISK_CACHE_MAX_TTL", "86400"))
 
     # ... (métodos __init__, _rate_limit, _make_request, get_scheduled_events, get_event_details não mudam) ...
     def __init__(self):
@@ -54,20 +58,20 @@ class SofaScoreClient:
     def _get_ttl_for_endpoint(self, endpoint: str) -> int:
         """Define TTLs diferentes por tipo de recurso."""
         if endpoint.startswith("sport/football/scheduled-events/"):
-            return 600  # 10 min
+            return self.MAX_DISK_CACHE_TTL  # 10 min
         if endpoint.endswith("/standings/total"):
-            return 3600  # 1h
+            return self.MAX_DISK_CACHE_TTL  # 1h
         if "/statistics" in endpoint:
-            return 1800  # 30 min
+            return self.MAX_DISK_CACHE_TTL  # 30 min
         if endpoint.endswith("/events/last/0"):
-            return 900  # 15 min
+            return self.MAX_DISK_CACHE_TTL  # 15 min
         if endpoint.endswith("/lineups"):
-            return 1800  # 30 min
+            return self.MAX_DISK_CACHE_TTL  # 30 min
         if endpoint.endswith("/h2h/events"):
-            return 3600  # 1h
+            return self.MAX_DISK_CACHE_TTL  # 1h
         if endpoint.startswith("event/"):
-            return 900  # 15 min para detalhes de evento
-        return 600  # padrão
+            return self.MAX_DISK_CACHE_TTL  # 15 min para detalhes de evento
+        return self.MAX_DISK_CACHE_TTL  # padrão
 
     def _make_request(self, endpoint: str) -> Dict[str, Any]:
         self._rate_limit()
@@ -84,6 +88,13 @@ class SofaScoreClient:
             else:
                 # Expirou
                 self._cache.pop(endpoint, None)
+
+        # Tenta cache em disco compartilhado (namespaced p/ invalidar versões antigas)
+        cache_key = f"v2:{endpoint}"
+        disk_cached = get_from_disk_cache(cache_key)
+        if isinstance(disk_cached, dict) and disk_cached:
+            logging.info(f"Servindo do cache em disco: {url}")
+            return disk_cached
         try:
             response = self.session.get(url, timeout=15)
             # Trata bloqueios/rate-limit de forma graciosa para não derrubar o app
@@ -98,13 +109,22 @@ class SofaScoreClient:
             if isinstance(data, dict) and data:
                 ttl = self._get_ttl_for_endpoint(endpoint)
                 self._cache[endpoint] = (current_time + ttl, data)
+                # Persiste também em disco para compartilhar entre processos
+                try:
+                    set_to_disk_cache(cache_key, data, min(ttl, self.MAX_DISK_CACHE_TTL))
+                except Exception:
+                    pass
             return data
         except requests.exceptions.JSONDecodeError:
             logging.error(f"Falha ao decodificar JSON da URL: {url}")
             return {}
         except requests.exceptions.RequestException as e:
             logging.error(f"Erro na requisição para {url}: {e}")
-            # Em qualquer outra exceção de rede, retorna vazio para o chamador tratar
+            # Cacheia vazios curtos para evitar bombardeio em endpoints problemáticos
+            try:
+                set_to_disk_cache(endpoint, {}, ttl_seconds=300)
+            except Exception:
+                pass
             return {}
 
     def get_scheduled_events(self, event_date: date) -> List[Dict[str, Any]]:
@@ -226,7 +246,7 @@ class SofaScoreClient:
             else:
                 raise
 
-        if not data or 'statistics' not in data:
+        if not data or 'statistics' not in data or not data.get('statistics'):
             return default_stats
 
         # Função auxiliar para processar um período
@@ -325,11 +345,18 @@ class SofaScoreClient:
                             stats_dict['home']['total_tackles'] += home_value
                             stats_dict['away']['total_tackles'] += away_value
 
-        # Processa 1ST e 2ND períodos
-        for period_data in data['statistics']:
+        # Alguns eventos trazem apenas período agregado (ex.: 'ALL')
+        periods = data['statistics']
+        has_first_second = any(p.get('period') in ['1ST', '2ND'] for p in periods)
+        for period_data in periods:
             period = period_data.get('period')
-            if period in ['1ST', '2ND']:
-                groups = period_data.get('groups', [])
+            if has_first_second:
+                if period in ['1ST', '2ND']:
+                    groups = period_data.get('groups', [])
+                    process_period(groups, default_stats)
+            else:
+                # Se não houver 1ST/2ND, processa todos os períodos disponíveis (ex.: 'ALL')
+                groups = period_data.get('groups', ['ALL'])
                 process_period(groups, default_stats)
         
         # Arredonda valores finais
