@@ -2,8 +2,9 @@
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 from scipy.stats import poisson
-from samsbet.services.stats_service import get_match_analysis_data, get_goalkeeper_stats_for_match, get_h2h_data, get_summary_stats_for_event, get_h2h_goalkeeper_analysis
+from samsbet.services.stats_service import get_match_analysis_data, get_goalkeeper_stats_for_match, get_h2h_data, get_summary_stats_for_event, get_h2h_goalkeeper_analysis, get_variation_level
 from samsbet.models.texts import ASIAN_ODDS_GUIDE
 
 st.set_page_config(
@@ -42,17 +43,19 @@ def load_event_summary_stats(event_id: int):
 
 # Nova função de cache para a análise H2H de goleiros
 @st.cache_data(ttl=86400)
-def load_h2h_gk_analysis(custom_id: str, home_team: str, away_team: str):
-    return get_h2h_goalkeeper_analysis(custom_id, home_team, away_team)
+def load_h2h_gk_analysis(custom_id: str, home_team: str, away_team: str, h2h_events: list = None, detailed_stats_cache: dict = None):
+    return get_h2h_goalkeeper_analysis(custom_id, home_team, away_team, h2h_events, detailed_stats_cache)
 
 if 'selected_event_id' not in st.session_state:
     st.warning("Por favor, selecione um jogo na página principal para começar a análise.")
     st.page_link("app.py", label="Voltar para a Página Principal", icon="🏠")
 else:
-    event_id = st.session_state['selected_event_id']
+    main_event_id = st.session_state['selected_event_id']
     home_team = st.session_state['selected_home_team']
     away_team = st.session_state['selected_away_team']
     custom_id = st.session_state.get('selected_custom_id') # Pega o custom_id da sessão
+
+
 
 
     # --- ETAPA 1: RENDERIZAR TÍTULOS E CONTROLES ---
@@ -73,13 +76,24 @@ else:
     # --- ETAPA 2: BUSCAR OS DADOS COM BASE NOS CONTROLES ---
     
     with st.spinner("Buscando estatísticas detalhadas... ⏳"):
-        analysis_data = load_analysis_data(event_id, filter_by_location=apply_location_filter)
+        analysis_data = load_analysis_data(main_event_id, filter_by_location=apply_location_filter)
     
     # --- ETAPA 3: EXIBIR OS RESULTADOS ---
 
     if not analysis_data:
         st.error("Não foi possível carregar os dados da análise para esta partida.")
     else:
+
+        def generate_dynamic_lines(avg: float, num_lines: int = 3) -> list:
+            """Gera uma lista de linhas de aposta '.5' centradas em torno da média."""
+            if avg <= 0:
+                return []
+            # Encontra a linha .5 mais próxima da média
+            center_line = round(avg - 0.5) + 0.5
+            # Gera as linhas abaixo e acima
+            lines = [center_line + i for i in range(-num_lines, num_lines + 1)]
+            # Garante que as linhas sejam sempre positivas
+            return [line for line in lines if line > 0]
         # Define o subheader agora que temos o nome do torneio sem nova requisição
         tournament_name = analysis_data.get('tournament_name', '')
         st.subheader(f"🏆 {tournament_name}")
@@ -91,12 +105,122 @@ else:
         home_last_event_id = analysis_data.get('home_last_event_id')
         away_last_event_id = analysis_data.get('away_last_event_id')
         last_match_saves_map = analysis_data.get('last_match_saves_map')
+        
 
         tab1, tab2 = st.tabs(["🧙‍♂️ Predições", "Outros (Em Breve)"])
 
         with tab1:
-            st.header("🥅 Análise de Finalizações (Temporada Completa)")
+            st.header("🥅 Análise de Finalizações: Temporada Completa e H2H")
+
+            # --- ETAPA 1: CARREGAR TODOS OS DADOS NECESSÁRIOS NO INÍCIO ---
+            # Carregamos os dados do H2H uma única vez e os reutilizamos em toda a página
+            h2h_df = pd.DataFrame()
+            enriched_h2h_df = pd.DataFrame()
+            detailed_stats_cache = {}  # Cache para evitar chamadas duplicadas
             
+            if custom_id:
+                with st.spinner("Buscando e processando histórico de confrontos... ⏳"):
+                    h2h_df = load_h2h_data(custom_id, home_team, away_team)
+                    if not h2h_df.empty:
+                        # Carrega as estatísticas detalhadas uma única vez e armazena em cache
+                        detailed_stats_list = []
+                        for _, row in h2h_df.iterrows():
+                            event_id = row['event_id']
+                            if event_id not in detailed_stats_cache:
+                                # Evita chamadas quando o H2H indica ausência OU não fornece a flag
+                                has_stats = row.get('hasEventPlayerStatistics')
+                                if has_stats is not True:
+                                    continue
+                                detailed_stats_cache[event_id] = load_event_summary_stats(event_id)
+                            detailed_stats_list.append(detailed_stats_cache.get(event_id, {}))
+                        
+                        home_stats_df = pd.DataFrame([item['home'] for item in detailed_stats_list]).add_prefix('Casa_')
+                        away_stats_df = pd.DataFrame([item['away'] for item in detailed_stats_list]).add_prefix('Visitante_')
+                        enriched_h2h_df = pd.concat([h2h_df.reset_index(drop=True), home_stats_df, away_stats_df], axis=1)
+                        
+                        # <<< OTIMIZAÇÃO: Armazena os eventos H2H brutos para reutilização >>>
+                        # Busca os eventos H2H brutos para reutilizar na análise de goleiros
+                        from samsbet.api.sofascore_client import SofaScoreClient
+                        client = SofaScoreClient()
+                        h2h_events_raw = client.get_h2h_events(custom_id)
+           
+            # --- FUNÇÃO "MESTRE" REUTILIZÁVEL PARA ANÁLISE DE ODDS ---
+            def display_odds_expander(
+                team_name: str,
+                analysis_title: str,
+                season_summary: dict,
+                h2h_enriched_df: pd.DataFrame,
+                season_key: str,
+                h2h_home_key: str,
+                h2h_away_key: str,
+                num_lines_to_show: int
+            ):
+                with st.expander(f"📊 Ver Odds Justas de {analysis_title} para {team_name}"):
+                    season_col, h2h_col = st.columns(2)
+                    
+
+                    # --- Análise da Temporada ---
+                    with season_col:
+                        st.markdown("###### Desempenho na Temporada")
+                        avg_season = season_summary.get(season_key, 0)
+                        total_jogos_temporada = season_summary.get('Total de Jogos', 0)
+                        st.caption(f"Baseado em {total_jogos_temporada} jogos da temporada.")
+                        st.metric(f"Média {analysis_title}/J", f"{avg_season:.2f}")
+                        if avg_season > 0:
+                            lines_to_show_season = generate_dynamic_lines(avg_season, num_lines=num_lines_to_show)
+                            for line in lines_to_show_season:
+                                k = int(line)
+                                prob_under = poisson.cdf(k, avg_season)
+                                odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+
+                    # --- Análise do H2H ---
+                    with h2h_col:
+                        st.markdown("###### Desempenho no Confronto (H2H)")
+                        
+                        if h2h_enriched_df.empty:
+                            st.info("Sem dados H2H.")
+                        else:
+                            # Filtra jogos com estatísticas válidas
+                            h2h_with_stats_df = h2h_enriched_df[
+                                (h2h_enriched_df[h2h_home_key] > 0) | (h2h_enriched_df[h2h_away_key] > 0)
+                            ]
+
+                            if h2h_with_stats_df.empty:
+                                st.info("Nenhum jogo H2H com estatísticas.")
+                            else:
+                                st.caption(f"Baseado em {len(h2h_with_stats_df)} jogos com estatísticas.")
+                                
+                                h2h_values = []
+                                # Iteramos sobre o DataFrame JÁ FILTRADO
+                                for _, row in h2h_with_stats_df.iterrows():
+                                    if row['Time da Casa'] == team_name:
+                                        h2h_values.append(row[h2h_home_key])
+                                    else:
+                                        h2h_values.append(row[h2h_away_key])
+                                
+                                # O cálculo da média agora é feito sobre a amostra correta
+                                avg_h2h = np.mean(h2h_values) if h2h_values else 0
+                                
+                                st.metric(f"Média {analysis_title}/J", f"{avg_h2h:.2f}")
+                                if avg_h2h > 0:
+                                    lines_to_show_h2h = generate_dynamic_lines(avg_h2h, num_lines=num_lines_to_show)
+                                    for line in lines_to_show_h2h:
+                                        k = int(line)
+                                        prob_under = poisson.cdf(k, avg_h2h)
+                                        odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                        odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                        st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+                                # Consistência para o recorte específico
+                                lvl = get_variation_level(h2h_values)
+                                if lvl == "Alta":
+                                    st.info("💡 Consistência (H2H): **alta variação** neste recorte; cuidado ao usar a média.")
+                                elif lvl == "Média":
+                                    st.info("ℹ️ Consistência (H2H): **variação moderada** neste recorte.")
+                                else:
+                                    st.info("✅ Consistência (H2H): **baixa variação**, indicando padrão estável.")
+
             column_config = {
                 "Chutes Alvo/P": st.column_config.NumberColumn(format="%.2f"),
                 "Odd_Over_0.5": st.column_config.NumberColumn(format="%.2f"),
@@ -123,6 +247,33 @@ else:
                 def_cols[1].metric("Grandes Chances Cedidas/J", home_summary.get('Grandes Chances Cedidas/J', 0))
                 def_cols[2].metric("Média Defesas/J", home_summary.get('Média Defesas/J', 0)) 
                 def_cols[3].metric("Média Gols Sofridos/J", home_summary.get('Média Gols Contra/J', 0)) 
+
+                st.divider()
+                
+                st.markdown(f"##### Odds Justas de Chutes Totais - {home_team} ⚽ ")
+                display_odds_expander(
+                    team_name=home_team,
+                    analysis_title="Chutes Totais",
+                    season_summary=home_summary,
+                    h2h_enriched_df=enriched_h2h_df,
+                    season_key='Média Chutes/J',
+                    h2h_home_key='Casa_total_shots',
+                    h2h_away_key='Visitante_total_shots',
+                    num_lines_to_show=3
+                )
+                
+                st.markdown(f"##### Odds Justas de Chutes no Alvo - {home_team} ⚽🥅")
+                display_odds_expander(
+                    team_name=home_team,
+                    analysis_title="Chutes ao Alvo",
+                    season_summary=home_summary,
+                    h2h_enriched_df=enriched_h2h_df,
+                    season_key='Média Chutes Alvo/J',
+                    h2h_home_key='Casa_shots_on_target',
+                    h2h_away_key='Visitante_shots_on_target',
+                    num_lines_to_show=3
+                )
+                
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not home_players_df.empty:
@@ -148,6 +299,33 @@ else:
                 def_cols[1].metric("Grandes Chances Cedidas/J", away_summary.get('Grandes Chances Cedidas/J', 0))
                 def_cols[2].metric("Média Defesas/J", away_summary.get('Média Defesas/J', 0))
                 def_cols[3].metric("Média Gols Sofridos/J", away_summary.get('Média Gols Contra/J', 0)) 
+
+                st.divider()
+                
+                st.markdown(f"##### Odds Justas de Chutes Totais - {away_team} ⚽")
+                display_odds_expander(
+                    team_name=away_team,
+                    analysis_title="Chutes Totais",
+                    season_summary=away_summary,
+                    h2h_enriched_df=enriched_h2h_df,
+                    season_key='Média Chutes/J',
+                    h2h_home_key='Casa_total_shots',
+                    h2h_away_key='Visitante_total_shots',
+                    num_lines_to_show=3
+                )
+                
+                st.markdown(f"##### Odds Justas de Chutes no Alvo - {away_team} ⚽🥅")
+                display_odds_expander(
+                    team_name=away_team,
+                    analysis_title="Chutes ao Alvo",
+                    season_summary=away_summary,
+                    h2h_enriched_df=enriched_h2h_df,
+                    season_key='Média Chutes Alvo/J',
+                    h2h_home_key='Casa_shots_on_target',
+                    h2h_away_key='Visitante_shots_on_target',
+                    num_lines_to_show=3
+                )
+                
                 st.divider()
                 st.markdown("###### Estatísticas Individuais")
                 if not away_players_df.empty:
@@ -155,15 +333,122 @@ else:
                 else:
                     st.info(f"Não foram encontradas estatísticas de finalização para {away_team}.")
 
+                        # <<< NOVA SEÇÃO DE ANÁLISE GERAL DA PARTIDA >>>
+
+            with st.expander("**🔮 Análise Geral de Finalizações da Partida (Expectativa Total)**", expanded=True):                    
+                season_col, h2h_col = st.columns(2)
+
+                # --- Análise Baseada na Temporada ---
+                with season_col:
+                    st.markdown("###### Baseado na Temporada")
+                    
+                    # Soma das médias dos dois times para criar a expectativa do jogo
+                    exp_shots_season = home_summary.get('Média Chutes/J', 0) + away_summary.get('Média Chutes/J', 0)
+                    exp_sot_season = home_summary.get('Média Chutes Alvo/J', 0) + away_summary.get('Média Chutes Alvo/J', 0)
+
+                    st.metric("Expectativa de Chutes Totais", f"{exp_shots_season:.2f}")
+                    st.metric("Expectativa de Chutes no Alvo", f"{exp_sot_season:.2f}")
+
+                    with st.expander(f"📊 Ver Odds Justas de (Chutes Totais)"):
+
+                        st.markdown("**Odds Justas (Chutes Totais)**")
+                        if exp_shots_season > 0:
+                            lines_to_show = generate_dynamic_lines(exp_shots_season, num_lines=2) # 2 acima, 2 abaixo
+                            cols = st.columns(len(lines_to_show))
+                            for i, line in enumerate(lines_to_show):
+                                with cols[i]:
+                                    k = int(line)
+                                    prob_under = poisson.cdf(k, exp_shots_season)
+                                    odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                    odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                    st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+
+                    with st.expander(f"📊 Ver Odds Justas de (Chutes no Alvo)"):
+                        st.markdown("**Odds Justas (Chutes no Alvo)**")
+                        if exp_sot_season > 0:
+                            lines_to_show = generate_dynamic_lines(exp_sot_season, num_lines=2) # 2 acima, 2 abaixo
+                            cols = st.columns(len(lines_to_show))
+                            for i, line in enumerate(lines_to_show):
+                                with cols[i]:
+                                    k = int(line)
+                                    prob_under = poisson.cdf(k, exp_sot_season)
+                                    odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                    odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                    st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+                
+                # --- Análise Baseada no Confronto Direto (H2H) ---
+                with h2h_col:
+                    st.markdown("###### Baseado no Confronto (H2H)")
+                    
+                    if enriched_h2h_df.empty:
+                        st.info("Sem dados H2H para análise.")
+                    else:
+                        h2h_with_stats_df = enriched_h2h_df[(enriched_h2h_df['Casa_total_shots'] > 0) | (enriched_h2h_df['Visitante_total_shots'] > 0)]
+                        
+                        if h2h_with_stats_df.empty:
+                            st.info("Nenhum H2H com estatísticas.")
+                        else:
+                            # Calcula a média de chutes totais e ao alvo por partida no H2H
+                            exp_shots_h2h = (h2h_with_stats_df['Casa_total_shots'] + h2h_with_stats_df['Visitante_total_shots']).mean()
+                            exp_sot_h2h = (h2h_with_stats_df['Casa_shots_on_target'] + h2h_with_stats_df['Visitante_shots_on_target']).mean()
+                            
+                            st.metric("Expectativa de Chutes Totais", f"{exp_shots_h2h:.2f}")
+                            st.metric("Expectativa de Chutes no Alvo", f"{exp_sot_h2h:.2f}")
+
+                            # --- Análise de Consistência (Coeficiente de Variação) ---
+                            serie_totais = (h2h_with_stats_df['Casa_total_shots'] + h2h_with_stats_df['Visitante_total_shots']).tolist()
+                            serie_alvo = (h2h_with_stats_df['Casa_shots_on_target'] + h2h_with_stats_df['Visitante_shots_on_target']).tolist()
+                            lvl_totais = get_variation_level(serie_totais)
+                            lvl_alvo = get_variation_level(serie_alvo)
+                            
+
+                            with st.expander(f"📊 Ver Odds Justas de (Chutes Totais)"):
+                                st.markdown("**Odds Justas (Chutes Totais)**")
+                                if exp_shots_h2h > 0:
+                                    lines_to_show = generate_dynamic_lines(exp_shots_h2h, num_lines=2)
+                                    cols = st.columns(len(lines_to_show))
+                                    for i, line in enumerate(lines_to_show):
+                                        with cols[i]:
+                                            k = int(line)
+                                            prob_under = poisson.cdf(k, exp_shots_h2h)
+                                            odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                            odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                            st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+                                        
+                                if lvl_totais == "Alta":
+                                    st.info("💡 Consistência (H2H): **alta variação** neste recorte; cuidado ao usar a média.")
+                                elif lvl_totais == "Média":
+                                    st.info("ℹ️ Consistência (H2H): **variação moderada** neste recorte.")
+                                else:
+                                    st.info("✅ Consistência (H2H): **baixa variação**, indicando padrão estável.")
+
+                            with st.expander(f"📊 Ver Odds Justas de (Chutes no Alvo)"):
+                                st.markdown("**Odds Justas (Chutes no Alvo)**")
+                                if exp_sot_h2h > 0:
+                                    lines_to_show = generate_dynamic_lines(exp_sot_h2h, num_lines=2)
+                                    cols = st.columns(len(lines_to_show))
+                                    for i, line in enumerate(lines_to_show):
+                                        with cols[i]:
+                                            k = int(line)
+                                            prob_under = poisson.cdf(k, exp_sot_h2h)
+                                            odd_over = round(1 / (1 - prob_under), 2) if (1 - prob_under) > 0 else "∞"
+                                            odd_under = round(1 / prob_under, 2) if prob_under > 0 else "∞"
+                                            st.metric(f"Over/Under {line}", f"{odd_over} / {odd_under}")
+                                    
+                                if lvl_alvo == "Alta":
+                                    st.info("💡 Análise de Consistência: Os jogos H2H apresentam uma **alta variação** nas finalizações. Interprete a média com cautela.")
+                                elif lvl_alvo == "Média":
+                                    st.info("ℹ️ Análise de Consistência: Os jogos H2H apresentam **variação moderada** nas finalizações.")
+                                else:
+                                    st.info("✅ Análise de Consistência: Os jogos H2H apresentam **baixa variação** nas finalizações, indicando padrão estável.")
+
             st.divider()
             st.header("Histórico de Confrontos Diretos (H2H)")
             if not custom_id:
                 st.warning("ID para H2H não encontrado.")
+            elif h2h_df.empty:
+                st.info("Não foram encontrados confrontos diretos recentes entre as equipes.")
             else:
-                with st.spinner("Buscando histórico de confrontos... ⏳"):
-                    h2h_df = load_h2h_data(custom_id, home_team, away_team)
-                
-                if not h2h_df.empty:
                     total_jogos = len(h2h_df)
                     home_wins = (h2h_df['Vencedor'] == home_team).sum()
                     away_wins = (h2h_df['Vencedor'] == away_team).sum()
@@ -195,8 +480,12 @@ else:
                     away_home_losses = h2h_df[(h2h_df['Time da Casa'] == away_team) & (h2h_df['Vencedor'] == home_team)].shape[0]
                     away_away_losses = h2h_df[(h2h_df['Time Visitante'] == away_team) & (h2h_df['Vencedor'] == home_team)].shape[0]
 
-                    # Carrega estatísticas resumidas direto na tabela
+                    # Carrega estatísticas resumidas direto na tabela usando o cache
                     display_df = h2h_df.copy()
+                    # Opção para ocultar jogos sem estatísticas
+                    hide_no_stats = st.toggle("Ocultar jogos H2H sem estatísticas", value=True)
+                    if hide_no_stats and 'hasEventPlayerStatistics' in display_df.columns:
+                        display_df = display_df[display_df['hasEventPlayerStatistics'] == True].copy()
                     if not display_df.empty:
                         # Exibir apenas a data (sem horário)
                         if 'Data' in display_df.columns:
@@ -211,7 +500,8 @@ else:
 
                         for i, (_, row) in enumerate(display_df.iterrows()):
                             event_id_row = row['event_id']
-                            summary = load_event_summary_stats(event_id_row)
+                            # Usa o cache em vez de fazer nova chamada à API
+                            summary = detailed_stats_cache.get(event_id_row, {})
                             home_stats = summary.get('home', {})
                             away_stats = summary.get('away', {})
 
@@ -222,35 +512,41 @@ else:
                             chutes_alvo_partida = home_stats.get('shots_on_target', 0) + away_stats.get('shots_on_target', 0)
                             defesas_partida = home_stats.get('saves', 0) + away_stats.get('saves', 0)
                             escanteios_partida = home_stats.get('corner_kicks', 0) + away_stats.get('corner_kicks', 0)
+                            impedimentos_partida = home_stats.get('offsides', 0) + away_stats.get('offsides', 0)
 
                             display_df.loc[display_df.index[i], 'Chutes Totais (Partida)'] = chutes_totais_partida
                             display_df.loc[display_df.index[i], 'Chutes no Alvo (Partida)'] = chutes_alvo_partida
                             display_df.loc[display_df.index[i], 'Defesas (Partida)'] = defesas_partida
                             display_df.loc[display_df.index[i], 'Escanteios (Partida)'] = escanteios_partida
+                            display_df.loc[display_df.index[i], 'Impedimentos (Partida)'] = impedimentos_partida
 
                             #HOME
                             display_df.loc[display_df.index[i], 'Chutes Totais (Casa)'] = home_stats.get('total_shots', 0)
                             display_df.loc[display_df.index[i], 'Chutes no Alvo (Casa)'] = home_stats.get('shots_on_target', 0)
                             display_df.loc[display_df.index[i], 'Defesas (Casa)'] = home_stats.get('saves', 0)
                             display_df.loc[display_df.index[i], 'Escanteios (Casa)'] = home_stats.get('corner_kicks', 0)
+                            display_df.loc[display_df.index[i], 'Impedimentos (Casa)'] = home_stats.get('offsides', 0)
 
                             #AWAY
                             display_df.loc[display_df.index[i], 'Chutes Totais (Visitante)'] = away_stats.get('total_shots', 0)
                             display_df.loc[display_df.index[i], 'Chutes no Alvo (Visitante)'] = away_stats.get('shots_on_target', 0)
                             display_df.loc[display_df.index[i], 'Defesas (Visitante)'] = away_stats.get('saves', 0)
                             display_df.loc[display_df.index[i], 'Escanteios (Visitante)'] = away_stats.get('corner_kicks', 0)
+                            display_df.loc[display_df.index[i], 'Impedimentos (Visitante)'] = away_stats.get('offsides', 0)
 
-                    st.dataframe(
-                        display_df.drop(columns=['Gols Casa', 'Gols Visitante', 'Gols Totais', 'event_id']),
-                        hide_index=True
-                    )
+                    cols_to_drop = ['Gols Casa', 'Gols Visitante', 'Gols Totais', 'event_id', 'hasEventPlayerStatistics']
+                    try:
+                        display_df_to_show = display_df.drop(columns=[c for c in cols_to_drop if c in display_df.columns])
+                    except Exception:
+                        display_df_to_show = display_df
+                    st.dataframe(display_df_to_show, hide_index=True)
 
                     # Métricas de apostas esportivas baseadas no histórico H2H
                     st.subheader("📊 Métricas de Apostas - Histórico H2H")
                     
                     if not display_df.empty:
                         # Calcula médias por time e por partida
-                        total_jogos = len(display_df)
+                        total_jogos = len(h2h_df)
                         
                         # Filtra jogos com estatísticas válidas (chutes/defesas > 0)
                         df_com_stats = display_df[
@@ -267,9 +563,10 @@ else:
                         media_chutes_alvo_partida = df_com_stats['Chutes no Alvo (Partida)'].mean() if not df_com_stats.empty else 0
                         media_defesas_partida = df_com_stats['Defesas (Partida)'].mean() if not df_com_stats.empty else 0
                         media_escanteios_partida = df_com_stats['Escanteios (Partida)'].mean() if not df_com_stats.empty else 0
-                        
+                        media_impedimentos_partida = df_com_stats['Impedimentos (Partida)'].mean() if not df_com_stats.empty else 0
+
                         # Médias de gols consideram TODOS os jogos (com e sem stats)
-                        media_gols_partida = (display_df['Gols Casa'] + display_df['Gols Visitante']).mean()
+                        media_gols_partida = (h2h_df['Gols Casa'] + h2h_df['Gols Visitante']).mean()
                         
                         # Médias específicas por time (considerando que alternam casa/fora)
                         # Para chutes/defesas: apenas jogos com stats válidas
@@ -278,13 +575,15 @@ else:
                         home_team_defesas = []
                         home_team_gols = []  # Todos os jogos para gols
                         home_team_escanteios = []
+                        home_team_impedimentos = []
                         
                         away_team_chutes = []
                         away_team_chutes_alvo = []
                         away_team_defesas = []
                         away_team_gols = []  # Todos os jogos para gols
                         away_team_escanteios = []
-                        
+                        away_team_impedimentos = []
+
                         # Processa TODOS os jogos para gols
                         for _, row in display_df.iterrows():
                             if row['Time da Casa'] == home_team:
@@ -302,65 +601,71 @@ else:
                                 home_team_chutes_alvo.append(row['Chutes no Alvo (Casa)'])
                                 home_team_defesas.append(row['Defesas (Casa)'])
                                 home_team_escanteios.append(row['Escanteios (Casa)'])
+                                home_team_impedimentos.append(row['Impedimentos (Casa)'])
                                 
                                 away_team_chutes.append(row['Chutes Totais (Visitante)'])
                                 away_team_chutes_alvo.append(row['Chutes no Alvo (Visitante)'])
                                 away_team_defesas.append(row['Defesas (Visitante)'])
                                 away_team_escanteios.append(row['Escanteios (Visitante)'])
+                                away_team_impedimentos.append(row['Impedimentos (Visitante)'])
                             else:
                                 # home_team jogando fora
                                 home_team_chutes.append(row['Chutes Totais (Visitante)'])
                                 home_team_chutes_alvo.append(row['Chutes no Alvo (Visitante)'])
                                 home_team_defesas.append(row['Defesas (Visitante)'])
                                 home_team_escanteios.append(row['Escanteios (Casa)'])
+                                home_team_impedimentos.append(row['Impedimentos (Casa)'])
                                 
                                 away_team_chutes.append(row['Chutes Totais (Casa)'])
                                 away_team_chutes_alvo.append(row['Chutes no Alvo (Casa)'])
                                 away_team_defesas.append(row['Defesas (Casa)'])
                                 away_team_escanteios.append(row['Escanteios (Visitante)'])
-                        
+                                away_team_impedimentos.append(row['Impedimentos (Visitante)'])
+                                
                         # Calcula médias corretas por time
                         media_chutes_home = sum(home_team_chutes) / len(home_team_chutes) if home_team_chutes else 0
                         media_chutes_alvo_home = sum(home_team_chutes_alvo) / len(home_team_chutes_alvo) if home_team_chutes_alvo else 0
                         media_defesas_home = sum(home_team_defesas) / len(home_team_defesas) if home_team_defesas else 0
                         media_gols_home = sum(home_team_gols) / len(home_team_gols) if home_team_gols else 0
                         media_escanteios_home = sum(home_team_escanteios) / len(home_team_escanteios) if home_team_escanteios else 0
-            
+                        media_impedimentos_home = sum(home_team_impedimentos) / len(home_team_impedimentos) if home_team_impedimentos else 0
                         
                         media_chutes_away = sum(away_team_chutes) / len(away_team_chutes) if away_team_chutes else 0
                         media_chutes_alvo_away = sum(away_team_chutes_alvo) / len(away_team_chutes_alvo) if away_team_chutes_alvo else 0
                         media_defesas_away = sum(away_team_defesas) / len(away_team_defesas) if away_team_defesas else 0
                         media_gols_away = sum(away_team_gols) / len(away_team_gols) if away_team_gols else 0
                         media_escanteios_away = sum(away_team_escanteios) / len(away_team_escanteios) if away_team_escanteios else 0
-                        
+                        media_impedimentos_away = sum(away_team_impedimentos) / len(away_team_impedimentos) if away_team_impedimentos else 0
                         # Exibe métricas em colunas
                         col1, col2, col3 = st.columns(3)
                         
                         with col1:
                             st.markdown("#### 📈 Por Partida")
-                            st.metric("Média Chutes Totais", f"{media_chutes_totais_partida:.1f}")
-                            st.metric("Média Chutes no Alvo", f"{media_chutes_alvo_partida:.1f}")
-                            st.metric("Média Escanteios", f"{media_escanteios_partida:.1f}")
-                            st.metric("Média Defesas", f"{media_defesas_partida:.1f}")
-                            st.metric("Média Gols", f"{media_gols_partida:.1f}")
+                            st.metric("Média Chutes Totais ⚽", f"{media_chutes_totais_partida:.1f}")
+                            st.metric("Média Chutes no Alvo ⚽🥅", f"{media_chutes_alvo_partida:.1f}")
+                            st.metric("Média Escanteios 🚩", f"{media_escanteios_partida:.1f}")
+                            st.metric("Média Defesas 🧤", f"{media_defesas_partida:.1f}")
+                            st.metric("Média Gols ⚽✅", f"{media_gols_partida:.1f}")
+                            st.metric("Média Impedimentos ⚠️", f"{media_impedimentos_partida:.1f}")
                             st.metric("Jogos Analisados", f"{total_jogos_analisados}/{total_jogos}")
                         
                         with col2:
                             st.markdown(f"#### 🏠 {home_team}")
-                            st.metric("Média Chutes/Jogo", f"{media_chutes_home:.1f}")
-                            st.metric("Média Chutes Alvo/Jogo", f"{media_chutes_alvo_home:.1f}")
-                            st.metric("Média Escanteios/Jogo", f"{media_escanteios_home:.1f}")
-                            st.metric("Média Defesas/Jogo", f"{media_defesas_home:.1f}")
-                            st.metric("Média Gols/Jogo", f"{media_gols_home:.1f}")
+                            st.metric("Média Chutes ⚽", f"{media_chutes_home:.1f}")
+                            st.metric("Média Chutes Alvo ⚽🥅", f"{media_chutes_alvo_home:.1f}")
+                            st.metric("Média Escanteios 🚩", f"{media_escanteios_home:.1f}")
+                            st.metric("Média Defesas 🧤", f"{media_defesas_home:.1f}")
+                            st.metric("Média Gols ⚽✅", f"{media_gols_home:.1f}")
+                            st.metric("Média Impedimentos ⚠️", f"{media_impedimentos_home:.1f}")
                         
                         with col3:
                             st.markdown(f"#### ✈️ {away_team}")
-                            st.metric("Média Chutes/Jogo", f"{media_chutes_away:.1f}")
-                            st.metric("Média Chutes Alvo/Jogo", f"{media_chutes_alvo_away:.1f}")
-                            st.metric("Média Escanteios/Jogo", f"{media_escanteios_away:.1f}")
-                            st.metric("Média Defesas/Jogo", f"{media_defesas_away:.1f}")
-                            st.metric("Média Gols/Jogo", f"{media_gols_away:.1f}")
-
+                            st.metric("Média Chutes ⚽", f"{media_chutes_away:.1f}")
+                            st.metric("Média Chutes Alvo ⚽🥅", f"{media_chutes_alvo_away:.1f}")
+                            st.metric("Média Escanteios 🚩", f"{media_escanteios_away:.1f}")
+                            st.metric("Média Defesas 🧤", f"{media_defesas_away:.1f}")
+                            st.metric("Média Gols ⚽✅", f"{media_gols_away:.1f}")
+                            st.metric("Média Impedimentos ⚠️", f"{media_impedimentos_away:.1f}")
                     st.divider()
 
                     st.subheader(f"Resumo do Confronto - {home_team}")
@@ -396,141 +701,96 @@ else:
                     st.subheader("⚽ Tendências de Gols nos Confrontos (H2H)")
 
                     if total_jogos > 0:
-                        # Calculando as porcentagens para os mercados de Over
-                        zero_gols_pct = ((h2h_df['Gols Totais'] == 0).sum() / total_jogos) * 100
-                        over_0_5_pct = ((h2h_df['Gols Totais'] > 0.5).sum() / total_jogos) * 100
-                        over_1_5_pct = ((h2h_df['Gols Totais'] > 1.5).sum() / total_jogos) * 100
-                        over_2_5_pct = ((h2h_df['Gols Totais'] > 2.5).sum() / total_jogos) * 100
-                        over_3_5_pct = ((h2h_df['Gols Totais'] > 3.5).sum() / total_jogos) * 100
-                        over_4_5_pct = ((h2h_df['Gols Totais'] > 4.5).sum() / total_jogos) * 100
-                        over_5_5_pct = ((h2h_df['Gols Totais'] > 5.5).sum() / total_jogos) * 100
-                        over_6_5_pct = ((h2h_df['Gols Totais'] > 6.5).sum() / total_jogos) * 100
-                        over_7_5_pct = ((h2h_df['Gols Totais'] > 7.5).sum() / total_jogos) * 100
+                        gols_totais = h2h_df['Gols Totais']
+                        zero_gols_pct = (gols_totais.eq(0).mean() * 100)
 
-                        # Calculando a porcentagem para Ambas Marcam (BTTS)
-                        btts_pct = (((h2h_df['Gols Casa'] > 0) & (h2h_df['Gols Visitante'] > 0)).sum() / total_jogos) * 100
-                        # Calculando a porcentagem para Ambas Não Marcam (BTTS)
+                        lines = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]
+                        over_pcts = {line: (gols_totais.gt(line).mean() * 100) for line in lines}
+                        under_pcts = {line: 100 - pct for line, pct in over_pcts.items()}
+
+                        # BTTS
+                        btts_pct = (((h2h_df['Gols Casa'] > 0) & (h2h_df['Gols Visitante'] > 0)).mean() * 100)
                         ambas_n_pct = 100 - btts_pct
 
-                        # --- CÁLCULOS DE "UNDER" ---
-                        under_0_5_pct = 100 - over_0_5_pct
-                        under_1_5_pct = 100 - over_1_5_pct
-                        under_2_5_pct = 100 - over_2_5_pct
-                        under_3_5_pct = 100 - over_3_5_pct
-                        under_4_5_pct = 100 - over_4_5_pct
-                        under_5_5_pct = 100 - over_5_5_pct
-                        under_6_5_pct = 100 - over_6_5_pct
-                        under_7_5_pct = 100 - over_7_5_pct
+                        # Exibição compacta das tendências
+                        labels_values = [("Partida Sem Gols", zero_gols_pct)] \
+                                        + [(f"Mais de {line} Gols", over_pcts[line]) for line in lines] \
+                                        + [("Ambas Marcam", btts_pct), ("Ambas Não Marcam", ambas_n_pct)]
 
+                        tendencia_cols = st.columns(len(labels_values))
+                        for idx, (label, value) in enumerate(labels_values):
+                            tendencia_cols[idx].metric(label=label, value=f"{value:.1f}%")
 
-                        # Exibindo as métricas de tendências
-                        tendencia_cols = st.columns(11)
-                        tendencia_cols[0].metric(label="Partida Sem Gols", value=f"{zero_gols_pct:.1f}%")
-                        tendencia_cols[1].metric(label="Mais de 0.5 Gols", value=f"{over_0_5_pct:.1f}%")
-                        tendencia_cols[2].metric(label="Mais de 1.5 Gols", value=f"{over_1_5_pct:.1f}%")
-                        tendencia_cols[3].metric(label="Mais de 2.5 Gols", value=f"{over_2_5_pct:.1f}%")
-                        tendencia_cols[4].metric(label="Mais de 3.5 Gols", value=f"{over_3_5_pct:.1f}%")
-                        tendencia_cols[5].metric(label="Mais de 4.5 Gols", value=f"{over_4_5_pct:.1f}%")
-                        tendencia_cols[6].metric(label="Mais de 5.5 Gols", value=f"{over_5_5_pct:.1f}%")
-                        tendencia_cols[7].metric(label="Mais de 6.5 Gols", value=f"{over_6_5_pct:.1f}%")
-                        tendencia_cols[8].metric(label="Mais de 7.5 Gols", value=f"{over_7_5_pct:.1f}%")
-                        tendencia_cols[9].metric(label="Ambas Marcam", value=f"{btts_pct:.1f}%")
-                        tendencia_cols[10].metric(label="Ambas Não Marcam", value=f"{ambas_n_pct:.1f}%")
+                        # Compatibilidade com blocos seguintes (odds), mantendo variáveis nomeadas
+                        over_0_5_pct = over_pcts[0.5]
+                        over_1_5_pct = over_pcts[1.5]
+                        over_2_5_pct = over_pcts[2.5]
+                        over_3_5_pct = over_pcts[3.5]
+                        over_4_5_pct = over_pcts[4.5]
+                        over_5_5_pct = over_pcts[5.5]
+                        over_6_5_pct = over_pcts[6.5]
+                        over_7_5_pct = over_pcts[7.5]
+
+                        under_0_5_pct = under_pcts[0.5]
+                        under_1_5_pct = under_pcts[1.5]
+                        under_2_5_pct = under_pcts[2.5]
+                        under_3_5_pct = under_pcts[3.5]
+                        under_4_5_pct = under_pcts[4.5]
+                        under_5_5_pct = under_pcts[5.5]
+                        under_6_5_pct = under_pcts[6.5]
+                        under_7_5_pct = under_pcts[7.5]
                     else:
                         st.info("Dados insuficientes para calcular tendências de gols.")
 
+                    # Cálculo das Odds Justas
                     total_jogos = len(h2h_df)
                     if total_jogos > 0:
                         # Função auxiliar para calcular Odd Justa
                         def calcular_odd_justa(pct):
                             if pct > 0:
                                 return round(1 / (pct / 100), 2)
-                            return "∞" # Infinito se a probabilidade é zero
+                            return "∞"  # Infinito se a probabilidade é zero
 
-                        # Cálculo das Odds Justas - OVER
+                        def format_odd(value):
+                            return f"{value:.2f}" if isinstance(value, (int, float)) else value
+
+                        lines = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]
+
                         odd_justa_o0 = calcular_odd_justa(zero_gols_pct)
-                        odd_justa_o0_5 = calcular_odd_justa(over_0_5_pct)
-                        odd_justa_o1_5 = calcular_odd_justa(over_1_5_pct)
-                        odd_justa_o2_5 = calcular_odd_justa(over_2_5_pct)
-                        odd_justa_o3_5 = calcular_odd_justa(over_3_5_pct)
-                        odd_justa_o4_5 = calcular_odd_justa(over_4_5_pct)
-                        odd_justa_o5_5 = calcular_odd_justa(over_5_5_pct)
-                        odd_justa_o6_5 = calcular_odd_justa(over_6_5_pct)
-                        odd_justa_o7_5 = calcular_odd_justa(over_7_5_pct)
-                        odd_justa_btts = calcular_odd_justa(btts_pct)
-                        odd_justa_n = calcular_odd_justa(ambas_n_pct)
+                        over_odds = {f"Odd Justa +{line}": calcular_odd_justa(over_pcts[line]) for line in lines}
+                        under_odds = {f"Odd Justa -{line}": calcular_odd_justa(under_pcts[line]) for line in lines}
 
-                        # --- CÁLCULO DAS ODDS JUSTAS - UNDER ---
-                        odd_justa_u0_5 = calcular_odd_justa(under_0_5_pct)
-                        odd_justa_u1_5 = calcular_odd_justa(under_1_5_pct)
-                        odd_justa_u2_5 = calcular_odd_justa(under_2_5_pct)
-                        odd_justa_u3_5 = calcular_odd_justa(under_3_5_pct)
-                        odd_justa_u4_5 = calcular_odd_justa(under_4_5_pct)
-                        odd_justa_u5_5 = calcular_odd_justa(under_5_5_pct)
-                        odd_justa_u6_5 = calcular_odd_justa(under_6_5_pct)
-                        odd_justa_u7_5 = calcular_odd_justa(under_7_5_pct)
-                        
-                        #Over
-                        val_odd_0 = f"{odd_justa_o0:.2f}" if isinstance(odd_justa_o0, (int, float)) else odd_justa_o0
-                        val_odd_0_5 = f"{odd_justa_o0_5:.2f}" if isinstance(odd_justa_o0_5, (int, float)) else odd_justa_o0_5
-                        val_odd_1_5 = f"{odd_justa_o1_5:.2f}" if isinstance(odd_justa_o1_5, (int, float)) else odd_justa_o1_5
-                        val_odd_2_5 = f"{odd_justa_o2_5:.2f}" if isinstance(odd_justa_o2_5, (int, float)) else odd_justa_o2_5
-                        val_odd_3_5 = f"{odd_justa_o3_5:.2f}" if isinstance(odd_justa_o3_5, (int, float)) else odd_justa_o3_5
-                        val_odd_4_5 = f"{odd_justa_o4_5:.2f}" if isinstance(odd_justa_o4_5, (int, float)) else odd_justa_o4_5
-                        val_odd_5_5 = f"{odd_justa_o5_5:.2f}" if isinstance(odd_justa_o5_5, (int, float)) else odd_justa_o5_5
-                        val_odd_6_5 = f"{odd_justa_o6_5:.2f}" if isinstance(odd_justa_o6_5, (int, float)) else odd_justa_o6_5
-                        val_odd_7_5 = f"{odd_justa_o7_5:.2f}" if isinstance(odd_justa_o7_5, (int, float)) else odd_justa_o7_5
-                        val_odd_abm = f"{odd_justa_btts:.2f}" if isinstance(odd_justa_btts, (int, float)) else odd_justa_btts
-                        val_odd_abnm = f"{odd_justa_n:.2f}" if isinstance(odd_justa_n, (int, float)) else odd_justa_n
-
-                        #Under
-                        val_odd_u0_5 = f"{odd_justa_u0_5:.2f}" if isinstance(odd_justa_u0_5, (int, float)) else odd_justa_u0_5
-                        val_odd_u1_5 = f"{odd_justa_u1_5:.2f}" if isinstance(odd_justa_u1_5, (int, float)) else odd_justa_u1_5
-                        val_odd_u2_5 = f"{odd_justa_u2_5:.2f}" if isinstance(odd_justa_u2_5, (int, float)) else odd_justa_u2_5
-                        val_odd_u3_5 = f"{odd_justa_u3_5:.2f}" if isinstance(odd_justa_u3_5, (int, float)) else odd_justa_u3_5
-                        val_odd_u4_5 = f"{odd_justa_u4_5:.2f}" if isinstance(odd_justa_u4_5, (int, float)) else odd_justa_u4_5
-                        val_odd_u5_5 = f"{odd_justa_u5_5:.2f}" if isinstance(odd_justa_u5_5, (int, float)) else odd_justa_u5_5
-                        val_odd_u6_5 = f"{odd_justa_u6_5:.2f}" if isinstance(odd_justa_u6_5, (int, float)) else odd_justa_u6_5
-                        val_odd_u7_5 = f"{odd_justa_u7_5:.2f}" if isinstance(odd_justa_u7_5, (int, float)) else odd_justa_u7_5
 
                         st.markdown("##### 📈 Odds Justas Over (+)")
-                        cols_over = st.columns(11)
-                        cols_over[0].metric(label="Odd Justa 0 Gols", value=val_odd_0)
-                        cols_over[1].metric(label="Odd Justa +0.5", value=val_odd_0_5)
-                        cols_over[2].metric(label="Odd Justa +1.5", value=val_odd_1_5)
-                        cols_over[3].metric(label="Odd Justa +2.5", value=val_odd_2_5)
-                        cols_over[4].metric(label="Odd Justa +3.5", value=val_odd_3_5)
-                        cols_over[5].metric(label="Odd Justa +4.5", value=val_odd_4_5)
-                        cols_over[6].metric(label="Odd Justa +5.5", value=val_odd_5_5)
-                        cols_over[7].metric(label="Odd Justa +6.5", value=val_odd_6_5)
-                        cols_over[8].metric(label="Odd Justa +7.5", value=val_odd_7_5)
-                        cols_over[9].markdown("")
-                        cols_over[10].markdown("")
-                        
+                        cols_over = st.columns(len(lines) + 1) 
+                        cols_over[0].metric(label="&nbsp;", value="", label_visibility="collapsed")
+                        for i, line in enumerate(lines):
+                            cols_over[i + 1].metric(
+                                label=f"Odd Justa +{line}", 
+                                value=format_odd(over_odds[f"Odd Justa +{line}"])
+                            )
+
                         st.markdown("##### 📉 Odds Justas Under (-)")
-                        cols_under = st.columns(11)
-                        cols_under[0].markdown("")
-                        cols_under[1].metric(label="Odd Justa -0.5", value=val_odd_u0_5)
-                        cols_under[2].metric(label="Odd Justa -1.5", value=val_odd_u1_5)
-                        cols_under[3].metric(label="Odd Justa -2.5", value=val_odd_u2_5)
-                        cols_under[4].metric(label="Odd Justa -3.5", value=val_odd_u3_5)
-                        cols_under[5].metric(label="Odd Justa -4.5", value=val_odd_u4_5)
-                        cols_under[6].metric(label="Odd Justa -5.5", value=val_odd_u5_5)
-                        cols_under[7].metric(label="Odd Justa -6.5", value=val_odd_u6_5)
-                        cols_under[8].metric(label="Odd Justa -7.5", value=val_odd_u7_5)
-                        cols_under[9].markdown("")
-                        cols_under[10].markdown("")
+                        cols_under = st.columns(len(lines) + 1)
+                        cols_under[0].write("")
+                        for i, line in enumerate(lines):
+                            cols_under[i + 1].metric(
+                                label=f"Odd Justa -{line}", 
+                                value=format_odd(under_odds[f"Odd Justa -{line}"])
+                            )
 
                         st.markdown("##### Odds Justas Ambas")
-                        cols_ambas = st.columns(11)
-                        cols_ambas[0].metric(label="Ambas Marcam", value=val_odd_abm)
-                        cols_ambas[1].metric(label="Ambas Não Marcam", value=val_odd_abnm)
+                        odd_justa_btts = calcular_odd_justa(btts_pct)
+                        odd_justa_n = calcular_odd_justa(ambas_n_pct)
+                        cols_ambas = st.columns(9)
+                        cols_ambas[0].metric(label="Ambas Marcam", value=format_odd(odd_justa_btts))
+                        cols_ambas[1].metric(label="Ambas Não Marcam", value=format_odd(odd_justa_n))
 
                         with st.expander("⚽🉐 Análise Avançada: Odds Justas de Gols Asiáticos (H2H)"):
                             total_jogos = len(h2h_df)
                             if total_jogos > 0:
                 
-                            # --- FUNÇÃO AUXILIAR PARA CALCULAR ODDS ASIÁTICAS ---
+                                # --- FUNÇÃO AUXILIAR PARA CALCULAR ODDS ASIÁTICAS ---
                                 def calcular_odd_justa_asiatica(line_type, p_win=0, p_push=0, p_half_win=0, p_half_loss=0):
                                     # Converte porcentagens para decimais
                                     prob_win, prob_push, prob_half_win, prob_half_loss = p_win/100, p_push/100, p_half_win/100, p_half_loss/100
@@ -627,13 +887,11 @@ else:
 
                             with st.expander("📚 Como interpretar as Odds Asiáticas", expanded=False):
                                 st.markdown(ASIAN_ODDS_GUIDE)
-                        
+ 
                         st.divider()
                         
                     else:
                         st.info("Dados insuficientes para calcular tendências.")
-                else:
-                    st.info("Não foram encontrados confrontos diretos recentes entre as equipes.")
             
             
             st.header("🚩 Análise de Escanteios (Temporada Completa)")
@@ -673,47 +931,89 @@ else:
                     value=f"{away_summary.get('Média Escanteios/J', 0) + away_summary.get('Média Escanteios Contra/J', 0):.2f}"
                 )
             
-            st.subheader("Odds Justas de Escanteios (H2H)")
+            with st.expander("📊 Ver Odds Justas de Escanteios (Temporada)"):
+                # Odds Justas de Escanteios (Temporada)
+                st.subheader("Odds Justas de Escanteios (Temporada)")
+                lambda_escanteios_season = (
+                    home_summary.get('Média Escanteios/J', 0) + away_summary.get('Média Escanteios/J', 0)
+                )
+                st.write(f"Baseado em uma média de temporada de **{lambda_escanteios_season:.2f}** escanteios por jogo (soma dos times).")
 
-            if total_jogos_analisados > 0:
-                lambda_escanteios = media_escanteios_partida
-                st.write(f"Baseado em uma média histórica de **{lambda_escanteios:.2f}** escanteios por jogo nos confrontos diretos.")
+                season_corner_lines = [4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5]
 
-                corner_lines = [4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5]
-
-                # Função auxiliar (pode estar fora do bloco, mas ok aqui)
-                def calcular_odd_justa(pct):
+                def calcular_odd_justa_pct(pct):
                     if pct > 0:
                         return round(1 / (pct / 100), 2)
-                    return float('inf')  # ou "∞", mas float('inf') é mais fácil para exibição
+                    return float('inf')
 
-                # === Linha 1: Over ===
                 st.markdown("#### 📈 Odds Justas Over (+)")
-                over_cols = st.columns(len(corner_lines))
-                for i, line in enumerate(corner_lines):
+                season_over_cols = st.columns(len(season_corner_lines))
+                for i, line in enumerate(season_corner_lines):
                     k = int(line)
-                    prob_over = (1 - poisson.cdf(k, lambda_escanteios)) * 100
-                    odd_justa_over = calcular_odd_justa(prob_over)
-                    with over_cols[i]:
-                        st.metric(label=f"Over {line}", value=odd_justa_over)
+                    prob_over_pct = (1 - poisson.cdf(k, lambda_escanteios_season)) * 100
+                    odd_over = calcular_odd_justa_pct(prob_over_pct)
+                    with season_over_cols[i]:
+                        st.metric(label=f"Over {line}", value=odd_over)
 
-                # Espaçamento visual (opcional)
-                st.write("")  # ou st.divider() se quiser separar mais
-
-                # === Linha 2: Under ===
                 st.markdown("#### 📉 Odds Justas Under (-)")
-                under_cols = st.columns(len(corner_lines))
-                for i, line in enumerate(corner_lines):
+                season_under_cols = st.columns(len(season_corner_lines))
+                for i, line in enumerate(season_corner_lines):
                     k = int(line)
-                    prob_under = poisson.cdf(k, lambda_escanteios) * 100
-                    odd_justa_under = calcular_odd_justa(prob_under)
-                    with under_cols[i]:
-                        st.metric(label=f"Under {line}", value=odd_justa_under)
+                    prob_under_pct = poisson.cdf(k, lambda_escanteios_season) * 100
+                    odd_under = calcular_odd_justa_pct(prob_under_pct)
+                    with season_under_cols[i]:
+                        st.metric(label=f"Under {line}", value=odd_under)
 
-                st.divider()
+            with st.expander("📊 Ver Odds Justas de Escanteios (H2H)"):
+                st.subheader("Odds Justas de Escanteios (H2H)")
+                if total_jogos_analisados > 0:
+                    lambda_escanteios = media_escanteios_partida
+                    st.write(f"Baseado em uma média histórica de **{lambda_escanteios:.2f}** escanteios por jogo nos confrontos diretos.")
 
-            else:
-                st.info("Dados de escanteios insuficientes para calcular as odds justas.")
+                    corner_lines = [4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5]
+
+                    # Função auxiliar (pode estar fora do bloco, mas ok aqui)
+                    def calcular_odd_justa(pct):
+                        if pct > 0:
+                            return round(1 / (pct / 100), 2)
+                        return float('inf')  # ou "∞", mas float('inf') é mais fácil para exibição
+
+                    # === Linha 1: Over ===
+                    st.markdown("#### 📈 Odds Justas Over (+)")
+                    over_cols = st.columns(len(corner_lines))
+                    for i, line in enumerate(corner_lines):
+                        k = int(line)
+                        prob_over = (1 - poisson.cdf(k, lambda_escanteios)) * 100
+                        odd_justa_over = calcular_odd_justa(prob_over)
+                        with over_cols[i]:
+                            st.metric(label=f"Over {line}", value=odd_justa_over)
+
+                    # Espaçamento visual (opcional)
+                    st.write("")  # ou st.divider() se quiser separar mais
+
+                    # === Linha 2: Under ===
+                    st.markdown("#### 📉 Odds Justas Under (-)")
+                    under_cols = st.columns(len(corner_lines))
+                    for i, line in enumerate(corner_lines):
+                        k = int(line)
+                        prob_under = poisson.cdf(k, lambda_escanteios) * 100
+                        odd_justa_under = calcular_odd_justa(prob_under)
+                        with under_cols[i]:
+                            st.metric(label=f"Under {line}", value=odd_justa_under)
+
+                    # Consistência (CV) para escanteios no H2H
+                    if not df_com_stats.empty and 'Escanteios (Partida)' in df_com_stats.columns:
+                        serie_corners = df_com_stats['Escanteios (Partida)'].dropna().tolist()
+                        lvl_corners = get_variation_level(serie_corners)
+                        if lvl_corners == "Alta":
+                            st.info("💡 Consistência (Escanteios H2H): **alta variação**; interprete a média com cautela.")
+                        elif lvl_corners == "Média":
+                            st.info("ℹ️ Consistência (Escanteios H2H): **variação moderada**.")
+                        else:
+                            st.info("✅ Consistência (Escanteios H2H): **baixa variação**, indicando padrão estável.")
+
+                else:
+                    st.info("Dados de escanteios insuficientes para calcular as odds justas.")
 
 
             
@@ -725,7 +1025,7 @@ else:
                 away_last_event_id = analysis_data.get("away_last_event_id")
                 last_match_saves_map = analysis_data.get("last_match_saves_map")
     
-                gk_stats = load_gk_stats(event_id, home_last_event_id, away_last_event_id, last_match_saves_map)
+                gk_stats = load_gk_stats(main_event_id, home_last_event_id, away_last_event_id, last_match_saves_map)
                 home_gk_df = gk_stats.get('home')
                 away_gk_df = gk_stats.get('away')
 
@@ -816,7 +1116,10 @@ else:
                 st.warning("ID para H2H não encontrado.")
             else:
                 with st.spinner("Analisando histórico de defesas no H2H... 🕵️"):
-                    h2h_gk_data = load_h2h_gk_analysis(custom_id, home_team, away_team)
+                    # <<< OTIMIZAÇÃO: Passa os eventos H2H já carregados para evitar requisições duplicadas >>>
+                    h2h_events_to_pass = h2h_events_raw if 'h2h_events_raw' in locals() else None
+                    # <<< CORREÇÃO: Passa também o cache de estatísticas para evitar requisições duplicadas >>>
+                    h2h_gk_data = load_h2h_gk_analysis(custom_id, home_team, away_team, h2h_events_to_pass, detailed_stats_cache)
                 
                 if not h2h_gk_data.get('home') and not h2h_gk_data.get('away'):
                     st.info("Não há dados de defesas suficientes no histórico de confrontos para esta análise.")
@@ -829,10 +1132,8 @@ else:
                         agora com odds justas lateralizadas.
                         """
                         st.markdown(f"**{team_name}**")
-                        st.metric(
-                            "Média de Defesas/J no H2H",
-                            value=h2h_data.get('avg_saves', 'N/A')
-                        )
+                        avg_saves = h2h_data.get('avg_saves', None)
+                        st.metric("Média de Defesas/J no H2H", value=avg_saves if avg_saves is not None else 'N/A')
                         
                         with st.expander("Ver Odds Justas (H2H)"):
                             # Garante que temos dados para processar
@@ -858,6 +1159,17 @@ else:
                                         # Exibimos as duas métricas, uma abaixo da outra, DENTRO da mesma coluna
                                         st.metric(label=f"Odd Over +{line}", value=over_value)
                                         st.metric(label=f"Odd Under -{line}", value=under_value)
+
+                        # Consistência das defesas (H2H)
+                        samples = h2h_data.get('samples', []) or []
+                        if samples:
+                            lvl_def = get_variation_level(samples)
+                            if lvl_def == "Alta":
+                                st.info("💡 Consistência (Goleiros H2H): **alta variação** nas defesas por jogo; cuidado ao usar a média.")
+                            elif lvl_def == "Média":
+                                st.info("ℹ️ Consistência (Goleiros H2H): **variação moderada** nas defesas por jogo.")
+                            else:
+                                st.info("✅ Consistência (Goleiros H2H): **baixa variação** nas defesas por jogo.")
 
                     with h2h_col1:
                         display_h2h_gk_analysis(home_team, h2h_gk_data.get('home', {}))
