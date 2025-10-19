@@ -61,6 +61,7 @@ def get_daily_matches_dataframe(event_date: date) -> pd.DataFrame:
                     'home_team_id': event.get('homeTeam', {}).get('id'),
                     'away_team_id': event.get('awayTeam', {}).get('id'),
                     'tournament_id': event.get('tournament', {}).get('id'),
+                    'uniqueTournament_id': event.get('tournament', {}).get('uniqueTournament', {}).get('id'),
                     'customId': event.get('customId'),
                 })
 
