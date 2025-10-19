@@ -6,6 +6,35 @@ from scipy.stats import poisson
 from typing import List, Dict, Any
 from samsbet.api.sofascore_client import SofaScoreClient
 
+def get_variation_level(data: list) -> str:
+    """
+    Classifica a variação de uma lista numérica usando o Coeficiente de Variação (CV = desvio padrão / média).
+    Limiares sugeridos:
+      - CV <= 0.35  -> "Baixa"
+      - 0.35 < CV <= 0.70 -> "Média"
+      - CV > 0.70   -> "Alta"
+    """
+    if not data:
+        return "Baixa"
+    arr = np.array([x for x in data if x is not None])
+    if arr.size == 0:
+        return "Baixa"
+    # Remove não finitos
+    arr = arr[np.isfinite(arr)]
+    if arr.size == 0:
+        return "Baixa"
+    mean = float(arr.mean())
+    # Usa desvio padrão populacional por robustez com amostras pequenas
+    std = float(arr.std(ddof=0))
+    if mean <= 0:
+        return "Alta" if std > 0 else "Baixa"
+    cv = std / mean
+    if cv <= 0.35:
+        return "Baixa"
+    if cv <= 0.70:
+        return "Média"
+    return "Alta"
+
 def _process_player_stats_to_dataframe(
     raw_player_stats: List[Dict[str, Any]],
     last_match_shots_map: Dict[int, Dict[str, int]]
@@ -354,59 +383,63 @@ def get_goalkeeper_stats_for_match(
         
     raw_gk_home = client.get_goalkeeper_stats_for_team(uniqueTournament_id, season_id, home_team_id)
     raw_gk_away = client.get_goalkeeper_stats_for_team(uniqueTournament_id, season_id, away_team_id)
-
     home_gk_df = _process_goalkeeper_stats_to_dataframe(raw_gk_home, last_match_saves_map)
     away_gk_df = _process_goalkeeper_stats_to_dataframe(raw_gk_away, last_match_saves_map)
 
     return {"home": home_gk_df, "away": away_gk_df}
 
+
+
 def _process_h2h_events_to_dataframe(
     raw_h2h_events: List[Dict[str, Any]], home_team_name: str, away_team_name: str
 ) -> pd.DataFrame:
     """
-    Processa a lista de eventos H2H, pulando o jogo futuro e corrigindo placares
-    de jogos com disputas de pênaltis.
+    Processa a lista de eventos H2H, filtrando APENAS jogos finalizados ('finished')
+    e corrigindo placares de disputas de pênaltis.
     """
-    if not raw_h2h_events or len(raw_h2h_events) <= 1:
+    if not raw_h2h_events:
         return pd.DataFrame()
 
     processed_matches = []
     
-    for event in raw_h2h_events[1:]:
-        home_score_obj = event.get("homeScore", {})
-        away_score_obj = event.get("awayScore", {})
+    # <<< MUDANÇA CRUCIAL AQUI: Iteramos sobre TODOS os eventos >>>
+    for event in raw_h2h_events:
+        # E adicionamos um filtro para processar apenas os jogos finalizados
+        status_type = event.get("status", {}).get("type")
+        if status_type == "finished":
+            home_score_obj = event.get("homeScore", {})
+            away_score_obj = event.get("awayScore", {})
 
-        # <<< MUDANÇA CRUCIAL AQUI >>>
-        # Subtraímos os gols de pênaltis do placar 'current' para obter o resultado do jogo.
-        # Se não houver pênaltis, .get("penalties", 0) retorna 0, e o cálculo permanece correto.
-        home_score = home_score_obj.get("current", 0) - home_score_obj.get("penalties", 0)
-        away_score = away_score_obj.get("current", 0) - away_score_obj.get("penalties", 0)
-        
-        # A lógica para determinar o vencedor usa o placar corrigido do jogo.
-        if home_score > away_score:
-            winner = event.get("homeTeam", {}).get("name")
-        elif away_score > home_score:
-            winner = event.get("awayTeam", {}).get("name")
-        else:
-            winner = "Empate"
+            home_score = home_score_obj.get("current", 0) - home_score_obj.get("penalties", 0)
+            away_score = away_score_obj.get("current", 0) - away_score_obj.get("penalties", 0)
+            
+            if home_score > away_score:
+                winner = event.get("homeTeam", {}).get("name")
+            elif away_score > home_score:
+                winner = event.get("awayTeam", {}).get("name")
+            else:
+                winner = "Empate"
 
-        processed_matches.append({
-            "event_id": event.get("id"),
-            "Data": pd.to_datetime(event.get("startTimestamp"), unit='s'),
-            "Campeonato": event.get("tournament", {}).get("name"),
-            "Time da Casa": event.get("homeTeam", {}).get("name"),
-            "Placar": f"{home_score} - {away_score}",
-            "Time Visitante": event.get("awayTeam", {}).get("name"),
-            "Vencedor": winner,
-            "Gols Casa": home_score,
-            "Gols Visitante": away_score
-        })
+            processed_matches.append({
+                "event_id": event.get("id"),
+                "Data": pd.to_datetime(event.get("startTimestamp"), unit='s'),
+                "Campeonato": event.get("tournament", {}).get("name"),
+                "Time da Casa": event.get("homeTeam", {}).get("name"),
+                "Placar": f"{home_score} - {away_score}",
+                "Time Visitante": event.get("awayTeam", {}).get("name"),
+                "Vencedor": winner,
+                "Gols Casa": home_score,
+                "Gols Visitante": away_score,
+                # flag importante para evitar requisições a /event/{id}/statistics quando inexistentes
+                "hasEventPlayerStatistics": event.get("hasEventPlayerStatistics")
+            })
     
     if not processed_matches:
         return pd.DataFrame()
 
     df = pd.DataFrame(processed_matches)
     return df.sort_values(by="Data", ascending=False).reset_index(drop=True)
+
 
 def get_h2h_data(custom_id: str, home_team_name: str, away_team_name: str) -> pd.DataFrame:
     """
@@ -475,13 +508,22 @@ def get_summary_stats_for_event(event_id: int) -> Dict[str, Dict[str, int]]:
 
     return summary
 
-def get_h2h_goalkeeper_analysis(custom_id: str, home_team_name: str, away_team_name: str) -> Dict[str, Any]:
+def get_h2h_goalkeeper_analysis(custom_id: str, home_team_name: str, away_team_name: str, h2h_events: List[Dict[str, Any]] = None, detailed_stats_cache: Dict[int, Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Analisa o histórico de confrontos para calcular a média de defesas da POSIÇÃO de goleiro,
     usando apenas os jogos que contêm estatísticas válidas.
+    
+    Args:
+        custom_id: ID do confronto H2H
+        home_team_name: Nome do time da casa
+        away_team_name: Nome do time visitante
+        h2h_events: Lista opcional de eventos H2H já carregados para evitar requisições duplicadas
+        detailed_stats_cache: Cache opcional de estatísticas já carregadas para evitar requisições duplicadas
     """
-    client = SofaScoreClient()
-    h2h_events = client.get_h2h_events(custom_id)
+    # <<< OTIMIZAÇÃO: Reutiliza eventos H2H se fornecidos >>>
+    if h2h_events is None:
+        client = SofaScoreClient()
+        h2h_events = client.get_h2h_events(custom_id)
     
     if not h2h_events or len(h2h_events) <= 1:
         return {}
@@ -491,11 +533,18 @@ def get_h2h_goalkeeper_analysis(custom_id: str, home_team_name: str, away_team_n
 
     for event in h2h_events[1:]:
         event_id = event.get("id")
-        if not event_id: continue
+        if not event_id:
+            continue
+        # Evita requisições quando o H2H indica ausência OU não fornece a flag
+        if event.get("hasEventPlayerStatistics") is not True:
+            continue
         
-        stats = get_summary_stats_for_event(event_id)
+        # <<< CORREÇÃO: Usa o cache se disponível, senão busca as estatísticas >>>
+        if detailed_stats_cache and event_id in detailed_stats_cache:
+            stats = detailed_stats_cache[event_id]
+        else:
+            stats = get_summary_stats_for_event(event_id)
         
-        # <<< MUDANÇA E CORREÇÃO AQUI >>>
         # Verificamos se há dados de defesas válidos ANTES de adicioná-los à lista.
         # Isso garante que não estamos adicionando '0' de jogos sem estatísticas.
         home_saves = stats['home']['saves']
@@ -514,10 +563,10 @@ def get_h2h_goalkeeper_analysis(custom_id: str, home_team_name: str, away_team_n
     # Função auxiliar interna para calcular as odds
     def calculate_odds(saves_list: List[int]) -> Dict[str, Any]:
         if not saves_list:
-            return {}
+            return {"avg_saves": None, "samples": []}
         
         avg_saves = np.mean(saves_list)
-        results = {"avg_saves": round(avg_saves, 2)}
+        results = {"avg_saves": round(avg_saves, 2), "samples": saves_list}
         
         # Linhas de aposta comuns para defesas de goleiro
         for line in [0.5, 1.5, 2.5, 3.5, 4.5]:
